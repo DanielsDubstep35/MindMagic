@@ -1,0 +1,148 @@
+[gd_scene load_steps=24 format=3 uid="uid://j2ajyb8wmo5p"]
+
+[ext_resource type="Script" path="res://CreatedAssets/Wand/Fireball.gd" id="1_e223h"]
+[ext_resource type="Texture2D" uid="uid://cbfcp3l1cvm5r" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="2_5anmj"]
+[ext_resource type="Texture2D" uid="uid://bq3alwgjc7n8r" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion01.png" id="3_1ahoh"]
+[ext_resource type="Texture2D" uid="uid://dappd7f418p0g" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion02.png" id="4_dki7y"]
+[ext_resource type="Texture2D" uid="uid://bwcqgjc3ehfu7" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion03.png" id="5_c2hx1"]
+[ext_resource type="Texture2D" uid="uid://duyie8sxk3mlr" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion04.png" id="6_dljw6"]
+[ext_resource type="Texture2D" uid="uid://du8ooxxy5ixth" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion05.png" id="7_hh6xn"]
+[ext_resource type="Texture2D" uid="uid://c7edcby0as20q" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion06.png" id="8_f25mt"]
+[ext_resource type="Texture2D" uid="uid://dg0jre5mke5cn" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion07.png" id="9_gcuiv"]
+[ext_resource type="Texture2D" uid="uid://bpbgn1na17jxh" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion08.png" id="10_2iasg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g0i6f"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_hjyyn"]
+frames = 9
+speed_scale = 25.0
+frame_0/texture = ExtResource("2_5anmj")
+frame_1/texture = ExtResource("3_1ahoh")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_dki7y")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_c2hx1")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_dljw6")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_hh6xn")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_f25mt")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("9_gcuiv")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("10_2iasg")
+frame_8/duration = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2t5u"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 1
+albedo_texture = SubResource("AnimatedTexture_hjyyn")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0gcom"]
+radius = 0.08
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f5qsl"]
+radius = 0.16
+
+[sub_resource type="Curve" id="Curve_5w6nt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0977778, 1), 0.0, 0.0, 0, 0, Vector2(0.502222, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xu3ia"]
+curve = SubResource("Curve_5w6nt")
+
+[sub_resource type="Gradient" id="Gradient_gn2g3"]
+offsets = PackedFloat32Array(0, 0.287425, 0.670659, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0, 1, 1, 0.541176, 0.14902, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h2e7o"]
+gradient = SubResource("Gradient_gn2g3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etmd4"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 2.08165e-12, 2.08165e-12)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(2.08165e-12, 5, 2.08165e-12)
+color_ramp = SubResource("GradientTexture1D_h2e7o")
+alpha_curve = SubResource("CurveTexture_xu3ia")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ib7s8"]
+frames = 9
+speed_scale = 5.0
+frame_0/texture = ExtResource("2_5anmj")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("3_1ahoh")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("4_dki7y")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("5_c2hx1")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("6_dljw6")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("7_hh6xn")
+frame_5/duration = 0.2
+frame_6/texture = ExtResource("8_f25mt")
+frame_6/duration = 0.2
+frame_7/texture = ExtResource("9_gcuiv")
+frame_7/duration = 0.2
+frame_8/texture = ExtResource("10_2iasg")
+frame_8/duration = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrq2p"]
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("AnimatedTexture_ib7s8")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+point_size = 50.0
+proximity_fade_distance = 482.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_nevie"]
+material = SubResource("StandardMaterial3D_mrq2p")
+size = Vector2(0.5, 0.5)
+
+[node name="Fireball" type="RigidBody3D" groups=["Fireball"]]
+collision_layer = 8
+collision_mask = 2
+gravity_scale = 1.66533e-16
+script = ExtResource("1_e223h")
+Fire_Speed = 20
+bullet_penetration = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_g0i6f")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2t5u")
+
+[node name="FireballCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0gcom")
+
+[node name="SpellArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 35
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpellArea"]
+shape = SubResource("SphereShape3D_f5qsl")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_etmd4")
+draw_pass_1 = SubResource("QuadMesh_nevie")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.501961, 0, 1)
+
+[connection signal="body_entered" from="SpellArea" to="." method="_on_spell_area_body_entered"]

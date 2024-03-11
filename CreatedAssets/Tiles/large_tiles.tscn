@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4f35jfs7qubf"]
+
+[ext_resource type="PackedScene" uid="uid://de248c7oldekq" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pallet_Large.gltf" id="1_bqw1n"]
+[ext_resource type="Script" path="res://CreatedAssets/Tiles/suitableTiles.gd" id="1_lxka0"]
+
+[node name="LargeTiles" type="Node3D"]
+script = ExtResource("1_lxka0")
+
+[node name="Pallet_Large2" parent="." instance=ExtResource("1_bqw1n")]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

@@ -1,0 +1,246 @@
+[gd_scene load_steps=11 format=3 uid="uid://bew5g80l2cl6i"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ia31o"]
+[ext_resource type="PackedScene" uid="uid://dg2gohdntx5rv" path="res://players/vr_player.tscn" id="6_1v00c"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="7_tx3qm"]
+[ext_resource type="MeshLibrary" uid="uid://r0f8aukemgfl" path="res://UsedAssets/KayKit/complete_tiles.tres" id="15_jhola"]
+[ext_resource type="PackedScene" uid="uid://cpk8due4k67mm" path="res://CreatedAssets/LevelBuilderAssets/level_3d_text.tscn" id="16_fe382"]
+[ext_resource type="PackedScene" uid="uid://b8bcj0x60pc3s" path="res://CreatedAssets/InteractableObjects/activated_bridge.tscn" id="16_wmpw3"]
+[ext_resource type="PackedScene" uid="uid://cr6fye8i5ok6k" path="res://CreatedAssets/InteractableObjects/target.tscn" id="17_hli4s"]
+[ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://CreatedAssets/InteractableObjects/goal.tscn" id="17_nyowg"]
+
+[sub_resource type="GDScript" id="GDScript_p5nee"]
+script/source = "extends Node3D
+
+var activationGoal = 1
+var activationCount = 0
+
+@onready
+var BlockL_Collision : CollisionShape3D = $BlockL/StaticBody3D/CollisionShape3D
+
+@onready
+var BlockR_Collision : CollisionShape3D = $BlockR/StaticBody3D/CollisionShape3D
+
+@onready
+var EdgeL_Collision : CollisionShape3D = $EdgeL/StaticBody3D/CollisionShape3D
+
+@onready
+var EdgeR_Collision : CollisionShape3D = $EdgeR/StaticBody3D/CollisionShape3D
+
+@onready
+var BlockL : MeshInstance3D = $BlockL
+
+@onready
+var BlockR : MeshInstance3D = $BlockR
+
+@onready
+var EdgeL : MeshInstance3D = $EdgeL
+
+@onready
+var EdgeR : MeshInstance3D = $EdgeR
+
+@onready
+var anim_player : AnimationPlayer = $AnimationPlayer
+
+@onready
+var BridgeSectionRiseTime : float = ($\".\".name.replace(\"BridgeSection\", \"\").to_float()) / 5.0
+
+func AddProgress():
+	if activationCount == activationGoal:
+		await get_tree().create_timer(BridgeSectionRiseTime).timeout
+		BridgeRaised()
+	else:
+		activationCount += 1
+
+func BridgeRaised():
+	BlockL_Collision.disabled = false
+	BlockR_Collision.disabled = false
+	EdgeL_Collision.disabled = false
+	EdgeR_Collision.disabled = false
+	anim_player.play(\"raised_bridge\", -1, 1)
+
+
+func _on_target_2_increment_goal_progress():
+	AddProgress()
+"
+
+[sub_resource type="GDScript" id="GDScript_2ghxb"]
+script/source = "extends Node3D
+
+var activationGoal = 2
+var activationCount = 0
+
+@onready
+var BlockL_Collision : CollisionShape3D = $BlockL/StaticBody3D/CollisionShape3D
+
+@onready
+var BlockR_Collision : CollisionShape3D = $BlockR/StaticBody3D/CollisionShape3D
+
+@onready
+var EdgeL_Collision : CollisionShape3D = $EdgeL/StaticBody3D/CollisionShape3D
+
+@onready
+var EdgeR_Collision : CollisionShape3D = $EdgeR/StaticBody3D/CollisionShape3D
+
+@onready
+var BlockL : MeshInstance3D = $BlockL
+
+@onready
+var BlockR : MeshInstance3D = $BlockR
+
+@onready
+var EdgeL : MeshInstance3D = $EdgeL
+
+@onready
+var EdgeR : MeshInstance3D = $EdgeR
+
+@onready
+var anim_player : AnimationPlayer = $AnimationPlayer
+
+@onready
+var BridgeSectionRiseTime : float = ($\".\".name.replace(\"BridgeSection\", \"\").to_float()) / 5.0
+
+func AddProgress():
+	if activationCount == activationGoal:
+		await get_tree().create_timer(BridgeSectionRiseTime).timeout
+		BridgeRaised()
+	else:
+		activationCount += 1
+
+func BridgeRaised():
+	BlockL_Collision.disabled = false
+	BlockR_Collision.disabled = false
+	EdgeL_Collision.disabled = false
+	EdgeR_Collision.disabled = false
+	anim_player.play(\"raised_bridge\", -1, 1)
+	
+func _on_target_3_increment_goal_progress():
+	AddProgress()
+	
+func _on_target_4_increment_goal_progress():
+	AddProgress()
+"
+
+[node name="WorldRoot" type="Node3D"]
+script = ExtResource("1_ia31o")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("15_jhola")
+cell_size = Vector3(4, 4, 4)
+data = {
+"cells": PackedInt32Array(-65538, 65534, 12, -65538, 65535, 12, -65538, 0, 12, -65538, 1, 12, -65537, 65534, 12, -65537, 65535, 12, -65537, 0, 12, -65537, 1, 12, -131072, 65534, 12, -131072, 65535, 12, -131072, 0, 12, -131072, 1, 12, -131071, 65534, 12, -131071, 65535, 12, -131071, 0, 12, -131071, 1, 12, -131070, 2, 42, -65539, 65533, 655402, -131070, 65533, 1048618, -65539, 2, 1441834, -131070, 1, 40, -131070, 0, 40, -131070, 65535, 40, -131070, 65534, 40, -65539, 65534, 655400, -65539, 65535, 655400, -65539, 0, 655400, -65539, 1, 655400, -65538, 2, 1441832, -65537, 2, 1441832, -131072, 2, 1441832, -131071, 2, 1441832, -131072, 65533, 1441804, -65537, 65533, 1441804, -65538, 65533, 655401, -131071, 65533, 1048617, -131070, 65522, 42, -65539, 65522, 1441834, -65539, 65517, 655402, -131070, 65517, 1048618, -131071, 65522, 41, -65538, 65522, 1441833, -131070, 65521, 40, -131070, 65520, 40, -131070, 65519, 40, -131070, 65518, 40, -131071, 65517, 1048617, -131072, 65517, 12, -65537, 65517, 12, -65538, 65517, 655401, -65539, 65521, 655400, -65539, 65520, 655400, -65539, 65519, 655400, -65539, 65518, 655400, -65538, 65518, 655372, -65538, 65519, 655372, -65538, 65520, 655372, -65538, 65521, 655372, -65537, 65518, 655372, -65537, 65519, 655372, -65537, 65520, 655372, -65537, 65521, 655372, -131072, 65518, 655372, -131072, 65519, 655372, -131072, 65520, 655372, -131072, 65521, 655372, -131071, 65518, 655372, -131071, 65519, 655372, -131071, 65520, 655372, -131071, 65521, 655372, -131072, 65522, 655372, -65537, 65522, 655372, -65539, 65501, 655402, -65539, 65502, 655400, -65539, 65503, 655400, -65539, 65504, 655400, -65539, 65505, 655400, -65539, 65506, 1441834, -65538, 65501, 1048616, -65538, 65502, 655372, -65538, 65503, 655372, -65538, 65504, 655372, -65538, 65505, 655372, -65538, 65506, 1441833, -65537, 65501, 1048616, -65537, 65502, 655372, -65537, 65503, 655372, -65537, 65504, 655372, -65537, 65505, 655372, -65537, 65506, 655372, -131072, 65501, 1048616, -131072, 65502, 655372, -131072, 65503, 655372, -131072, 65504, 655372, -131072, 65505, 655372, -131072, 65506, 655372, -131071, 65501, 1048616, -131071, 65502, 655372, -131071, 65503, 655372, -131071, 65504, 655372, -131071, 65505, 655372, -131071, 65506, 41, -131070, 65501, 1048618, -131070, 65502, 40, -131070, 65503, 40, -131070, 65504, 40, -131070, 65505, 40, -131070, 65506, 42)
+}
+metadata/_editor_floor_ = Vector3(0, -2, 0)
+
+[node name="ActivatedBridge" parent="." instance=ExtResource("16_wmpw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -14)
+
+[node name="BridgeSection1" parent="ActivatedBridge/Bridge" index="0"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection2" parent="ActivatedBridge/Bridge" index="1"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection3" parent="ActivatedBridge/Bridge" index="2"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection4" parent="ActivatedBridge/Bridge" index="3"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection5" parent="ActivatedBridge/Bridge" index="4"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection6" parent="ActivatedBridge/Bridge" index="5"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection7" parent="ActivatedBridge/Bridge" index="6"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection8" parent="ActivatedBridge/Bridge" index="7"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection9" parent="ActivatedBridge/Bridge" index="8"]
+script = SubResource("GDScript_p5nee")
+
+[node name="BridgeSection10" parent="ActivatedBridge/Bridge" index="9"]
+script = SubResource("GDScript_p5nee")
+
+[node name="ActivatedBridge2" parent="." instance=ExtResource("16_wmpw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -76)
+
+[node name="BridgeSection1" parent="ActivatedBridge2/Bridge" index="0"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection2" parent="ActivatedBridge2/Bridge" index="1"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection3" parent="ActivatedBridge2/Bridge" index="2"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection4" parent="ActivatedBridge2/Bridge" index="3"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection5" parent="ActivatedBridge2/Bridge" index="4"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection6" parent="ActivatedBridge2/Bridge" index="5"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection7" parent="ActivatedBridge2/Bridge" index="6"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection8" parent="ActivatedBridge2/Bridge" index="7"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection9" parent="ActivatedBridge2/Bridge" index="8"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="BridgeSection10" parent="ActivatedBridge2/Bridge" index="9"]
+script = SubResource("GDScript_2ghxb")
+
+[node name="LevelText" parent="." instance=ExtResource("16_fe382")]
+
+[node name="Goal" parent="." instance=ExtResource("17_nyowg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -128)
+activationGoal = 3
+target_scene = "res://Levels/base_level.tscn"
+
+[node name="FlowersGrown" parent="Goal" index="2"]
+text = "Targets Destroyed"
+
+[node name="target2" parent="." instance=ExtResource("17_hli4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -7)
+
+[node name="target3" parent="." instance=ExtResource("17_hli4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.8, -64)
+
+[node name="target4" parent="." instance=ExtResource("17_hli4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.8, -64)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, 0.75, 0.433013, 0, -0.5, 0.866025, 0.866025, -0.433013, -0.25, 0, 0, 0)
+light_color = Color(0.823529, 0.823529, 0.823529, 1)
+light_indirect_energy = 0.0
+shadow_enabled = true
+
+[node name="XROrigin3D" parent="." instance=ExtResource("6_1v00c")]
+
+[node name="StartXR" parent="." instance=ExtResource("7_tx3qm")]
+
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection1" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection2" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection3" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection4" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection5" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection6" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection7" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection8" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection9" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection10" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target2" to="Goal" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="Goal" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="Goal" method="_on_target_2_increment_goal_progress"]
+
+[editable path="ActivatedBridge"]
+[editable path="ActivatedBridge2"]
+[editable path="Goal"]

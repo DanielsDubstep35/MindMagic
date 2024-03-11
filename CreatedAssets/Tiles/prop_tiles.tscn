@@ -1,0 +1,166 @@
+[gd_scene load_steps=42 format=3 uid="uid://l8yu1ah0oy23"]
+
+[ext_resource type="Script" path="res://CreatedAssets/Tiles/prop_tiles.gd" id="1_ggu0t"]
+[ext_resource type="PackedScene" uid="uid://bte51ko6vjj0f" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall.gltf" id="1_wju4e"]
+[ext_resource type="PackedScene" uid="uid://ckv0ymv2i8gqv" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target.gltf" id="2_wbjdy"]
+[ext_resource type="PackedScene" uid="uid://b53oy80ccoegp" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pillar_B.gltf" id="3_lsyl0"]
+[ext_resource type="PackedScene" uid="uid://5j1eowwlnkc7" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pillar_A.gltf" id="4_uora5"]
+[ext_resource type="PackedScene" uid="uid://bqfahva0u4m4v" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Half.gltf" id="5_nirhw"]
+[ext_resource type="PackedScene" uid="uid://cqv5n80bgbhkc" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Dummy_Base.gltf" id="6_yukdu"]
+[ext_resource type="PackedScene" uid="uid://ctjxpivt4jvdl" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Target.gltf" id="7_eaeeu"]
+[ext_resource type="PackedScene" uid="uid://c0tfo5nt02b1p" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Doorway.gltf" id="8_trsjs"]
+[ext_resource type="PackedScene" uid="uid://ctuw1i2d7ymbk" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_stand_A.gltf" id="9_kdlxf"]
+[ext_resource type="PackedScene" uid="uid://cmnwvsoubc0pw" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Beam.gltf" id="10_0me4i"]
+[ext_resource type="PackedScene" uid="uid://dustv4n14a4jv" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall.gltf" id="11_102ka"]
+[ext_resource type="PackedScene" uid="uid://caelwf0vyxdla" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_stand_B.gltf" id="12_ojnfw"]
+[ext_resource type="PackedScene" uid="uid://34fk3c00uxua" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Decorated.gltf" id="13_yprlb"]
+[ext_resource type="PackedScene" uid="uid://bkrpyll48cvcd" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Floor_Prototype.gltf" id="14_o6808"]
+[ext_resource type="PackedScene" uid="uid://bek8rupbbeag5" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope.gltf" id="15_7abhn"]
+[ext_resource type="PackedScene" uid="uid://clxr3lihbu0wb" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_A.gltf" id="16_3rlp6"]
+[ext_resource type="PackedScene" uid="uid://byr51m0c77woq" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_B.gltf" id="17_5bwi2"]
+[ext_resource type="PackedScene" uid="uid://cixtutwasxjot" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_C.gltf" id="18_n6w2k"]
+[ext_resource type="PackedScene" uid="uid://v86lbcg8br8h" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_D.gltf" id="19_42adt"]
+[ext_resource type="PackedScene" uid="uid://cjm0ak6r4rk31" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_E.gltf" id="20_p8026"]
+[ext_resource type="PackedScene" uid="uid://bik1rk12caiiu" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_F.gltf" id="21_fbqlw"]
+[ext_resource type="PackedScene" uid="uid://c1vnmx3ndx5ck" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Stairs.gltf" id="22_xl3hn"]
+[ext_resource type="PackedScene" uid="uid://cgtydq2246mkk" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Window.gltf" id="23_npm6g"]
+[ext_resource type="PackedScene" uid="uid://dt8yp03un2c7k" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Pillar.gltf" id="24_u32ox"]
+[ext_resource type="PackedScene" uid="uid://dfvsptsg5rm6c" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Window_Open.gltf" id="25_1qthe"]
+[ext_resource type="PackedScene" uid="uid://tso4wa77ux5l" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Door_A_Decorated.gltf" id="26_prp2h"]
+[ext_resource type="PackedScene" uid="uid://biy8daellwj6o" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_wall_small.gltf" id="27_hm6yx"]
+[ext_resource type="PackedScene" uid="uid://wn51u4i0cx7y" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Doorway.gltf" id="28_e3jfp"]
+[ext_resource type="PackedScene" uid="uid://b8ued1ujnn4m3" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Window_Closed.gltf" id="29_jyh4o"]
+[ext_resource type="PackedScene" uid="uid://daofgaaigehxo" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_Half.gltf" id="30_lqojv"]
+[ext_resource type="PackedScene" uid="uid://clmsiw3c5eaug" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half.gltf" id="31_5c6jp"]
+[ext_resource type="PackedScene" uid="uid://c3pqf55jblmew" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_Short.gltf" id="32_xrci5"]
+[ext_resource type="PackedScene" uid="uid://dy6oy6gmpx38p" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_Slope.gltf" id="33_i2c1a"]
+[ext_resource type="PackedScene" uid="uid://cxr2365byjpvg" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Stairs_Half.gltf" id="34_5gvcj"]
+[ext_resource type="PackedScene" uid="uid://cfr0d2gacubl7" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_stand_A_Decorated.gltf" id="35_4pc88"]
+[ext_resource type="PackedScene" uid="uid://dvytc6drt1x6b" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_OpenCorner.gltf" id="36_c26jl"]
+[ext_resource type="PackedScene" uid="uid://b77ct0cr405tk" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_OuterCorner.gltf" id="37_tlniw"]
+[ext_resource type="PackedScene" uid="uid://bu3wl38bbjdrg" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_InnerCorner.gltf" id="38_qfibr"]
+[ext_resource type="PackedScene" uid="uid://bbcqvib46lpi0" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half_InnerCorner.gltf" id="39_uuy1w"]
+[ext_resource type="PackedScene" uid="uid://bifx78g16nk5d" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half_OuterCorner.gltf" id="40_8fynp"]
+
+[node name="PropTiles" type="Node3D"]
+script = ExtResource("1_ggu0t")
+
+[node name="Wall2" parent="." instance=ExtResource("1_wju4e")]
+visible = false
+
+[node name="target2" parent="." instance=ExtResource("2_wbjdy")]
+visible = false
+
+[node name="Pillar_B2" parent="." instance=ExtResource("3_lsyl0")]
+visible = false
+
+[node name="Pillar_A2" parent="." instance=ExtResource("4_uora5")]
+visible = false
+
+[node name="Wall_Half2" parent="." instance=ExtResource("5_nirhw")]
+visible = false
+
+[node name="Dummy_Base2" parent="." instance=ExtResource("6_yukdu")]
+visible = false
+
+[node name="Wall_Target2" parent="." instance=ExtResource("7_eaeeu")]
+visible = false
+
+[node name="Wall_Doorway2" parent="." instance=ExtResource("8_trsjs")]
+visible = false
+
+[node name="target_stand_A2" parent="." instance=ExtResource("9_kdlxf")]
+visible = false
+
+[node name="Primitive_Beam2" parent="." instance=ExtResource("10_0me4i")]
+visible = false
+
+[node name="Primitive_Wall2" parent="." instance=ExtResource("11_102ka")]
+visible = false
+
+[node name="target_stand_B2" parent="." instance=ExtResource("12_ojnfw")]
+visible = false
+
+[node name="Wall_Decorated2" parent="." instance=ExtResource("13_yprlb")]
+visible = false
+
+[node name="Floor_Prototype2" parent="." instance=ExtResource("14_o6808")]
+visible = false
+
+[node name="Primitive_Slope2" parent="." instance=ExtResource("15_7abhn")]
+visible = false
+
+[node name="target_pieces_A2" parent="." instance=ExtResource("16_3rlp6")]
+visible = false
+
+[node name="target_pieces_B2" parent="." instance=ExtResource("17_5bwi2")]
+visible = false
+
+[node name="target_pieces_C2" parent="." instance=ExtResource("18_n6w2k")]
+visible = false
+
+[node name="target_pieces_D2" parent="." instance=ExtResource("19_42adt")]
+visible = false
+
+[node name="target_pieces_E2" parent="." instance=ExtResource("20_p8026")]
+visible = false
+
+[node name="target_pieces_F2" parent="." instance=ExtResource("21_fbqlw")]
+visible = false
+
+[node name="Primitive_Stairs2" parent="." instance=ExtResource("22_xl3hn")]
+visible = false
+
+[node name="Primitive_Window2" parent="." instance=ExtResource("23_npm6g")]
+visible = false
+
+[node name="Primitive_Pillar2" parent="." instance=ExtResource("24_u32ox")]
+visible = false
+
+[node name="Wall_Window_Open2" parent="." instance=ExtResource("25_1qthe")]
+visible = false
+
+[node name="Door_A_Decorated2" parent="." instance=ExtResource("26_prp2h")]
+visible = false
+
+[node name="target_wall_small2" parent="." instance=ExtResource("27_hm6yx")]
+visible = false
+
+[node name="Primitive_Doorway2" parent="." instance=ExtResource("28_e3jfp")]
+visible = false
+
+[node name="Wall_Window_Closed2" parent="." instance=ExtResource("29_jyh4o")]
+visible = false
+
+[node name="Primitive_Wall_Half2" parent="." instance=ExtResource("30_lqojv")]
+visible = false
+
+[node name="Primitive_Slope_Half2" parent="." instance=ExtResource("31_5c6jp")]
+visible = false
+
+[node name="Primitive_Wall_Short2" parent="." instance=ExtResource("32_xrci5")]
+visible = false
+
+[node name="Primitive_Wall_Slope2" parent="." instance=ExtResource("33_i2c1a")]
+visible = false
+
+[node name="Primitive_Stairs_Half2" parent="." instance=ExtResource("34_5gvcj")]
+visible = false
+
+[node name="target_stand_A_Decorated2" parent="." instance=ExtResource("35_4pc88")]
+visible = false
+
+[node name="Primitive_Wall_OpenCorner2" parent="." instance=ExtResource("36_c26jl")]
+visible = false
+
+[node name="Primitive_Slope_OuterCorner2" parent="." instance=ExtResource("37_tlniw")]
+visible = false
+
+[node name="Primitive_Slope_InnerCorner2" parent="." instance=ExtResource("38_qfibr")]
+visible = false
+
+[node name="Primitive_Slope_Half_InnerCorner2" parent="." instance=ExtResource("39_uuy1w")]
+visible = false
+
+[node name="Primitive_Slope_Half_OuterCorner2" parent="." instance=ExtResource("40_8fynp")]
+visible = false

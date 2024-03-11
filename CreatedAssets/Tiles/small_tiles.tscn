@@ -1,0 +1,737 @@
+[gd_scene load_steps=84 format=3 uid="uid://efnrgt7vgqx2"]
+
+[ext_resource type="PackedScene" uid="uid://bte51ko6vjj0f" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall.gltf" id="1_asyf2"]
+[ext_resource type="PackedScene" uid="uid://djjhemhskdjl4" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Floor.gltf" id="2_nrxg5"]
+[ext_resource type="PackedScene" uid="uid://co8kn2qk0d1tg" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Can_B.gltf" id="3_s1tak"]
+[ext_resource type="PackedScene" uid="uid://m2c4o5tb2cme" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Box_A.gltf" id="4_2n3wh"]
+[ext_resource type="PackedScene" uid="uid://b3ubpeeppoqkt" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Box_B.gltf" id="5_aa2yy"]
+[ext_resource type="PackedScene" uid="uid://bjk8ojm6kelyh" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Can_A.gltf" id="6_kokmy"]
+[ext_resource type="PackedScene" uid="uid://b4ot0xb06fx0i" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Box_C.gltf" id="7_gmbpm"]
+[ext_resource type="PackedScene" uid="uid://ckv0ymv2i8gqv" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target.gltf" id="8_2rijv"]
+[ext_resource type="PackedScene" uid="uid://bw4uf66d5knpf" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Door_B.gltf" id="9_ddpgx"]
+[ext_resource type="PackedScene" uid="uid://dtugjkwcm1067" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Door_A.gltf" id="10_5raht"]
+[ext_resource type="PackedScene" uid="uid://cd62r8hahdxuf" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Coin_C.gltf" id="11_u3q7l"]
+[ext_resource type="PackedScene" uid="uid://csdmdp7p7ldnp" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Coin_B.gltf" id="12_3ywjr"]
+[ext_resource type="PackedScene" uid="uid://b5wxv1vo0li11" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Coin_A.gltf" id="13_03i4j"]
+[ext_resource type="PackedScene" uid="uid://bga28aur8va4e" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Barrel_C.gltf" id="14_enrec"]
+[ext_resource type="PackedScene" uid="uid://blwx1vbqk2wsn" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Barrel_B.gltf" id="15_unift"]
+[ext_resource type="PackedScene" uid="uid://jv0rqb2t6t5p" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Barrel_A.gltf" id="16_3fxyu"]
+[ext_resource type="PackedScene" uid="uid://b53oy80ccoegp" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pillar_B.gltf" id="17_wjl0o"]
+[ext_resource type="PackedScene" uid="uid://5j1eowwlnkc7" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pillar_A.gltf" id="18_8qxiy"]
+[ext_resource type="PackedScene" uid="uid://bqfahva0u4m4v" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Half.gltf" id="19_1tgtg"]
+[ext_resource type="PackedScene" uid="uid://cqv5n80bgbhkc" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Dummy_Base.gltf" id="20_flfou"]
+[ext_resource type="PackedScene" uid="uid://birwqq2eyit6c" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Floor_Dirt.gltf" id="21_vy1j2"]
+[ext_resource type="PackedScene" uid="uid://ctjxpivt4jvdl" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Target.gltf" id="22_4pfu1"]
+[ext_resource type="PackedScene" uid="uid://c0tfo5nt02b1p" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Doorway.gltf" id="23_v2rvh"]
+[ext_resource type="PackedScene" uid="uid://c831w2dbixvyf" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/table_medium.gltf" id="24_olck3"]
+[ext_resource type="PackedScene" uid="uid://dwudyn3kgw7cd" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_small.gltf" id="25_aygc5"]
+[ext_resource type="PackedScene" uid="uid://cxbl5udg5y8u6" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pallet_Small.gltf" id="26_3bnad"]
+[ext_resource type="PackedScene" uid="uid://ctuw1i2d7ymbk" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_stand_A.gltf" id="27_7r6qv"]
+[ext_resource type="PackedScene" uid="uid://6bpuiiwn0suc" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Cube.gltf" id="28_nvvbr"]
+[ext_resource type="PackedScene" uid="uid://cmnwvsoubc0pw" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Beam.gltf" id="29_v4yx1"]
+[ext_resource type="PackedScene" uid="uid://dustv4n14a4jv" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall.gltf" id="30_vxshf"]
+[ext_resource type="PackedScene" uid="uid://caelwf0vyxdla" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_stand_B.gltf" id="31_dqiay"]
+[ext_resource type="PackedScene" uid="uid://34fk3c00uxua" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Decorated.gltf" id="32_0l60v"]
+[ext_resource type="PackedScene" uid="uid://wwcelbfjc2hg" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Floor.gltf" id="33_fun2u"]
+[ext_resource type="PackedScene" uid="uid://bkrpyll48cvcd" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Floor_Prototype.gltf" id="34_qq3ag"]
+[ext_resource type="PackedScene" uid="uid://bek8rupbbeag5" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope.gltf" id="35_o1hwt"]
+[ext_resource type="PackedScene" uid="uid://clxr3lihbu0wb" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_A.gltf" id="36_u1x26"]
+[ext_resource type="PackedScene" uid="uid://byr51m0c77woq" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_B.gltf" id="37_ukes2"]
+[ext_resource type="PackedScene" uid="uid://cixtutwasxjot" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_C.gltf" id="38_powa8"]
+[ext_resource type="PackedScene" uid="uid://v86lbcg8br8h" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_D.gltf" id="39_2d4x1"]
+[ext_resource type="PackedScene" uid="uid://cjm0ak6r4rk31" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_E.gltf" id="40_31nqd"]
+[ext_resource type="PackedScene" uid="uid://bik1rk12caiiu" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_pieces_F.gltf" id="41_4xoac"]
+[ext_resource type="PackedScene" uid="uid://c1vnmx3ndx5ck" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Stairs.gltf" id="42_abpje"]
+[ext_resource type="PackedScene" uid="uid://cgtydq2246mkk" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Window.gltf" id="43_22mjn"]
+[ext_resource type="PackedScene" uid="uid://dt8yp03un2c7k" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Pillar.gltf" id="44_pjuga"]
+[ext_resource type="PackedScene" uid="uid://dfvsptsg5rm6c" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Window_Open.gltf" id="45_6klwg"]
+[ext_resource type="PackedScene" uid="uid://tso4wa77ux5l" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Door_A_Decorated.gltf" id="46_d5g7s"]
+[ext_resource type="PackedScene" uid="uid://bsqi0nfqbcmil" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/table_medium_long.gltf" id="47_510ti"]
+[ext_resource type="PackedScene" uid="uid://biy8daellwj6o" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_wall_small.gltf" id="48_gqwbw"]
+[ext_resource type="PackedScene" uid="uid://wn51u4i0cx7y" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Doorway.gltf" id="49_raxac"]
+[ext_resource type="PackedScene" uid="uid://b8ued1ujnn4m3" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Wall_Window_Closed.gltf" id="50_lnukh"]
+[ext_resource type="PackedScene" uid="uid://daofgaaigehxo" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_Half.gltf" id="51_b735e"]
+[ext_resource type="PackedScene" uid="uid://dq525jklri3m7" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Floor_Hole.gltf" id="52_ouvy4"]
+[ext_resource type="PackedScene" uid="uid://clmsiw3c5eaug" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half.gltf" id="53_b1r8n"]
+[ext_resource type="PackedScene" uid="uid://cppae71caiwxp" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Cube_Small.gltf" id="54_8uhlp"]
+[ext_resource type="PackedScene" uid="uid://cdleo28brnrxm" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Cube_Prototype_Small.gltf" id="55_sysn1"]
+[ext_resource type="PackedScene" uid="uid://c3pqf55jblmew" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_Short.gltf" id="56_qxlcb"]
+[ext_resource type="PackedScene" uid="uid://dy6oy6gmpx38p" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_Slope.gltf" id="57_8prct"]
+[ext_resource type="PackedScene" uid="uid://cxr2365byjpvg" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Stairs_Half.gltf" id="58_q7ywg"]
+[ext_resource type="PackedScene" uid="uid://ba7vo23ffy378" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/table_medium_Decorated.gltf" id="59_en05g"]
+[ext_resource type="PackedScene" uid="uid://pushq0urst5q" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pallet_Small_Decorated_B.gltf" id="60_aij5u"]
+[ext_resource type="PackedScene" uid="uid://bq5bdcx6oe2fd" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Pallet_Small_Decorated_A.gltf" id="61_rpnh4"]
+[ext_resource type="PackedScene" uid="uid://cfr0d2gacubl7" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/target_stand_A_Decorated.gltf" id="62_vopig"]
+[ext_resource type="PackedScene" uid="uid://dvytc6drt1x6b" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Wall_OpenCorner.gltf" id="63_4u270"]
+[ext_resource type="PackedScene" uid="uid://b77ct0cr405tk" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_OuterCorner.gltf" id="64_qbe6r"]
+[ext_resource type="PackedScene" uid="uid://bu3wl38bbjdrg" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_InnerCorner.gltf" id="65_h8d0u"]
+[ext_resource type="PackedScene" uid="uid://bbcqvib46lpi0" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half_InnerCorner.gltf" id="66_emfvv"]
+[ext_resource type="PackedScene" uid="uid://bifx78g16nk5d" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/gltf/Primitive_Slope_Half_OuterCorner.gltf" id="67_v7p8c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3a8e"]
+size = Vector3(4, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dh8l1"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dg1x6"]
+height = 0.5
+radius = 0.15
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7lgmy"]
+size = Vector3(0.45, 0.4, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ti8y"]
+size = Vector3(0.6, 0.4, 0.4)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_55brx"]
+height = 0.5
+radius = 0.15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vxmo7"]
+radius = 2.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vqeno"]
+height = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lf1vm"]
+size = Vector3(1.6, 2.8, 0.2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gw36m"]
+height = 0.35
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3nesp"]
+height = 1.00014
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfpkk"]
+size = Vector3(0.6, 4.1, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1wm2"]
+size = Vector3(2, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6w4i"]
+size = Vector3(4, 0.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huf2a"]
+size = Vector3(4, 4, 0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ef8kv"]
+
+[node name="SmallTiles" type="Node3D"]
+
+[node name="Wall2" parent="." instance=ExtResource("1_asyf2")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall2/Wall" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2/Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+shape = SubResource("BoxShape3D_o3a8e")
+
+[node name="Floor2" parent="." instance=ExtResource("2_nrxg5")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor2/Floor" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.25, 2.08165e-12)
+shape = SubResource("BoxShape3D_dh8l1")
+
+[node name="Can_B2" parent="." instance=ExtResource("3_s1tak")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Can_B2/Can_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Can_B2/Can_B/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.25, 2.08165e-12)
+shape = SubResource("CylinderShape3D_dg1x6")
+
+[node name="Box_A2" parent="." instance=ExtResource("4_2n3wh")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box_A2/Box_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box_A2/Box_A/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.2, 2.08165e-12)
+shape = SubResource("BoxShape3D_7lgmy")
+
+[node name="Box_B2" parent="." instance=ExtResource("5_aa2yy")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box_B2/Box_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box_B2/Box_B/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.2, 2.08165e-12)
+shape = SubResource("BoxShape3D_0ti8y")
+
+[node name="Can_A2" parent="." instance=ExtResource("6_kokmy")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Can_A2/Can_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Can_A2/Can_A/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.24, 2.08165e-12)
+shape = SubResource("CylinderShape3D_55brx")
+
+[node name="Box_C2" parent="." instance=ExtResource("7_gmbpm")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box_C2/Box_C" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box_C2/Box_C/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.2, 2.08165e-12)
+shape = SubResource("SphereShape3D_vxmo7")
+
+[node name="target2" parent="." instance=ExtResource("8_2rijv")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target2/target" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target2/target/StaticBody3D"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 2.08165e-12, 2.08165e-12, 0.1)
+shape = SubResource("CylinderShape3D_vqeno")
+
+[node name="Door_B2" parent="." instance=ExtResource("9_ddpgx")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_B2/Door_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_B2/Door_B/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.4, 2.08165e-12)
+shape = SubResource("BoxShape3D_lf1vm")
+
+[node name="Door_A2" parent="." instance=ExtResource("10_5raht")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_A2/Door_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_A2/Door_A/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.4, 2.08165e-12)
+shape = SubResource("BoxShape3D_lf1vm")
+
+[node name="Coin_C2" parent="." instance=ExtResource("11_u3q7l")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Coin_C2/Coin_C" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin_C2/Coin_C/StaticBody3D"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gw36m")
+
+[node name="Coin_B2" parent="." instance=ExtResource("12_3ywjr")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Coin_B2/Coin_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin_B2/Coin_B/StaticBody3D"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gw36m")
+
+[node name="Coin_A2" parent="." instance=ExtResource("13_03i4j")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Coin_A2/Coin_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin_A2/Coin_A/StaticBody3D"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gw36m")
+
+[node name="Barrel_C2" parent="." instance=ExtResource("14_enrec")]
+visible = false
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Barrel_C2/Barrel_C" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrel_C2/Barrel_C/RigidBody3D"]
+shape = SubResource("CylinderShape3D_3nesp")
+
+[node name="Barrel_B2" parent="." instance=ExtResource("15_unift")]
+visible = false
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Barrel_B2/Barrel_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrel_B2/Barrel_B/RigidBody3D"]
+shape = SubResource("CylinderShape3D_3nesp")
+
+[node name="Barrel_A2" parent="." instance=ExtResource("16_3fxyu")]
+visible = false
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Barrel_A2/Barrel_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrel_A2/Barrel_A/RigidBody3D"]
+shape = SubResource("CylinderShape3D_3nesp")
+
+[node name="Pillar_B2" parent="." instance=ExtResource("17_wjl0o")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pillar_B2/Pillar_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_B2/Pillar_B/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.05, 2.08165e-12)
+shape = SubResource("BoxShape3D_pfpkk")
+
+[node name="Pillar_A2" parent="." instance=ExtResource("18_8qxiy")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pillar_A2/Pillar_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar_A2/Pillar_A/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.05, 2.08165e-12)
+shape = SubResource("BoxShape3D_pfpkk")
+
+[node name="Wall_Half2" parent="." instance=ExtResource("19_1tgtg")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Half2/Wall_Half" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Half2/Wall_Half/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.005, 2.08165e-12)
+shape = SubResource("BoxShape3D_l1wm2")
+
+[node name="Dummy_Base2" parent="." instance=ExtResource("20_flfou")]
+visible = false
+
+[node name="Floor_Dirt2" parent="." instance=ExtResource("21_vy1j2")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor_Dirt2/Floor_Dirt" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor_Dirt2/Floor_Dirt/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.25, 2.08165e-12)
+shape = SubResource("BoxShape3D_p6w4i")
+
+[node name="Wall_Target2" parent="." instance=ExtResource("22_4pfu1")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Target2/Wall_Target" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Target2/Wall_Target/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2, 2.08165e-12)
+shape = SubResource("BoxShape3D_huf2a")
+
+[node name="Wall_Doorway2" parent="." instance=ExtResource("23_v2rvh")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Doorway2/Wall_Doorway" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Doorway2/Wall_Doorway/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="table_medium2" parent="." instance=ExtResource("24_olck3")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table_medium2/table_medium" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table_medium2/table_medium/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_small2" parent="." instance=ExtResource("25_aygc5")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_small2/target_small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_small2/target_small/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Pallet_Small2" parent="." instance=ExtResource("26_3bnad")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pallet_Small2/Pallet_Small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pallet_Small2/Pallet_Small/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_stand_A2" parent="." instance=ExtResource("27_7r6qv")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_stand_A2/target_stand_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_stand_A2/target_stand_A/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Cube2" parent="." instance=ExtResource("28_nvvbr")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Cube2/Primitive_Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Cube2/Primitive_Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Beam2" parent="." instance=ExtResource("29_v4yx1")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Beam2/Primitive_Beam" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Beam2/Primitive_Beam/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Wall2" parent="." instance=ExtResource("30_vxshf")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Wall2/Primitive_Wall" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Wall2/Primitive_Wall/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_stand_B2" parent="." instance=ExtResource("31_dqiay")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_stand_B2/target_stand_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_stand_B2/target_stand_B/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Wall_Decorated2" parent="." instance=ExtResource("32_0l60v")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Decorated2/Wall_Decorated" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Decorated2/Wall_Decorated/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Floor2" parent="." instance=ExtResource("33_fun2u")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Floor2/Primitive_Floor" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Floor2/Primitive_Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Floor_Prototype2" parent="." instance=ExtResource("34_qq3ag")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor_Prototype2/Floor_Prototype" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor_Prototype2/Floor_Prototype/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Slope2" parent="." instance=ExtResource("35_o1hwt")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope2/Primitive_Slope" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope2/Primitive_Slope/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_pieces_A2" parent="." instance=ExtResource("36_u1x26")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_pieces_A2/target_pieces_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_pieces_A2/target_pieces_A/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_pieces_B2" parent="." instance=ExtResource("37_ukes2")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_pieces_B2/target_pieces_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_pieces_B2/target_pieces_B/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_pieces_C2" parent="." instance=ExtResource("38_powa8")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_pieces_C2/target_pieces_C" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_pieces_C2/target_pieces_C/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_pieces_D2" parent="." instance=ExtResource("39_2d4x1")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_pieces_D2/target_pieces_D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_pieces_D2/target_pieces_D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_pieces_E2" parent="." instance=ExtResource("40_31nqd")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_pieces_E2/target_pieces_E" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_pieces_E2/target_pieces_E/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_pieces_F2" parent="." instance=ExtResource("41_4xoac")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_pieces_F2/target_pieces_F" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_pieces_F2/target_pieces_F/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Stairs2" parent="." instance=ExtResource("42_abpje")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Stairs2/Primitive_Stairs" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Stairs2/Primitive_Stairs/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Window2" parent="." instance=ExtResource("43_22mjn")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Window2/Primitive_Window" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Window2/Primitive_Window/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Pillar2" parent="." instance=ExtResource("44_pjuga")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Pillar2/Primitive_Pillar" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Pillar2/Primitive_Pillar/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Wall_Window_Open2" parent="." instance=ExtResource("45_6klwg")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Window_Open2/Wall_Window_Open" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Window_Open2/Wall_Window_Open/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Door_A_Decorated2" parent="." instance=ExtResource("46_d5g7s")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door_A_Decorated2/Door_A_Decorated" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_A_Decorated2/Door_A_Decorated/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="table_medium_long2" parent="." instance=ExtResource("47_510ti")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table_medium_long2/table_medium_long" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table_medium_long2/table_medium_long/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_wall_small2" parent="." instance=ExtResource("48_gqwbw")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_wall_small2/target_wall_small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_wall_small2/target_wall_small/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Doorway2" parent="." instance=ExtResource("49_raxac")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Doorway2/Primitive_Doorway" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Doorway2/Primitive_Doorway/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Wall_Window_Closed2" parent="." instance=ExtResource("50_lnukh")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_Window_Closed2/Wall_Window_Closed" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_Window_Closed2/Wall_Window_Closed/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Wall_Half2" parent="." instance=ExtResource("51_b735e")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Wall_Half2/Primitive_Wall_Half" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Wall_Half2/Primitive_Wall_Half/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Floor_Hole2" parent="." instance=ExtResource("52_ouvy4")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Floor_Hole2/Primitive_Floor_Hole" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Floor_Hole2/Primitive_Floor_Hole/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Slope_Half2" parent="." instance=ExtResource("53_b1r8n")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_Half2/Primitive_Slope_Half" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_Half2/Primitive_Slope_Half/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Cube_Small2" parent="." instance=ExtResource("54_8uhlp")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Cube_Small2/Primitive_Cube_Small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Cube_Small2/Primitive_Cube_Small/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Cube_Prototype_Small2" parent="." instance=ExtResource("55_sysn1")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_Prototype_Small2/Cube_Prototype_Small" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_Prototype_Small2/Cube_Prototype_Small/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Wall_Short2" parent="." instance=ExtResource("56_qxlcb")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Wall_Short2/Primitive_Wall_Short" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Wall_Short2/Primitive_Wall_Short/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Wall_Slope2" parent="." instance=ExtResource("57_8prct")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Wall_Slope2/Primitive_Wall_Slope" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Wall_Slope2/Primitive_Wall_Slope/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Stairs_Half2" parent="." instance=ExtResource("58_q7ywg")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Stairs_Half2/Primitive_Stairs_Half" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Stairs_Half2/Primitive_Stairs_Half/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="table_medium_Decorated2" parent="." instance=ExtResource("59_en05g")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="table_medium_Decorated2/table_medium_Decorated" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="table_medium_Decorated2/table_medium_Decorated/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Pallet_Small_Decorated_B2" parent="." instance=ExtResource("60_aij5u")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pallet_Small_Decorated_B2/Pallet_Small_Decorated_B" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pallet_Small_Decorated_B2/Pallet_Small_Decorated_B/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Pallet_Small_Decorated_A2" parent="." instance=ExtResource("61_rpnh4")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pallet_Small_Decorated_A2/Pallet_Small_Decorated_A" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pallet_Small_Decorated_A2/Pallet_Small_Decorated_A/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="target_stand_A_Decorated2" parent="." instance=ExtResource("62_vopig")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="target_stand_A_Decorated2/target_stand_A_Decorated" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target_stand_A_Decorated2/target_stand_A_Decorated/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Wall_OpenCorner2" parent="." instance=ExtResource("63_4u270")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Wall_OpenCorner2/Primitive_Wall_OpenCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Wall_OpenCorner2/Primitive_Wall_OpenCorner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Slope_OuterCorner2" parent="." instance=ExtResource("64_qbe6r")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_OuterCorner2/Primitive_Slope_OuterCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_OuterCorner2/Primitive_Slope_OuterCorner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Slope_InnerCorner2" parent="." instance=ExtResource("65_h8d0u")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_InnerCorner2/Primitive_Slope_InnerCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_InnerCorner2/Primitive_Slope_InnerCorner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Slope_Half_InnerCorner2" parent="." instance=ExtResource("66_emfvv")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_Half_InnerCorner2/Primitive_Slope_Half_InnerCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_Half_InnerCorner2/Primitive_Slope_Half_InnerCorner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[node name="Primitive_Slope_Half_OuterCorner2" parent="." instance=ExtResource("67_v7p8c")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Primitive_Slope_Half_OuterCorner2/Primitive_Slope_Half_OuterCorner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Primitive_Slope_Half_OuterCorner2/Primitive_Slope_Half_OuterCorner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ef8kv")
+
+[editable path="Wall2"]
+[editable path="Floor2"]
+[editable path="Can_B2"]
+[editable path="Box_A2"]
+[editable path="Box_B2"]
+[editable path="Can_A2"]
+[editable path="Box_C2"]
+[editable path="target2"]
+[editable path="Door_B2"]
+[editable path="Door_A2"]
+[editable path="Coin_C2"]
+[editable path="Coin_B2"]
+[editable path="Coin_A2"]
+[editable path="Barrel_C2"]
+[editable path="Barrel_B2"]
+[editable path="Barrel_A2"]
+[editable path="Pillar_B2"]
+[editable path="Pillar_A2"]
+[editable path="Wall_Half2"]
+[editable path="Dummy_Base2"]
+[editable path="Floor_Dirt2"]
+[editable path="Wall_Target2"]
+[editable path="Wall_Doorway2"]
+[editable path="table_medium2"]
+[editable path="target_small2"]
+[editable path="Pallet_Small2"]
+[editable path="target_stand_A2"]
+[editable path="Primitive_Cube2"]
+[editable path="Primitive_Beam2"]
+[editable path="Primitive_Wall2"]
+[editable path="target_stand_B2"]
+[editable path="Wall_Decorated2"]
+[editable path="Primitive_Floor2"]
+[editable path="Floor_Prototype2"]
+[editable path="Primitive_Slope2"]
+[editable path="target_pieces_A2"]
+[editable path="target_pieces_B2"]
+[editable path="target_pieces_C2"]
+[editable path="target_pieces_D2"]
+[editable path="target_pieces_E2"]
+[editable path="target_pieces_F2"]
+[editable path="Primitive_Stairs2"]
+[editable path="Primitive_Window2"]
+[editable path="Primitive_Pillar2"]
+[editable path="Wall_Window_Open2"]
+[editable path="Door_A_Decorated2"]
+[editable path="table_medium_long2"]
+[editable path="target_wall_small2"]
+[editable path="Primitive_Doorway2"]
+[editable path="Wall_Window_Closed2"]
+[editable path="Primitive_Wall_Half2"]
+[editable path="Primitive_Floor_Hole2"]
+[editable path="Primitive_Slope_Half2"]
+[editable path="Primitive_Cube_Small2"]
+[editable path="Cube_Prototype_Small2"]
+[editable path="Primitive_Wall_Short2"]
+[editable path="Primitive_Wall_Slope2"]
+[editable path="Primitive_Stairs_Half2"]
+[editable path="table_medium_Decorated2"]
+[editable path="Pallet_Small_Decorated_B2"]
+[editable path="Pallet_Small_Decorated_A2"]
+[editable path="target_stand_A_Decorated2"]
+[editable path="Primitive_Wall_OpenCorner2"]
+[editable path="Primitive_Slope_OuterCorner2"]
+[editable path="Primitive_Slope_InnerCorner2"]
+[editable path="Primitive_Slope_Half_InnerCorner2"]
+[editable path="Primitive_Slope_Half_OuterCorner2"]

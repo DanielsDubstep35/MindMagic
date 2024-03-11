@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpk8due4k67mm"]
+
+[ext_resource type="FontFile" uid="uid://b6crwdtxra2b7" path="res://Fonts/dpcomic.ttf" id="1_hj1i6"]
+
+[node name="LevelText" type="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0488, -6.48427)
+modulate = Color(1, 0.505882, 0.964706, 1)
+text = "Tutorial"
+font = ExtResource("1_hj1i6")
+font_size = 500
+
+[node name="Description" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0488, -6.48427)
+modulate = Color(1, 0.505882, 0, 1)
+text = "Shoot the target to advance!"
+font = ExtResource("1_hj1i6")
+font_size = 150
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

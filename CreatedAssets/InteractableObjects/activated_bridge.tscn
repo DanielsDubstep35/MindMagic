@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8bcj0x60pc3s"]
+
+[ext_resource type="PackedScene" uid="uid://b63v0hxjrr6yk" path="res://CreatedAssets/LevelBuilderAssets/bridge_section.tscn" id="1_4idp3"]
+
+[node name="ActivatedBridge" type="Node3D"]
+
+[node name="Bridge" type="Node3D" parent="."]
+
+[node name="BridgeSection1" parent="Bridge" instance=ExtResource("1_4idp3")]
+
+[node name="BridgeSection2" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="BridgeSection3" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="BridgeSection4" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="BridgeSection5" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="BridgeSection6" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="BridgeSection7" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="BridgeSection8" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28)
+
+[node name="BridgeSection9" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
+
+[node name="BridgeSection10" parent="Bridge" instance=ExtResource("1_4idp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)

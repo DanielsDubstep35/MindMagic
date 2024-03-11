@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c01sunn5q3h3y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_c5clr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjtde"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_415ig"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_31xr4"]
+
+[node name="lightningbolt" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_c5clr")
+surface_material_override/0 = SubResource("StandardMaterial3D_qjtde")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_415ig")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_31xr4")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 50
+explosiveness = 1.0

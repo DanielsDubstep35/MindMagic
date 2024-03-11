@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3b1c3owebivh"]
+
+[ext_resource type="Material" uid="uid://c4inh4petks6w" path="res://Particles/blood_particle_process.tres" id="1_5wljx"]
+[ext_resource type="Material" uid="uid://1am0ua57ck7m" path="res://Particles/blood_particle_material.tres" id="1_72255"]
+[ext_resource type="SphereMesh" uid="uid://bbg818kehod05" path="res://Particles/blood_particle_pass1.tres" id="2_5kgbv"]
+[ext_resource type="Script" path="res://Particles/blood_particle.gd" id="4_d8sre"]
+
+[node name="BloodParticle" type="GPUParticles3D"]
+material_override = ExtResource("1_72255")
+amount = 50
+lifetime = 2.5
+explosiveness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-2.36411, -4.84464, -2.45964, 4.79307, 5.4752, 4.90268)
+process_material = ExtResource("1_5wljx")
+draw_pass_1 = ExtResource("2_5kgbv")
+script = ExtResource("4_d8sre")

@@ -1,0 +1,377 @@
+[gd_scene load_steps=11 format=3 uid="uid://b63v0hxjrr6yk"]
+
+[ext_resource type="Script" path="res://CreatedAssets/LevelBuilderAssets/bridge_section.gd" id="1_i75yt"]
+[ext_resource type="ArrayMesh" uid="uid://bfkr06tnl76kc" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/obj/Cube_Prototype_Large_B.obj" id="1_uvm3q"]
+[ext_resource type="ArrayMesh" uid="uid://balpx8gh07shr" path="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/obj/Primitive_Slope_Half.obj" id="2_e5rft"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lqa2b"]
+data = PackedVector3Array(1.9, 0, -1.9, -1.9, 0, -1.9, 1.9, 0, 1.9, 1.9, 0, 1.9, -1.9, 0, -1.9, -1.9, 0, 1.9, 1.9, 4, 1.9, -1.9, 4, 1.9, 1.9, 4, -1.9, 1.9, 4, -1.9, -1.9, 4, 1.9, -1.9, 4, -1.9, -1.9, 0.1, 2, -1.9, 3.9, 2, 1.9, 0.1, 2, 1.9, 0.1, 2, -1.9, 3.9, 2, 1.9, 3.9, 2, 1.9, 3.9, -2, -1.9, 3.9, -2, 1.9, 0.1, -2, 1.9, 0.1, -2, -1.9, 3.9, -2, -1.9, 0.1, -2, 2, 3.9, 1.9, 2, 3.9, -1.9, 2, 0.1, 1.9, 2, 0.1, 1.9, 2, 3.9, -1.9, 2, 0.1, -1.9, -1.9, 0, 1.9, -2, 0.1, 1.9, -1.9, 0.1, 2, -1.9, 4, 1.9, -1.9, 3.9, 2, -2, 3.9, 1.9, -1.9, 0.1, -2, -2, 0.1, -1.9, -1.9, 0, -1.9, -2, 3.9, -1.9, -1.9, 3.9, -2, -1.9, 4, -1.9, 1.9, 0.1, 2, 2, 0.1, 1.9, 1.9, 0, 1.9, 1.9, 4, 1.9, 2, 3.9, 1.9, 1.9, 3.9, 2, 1.9, 0, -1.9, 2, 0.1, -1.9, 1.9, 0.1, -2, 1.9, 3.9, -2, 2, 3.9, -1.9, 1.9, 4, -1.9, -1.9, 3.9, 2, -1.9, 0.1, 2, -2, 3.9, 1.9, -2, 3.9, 1.9, -1.9, 0.1, 2, -2, 0.1, 1.9, -1.9, 0.1, -2, -1.9, 3.9, -2, -2, 0.1, -1.9, -2, 0.1, -1.9, -1.9, 3.9, -2, -2, 3.9, -1.9, 2, 0.1, -1.9, 2, 3.9, -1.9, 1.9, 0.1, -2, 1.9, 0.1, -2, 2, 3.9, -1.9, 1.9, 3.9, -2, 1.9, 0.1, 2, 1.9, 3.9, 2, 2, 0.1, 1.9, 2, 0.1, 1.9, 1.9, 3.9, 2, 2, 3.9, 1.9, -1.9, 0, -1.9, 1.9, 0, -1.9, -1.9, 0.1, -2, -1.9, 0.1, -2, 1.9, 0, -1.9, 1.9, 0.1, -2, 1.9, 0, 1.9, -1.9, 0, 1.9, 1.9, 0.1, 2, 1.9, 0.1, 2, -1.9, 0, 1.9, -1.9, 0.1, 2, -1.9, 0, 1.9, -1.9, 0, -1.9, -2, 0.1, 1.9, -2, 0.1, 1.9, -1.9, 0, -1.9, -2, 0.1, -1.9, -1.9, 4, -1.9, -1.9, 4, 1.9, -2, 3.9, -1.9, -2, 3.9, -1.9, -1.9, 4, 1.9, -2, 3.9, 1.9, -1.9, 4, 1.9, 1.9, 4, 1.9, -1.9, 3.9, 2, -1.9, 3.9, 2, 1.9, 4, 1.9, 1.9, 3.9, 2, 1.9, 0, -1.9, 1.9, 0, 1.9, 2, 0.1, -1.9, 2, 0.1, -1.9, 1.9, 0, 1.9, 2, 0.1, 1.9, 1.9, 4, -1.9, -1.9, 4, -1.9, 1.9, 3.9, -2, 1.9, 3.9, -2, -1.9, 4, -1.9, -1.9, 3.9, -2, 1.9, 4, 1.9, 1.9, 4, -1.9, 2, 3.9, 1.9, 2, 3.9, 1.9, 1.9, 4, -1.9, 2, 3.9, -1.9, -2, 3.9, -1.9, -2, 3.9, 1.9, -2, 0.1, -1.9, -2, 0.1, -1.9, -2, 3.9, 1.9, -2, 0.1, 1.9)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_45ujm"]
+data = PackedVector3Array(1.9, 0, -1.9, -1.9, 0, -1.9, 1.9, 0, 1.9, 1.9, 0, 1.9, -1.9, 0, -1.9, -1.9, 0, 1.9, 1.9, 4, 1.9, -1.9, 4, 1.9, 1.9, 4, -1.9, 1.9, 4, -1.9, -1.9, 4, 1.9, -1.9, 4, -1.9, -1.9, 0.1, 2, -1.9, 3.9, 2, 1.9, 0.1, 2, 1.9, 0.1, 2, -1.9, 3.9, 2, 1.9, 3.9, 2, 1.9, 3.9, -2, -1.9, 3.9, -2, 1.9, 0.1, -2, 1.9, 0.1, -2, -1.9, 3.9, -2, -1.9, 0.1, -2, 2, 3.9, 1.9, 2, 3.9, -1.9, 2, 0.1, 1.9, 2, 0.1, 1.9, 2, 3.9, -1.9, 2, 0.1, -1.9, -1.9, 0, 1.9, -2, 0.1, 1.9, -1.9, 0.1, 2, -1.9, 4, 1.9, -1.9, 3.9, 2, -2, 3.9, 1.9, -1.9, 0.1, -2, -2, 0.1, -1.9, -1.9, 0, -1.9, -2, 3.9, -1.9, -1.9, 3.9, -2, -1.9, 4, -1.9, 1.9, 0.1, 2, 2, 0.1, 1.9, 1.9, 0, 1.9, 1.9, 4, 1.9, 2, 3.9, 1.9, 1.9, 3.9, 2, 1.9, 0, -1.9, 2, 0.1, -1.9, 1.9, 0.1, -2, 1.9, 3.9, -2, 2, 3.9, -1.9, 1.9, 4, -1.9, -1.9, 3.9, 2, -1.9, 0.1, 2, -2, 3.9, 1.9, -2, 3.9, 1.9, -1.9, 0.1, 2, -2, 0.1, 1.9, -1.9, 0.1, -2, -1.9, 3.9, -2, -2, 0.1, -1.9, -2, 0.1, -1.9, -1.9, 3.9, -2, -2, 3.9, -1.9, 2, 0.1, -1.9, 2, 3.9, -1.9, 1.9, 0.1, -2, 1.9, 0.1, -2, 2, 3.9, -1.9, 1.9, 3.9, -2, 1.9, 0.1, 2, 1.9, 3.9, 2, 2, 0.1, 1.9, 2, 0.1, 1.9, 1.9, 3.9, 2, 2, 3.9, 1.9, -1.9, 0, -1.9, 1.9, 0, -1.9, -1.9, 0.1, -2, -1.9, 0.1, -2, 1.9, 0, -1.9, 1.9, 0.1, -2, 1.9, 0, 1.9, -1.9, 0, 1.9, 1.9, 0.1, 2, 1.9, 0.1, 2, -1.9, 0, 1.9, -1.9, 0.1, 2, -1.9, 0, 1.9, -1.9, 0, -1.9, -2, 0.1, 1.9, -2, 0.1, 1.9, -1.9, 0, -1.9, -2, 0.1, -1.9, -1.9, 4, -1.9, -1.9, 4, 1.9, -2, 3.9, -1.9, -2, 3.9, -1.9, -1.9, 4, 1.9, -2, 3.9, 1.9, -1.9, 4, 1.9, 1.9, 4, 1.9, -1.9, 3.9, 2, -1.9, 3.9, 2, 1.9, 4, 1.9, 1.9, 3.9, 2, 1.9, 0, -1.9, 1.9, 0, 1.9, 2, 0.1, -1.9, 2, 0.1, -1.9, 1.9, 0, 1.9, 2, 0.1, 1.9, 1.9, 4, -1.9, -1.9, 4, -1.9, 1.9, 3.9, -2, 1.9, 3.9, -2, -1.9, 4, -1.9, -1.9, 3.9, -2, 1.9, 4, 1.9, 1.9, 4, -1.9, 2, 3.9, 1.9, 2, 3.9, 1.9, 1.9, 4, -1.9, 2, 3.9, -1.9, -2, 3.9, -1.9, -2, 3.9, 1.9, -2, 0.1, -1.9, -2, 0.1, -1.9, -2, 3.9, 1.9, -2, 0.1, 1.9)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7jjul"]
+data = PackedVector3Array(1.9999, 0, -2, 1.9999, 2, -2, -2, 0, -2, 1.9999, 2, -2, 1.9999, 2, 2, 0, 4, -2, 0, 4, -2, 1.9999, 2, 2, 0, 4, 2, 1.9999, 0, 2, 1.9999, 2, 2, 1.9999, 0, -2, 1.9999, 0, -2, 1.9999, 2, 2, 1.9999, 2, -2, -2, 4, 2, 0, 4, 2, -2, 0, 2, -2, 0, -2, -2, 0, 2, 1.9999, 0, -2, 1.9999, 0, -2, -2, 0, 2, 1.9999, 0, 2, 0, 4, -2, 0, 4, 2, -2, 4, -2, -2, 4, -2, 0, 4, 2, -2, 4, 2, 1.9999, 2, -2, 0, 4, -2, -2, 0, -2, 1.9999, 2, 2, 1.9999, 0, 2, -2, 0, 2, 0, 4, 2, 1.9999, 2, 2, -2, 0, 2, 0, 4, -2, -2, 4, -2, -2, 0, -2, -2, 4, -2, -2, 4, 2, -2, 0, -2, -2, 0, -2, -2, 4, 2, -2, 0, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_im1vf"]
+data = PackedVector3Array(1.9999, 0, -2, 1.9999, 2, -2, -2, 0, -2, 1.9999, 2, -2, 1.9999, 2, 2, 0, 4, -2, 0, 4, -2, 1.9999, 2, 2, 0, 4, 2, 1.9999, 0, 2, 1.9999, 2, 2, 1.9999, 0, -2, 1.9999, 0, -2, 1.9999, 2, 2, 1.9999, 2, -2, -2, 4, 2, 0, 4, 2, -2, 0, 2, -2, 0, -2, -2, 0, 2, 1.9999, 0, -2, 1.9999, 0, -2, -2, 0, 2, 1.9999, 0, 2, 0, 4, -2, 0, 4, 2, -2, 4, -2, -2, 4, -2, 0, 4, 2, -2, 4, 2, 1.9999, 2, -2, 0, 4, -2, -2, 0, -2, 1.9999, 2, 2, 1.9999, 0, 2, -2, 0, 2, 0, 4, 2, 1.9999, 2, 2, -2, 0, 2, 0, 4, -2, -2, 4, -2, -2, 0, -2, -2, 4, -2, -2, 4, 2, -2, 0, -2, -2, 0, -2, -2, 4, 2, -2, 0, 2)
+
+[sub_resource type="Animation" id="Animation_nk0fb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EdgeL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6, 2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlockL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2, 2.08165e-12, 2.08165e-12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlockR:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 2.08165e-12, 2.08165e-12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EdgeR:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6, 2.08165e-12, 2.08165e-12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlockR:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EdgeL:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EdgeR:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EdgeR:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EdgeL:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BlockR:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BlockL:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BlockL:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_00mom"]
+resource_name = "raised_bridge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EdgeL:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-6, -4, 2.08165e-12), Vector3(-6, 2, 2.08165e-12), Vector3(-6, 2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlockL:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2, -4, 2.08165e-12), Vector3(-2, 0.5, 2.08165e-12), Vector3(-2, 2.08165e-12, 2.08165e-12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BlockR:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(2, -4, 2.08165e-12), Vector3(2, 0.5, 2.08165e-12), Vector3(2, 2.08165e-12, 2.08165e-12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EdgeR:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(6, -4, 2.08165e-12), Vector3(6, 2, 2.08165e-12), Vector3(6, 2.08165e-12, 2.08165e-12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BlockL:scale")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BlockR:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EdgeL:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), Vector3(1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EdgeR:scale")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), Vector3(1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EdgeR:rotation")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 3.48787e-16, 3.48787e-16)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("EdgeL:rotation")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(-6.28319, 3.14159, 3.48787e-16)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BlockR:rotation")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 3.48787e-16, 3.48787e-16)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BlockL:rotation")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 3.48787e-16, 3.48787e-16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8ri4"]
+_data = {
+"RESET": SubResource("Animation_nk0fb"),
+"raised_bridge": SubResource("Animation_00mom")
+}
+
+[node name="BridgeSection" type="Node3D" groups=["BridgeSection"]]
+script = ExtResource("1_i75yt")
+
+[node name="BlockL" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.08165e-12, 0, 0, 0, 2.08165e-12, 0, 0, 0, 2.08165e-12, -2, 2.08165e-12, 2.08165e-12)
+mesh = ExtResource("1_uvm3q")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BlockL"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockL/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lqa2b")
+disabled = true
+
+[node name="BlockR" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.08165e-12, 0, 0, 0, 2.08165e-12, 0, 0, 0, 2.08165e-12, 2, 2.08165e-12, 2.08165e-12)
+mesh = ExtResource("1_uvm3q")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BlockR"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockR/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_45ujm")
+disabled = true
+
+[node name="EdgeL" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.08165e-12, 0, 5.27736e-18, 0, 2.08165e-12, 0, -5.27736e-18, 0, -2.08165e-12, -6, 2.08165e-12, 2.08165e-12)
+mesh = ExtResource("2_e5rft")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EdgeL"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EdgeL/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7jjul")
+disabled = true
+
+[node name="EdgeR" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.08165e-12, 0, 0, 0, 2.08165e-12, 0, 0, 0, 2.08165e-12, 6, 2.08165e-12, 2.08165e-12)
+mesh = ExtResource("2_e5rft")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EdgeR"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EdgeR/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_im1vf")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t8ri4")
+}

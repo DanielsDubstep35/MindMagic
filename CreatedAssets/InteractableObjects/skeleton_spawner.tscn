@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxkmlwke2s1ic"]
+
+[ext_resource type="Script" path="res://CreatedAssets/InteractableObjects/skeleton_spawner.gd" id="1_b1jup"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o44nn"]
+radius = 16.0
+
+[node name="Skeleton_Spawner" type="Node3D" groups=["Skeleton_Spawner"]]
+script = ExtResource("1_b1jup")
+
+[node name="playerChecker" type="Area3D" parent="."]
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playerChecker"]
+shape = SubResource("SphereShape3D_o44nn")
+
+[connection signal="body_entered" from="playerChecker" to="." method="_on_player_checker_body_entered"]

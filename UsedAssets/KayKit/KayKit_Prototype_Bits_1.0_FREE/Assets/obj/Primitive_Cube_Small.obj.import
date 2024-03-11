@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b21ucl7ws6g3n"
+path="res://.godot/imported/Primitive_Cube_Small.obj-3e9002496f60ef5bfd4ef498c84094e3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Primitive_Cube_Small.obj-3e9002496f60ef5bfd4ef498c84094e3.mesh"]
+
+source_file="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/obj/Primitive_Cube_Small.obj"
+dest_files=["res://.godot/imported/Primitive_Cube_Small.obj-3e9002496f60ef5bfd4ef498c84094e3.mesh", "res://.godot/imported/Primitive_Cube_Small.obj-3e9002496f60ef5bfd4ef498c84094e3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

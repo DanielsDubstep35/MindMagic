@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhefrjyyxqh3q"
+path="res://.godot/imported/Pallet_Small_Decorated_A.obj-8a7e25fbf3de7754ab5974c19dce018e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pallet_Small_Decorated_A.obj-8a7e25fbf3de7754ab5974c19dce018e.mesh"]
+
+source_file="res://UsedAssets/KayKit/KayKit_Prototype_Bits_1.0_FREE/Assets/obj/Pallet_Small_Decorated_A.obj"
+dest_files=["res://.godot/imported/Pallet_Small_Decorated_A.obj-8a7e25fbf3de7754ab5974c19dce018e.mesh", "res://.godot/imported/Pallet_Small_Decorated_A.obj-8a7e25fbf3de7754ab5974c19dce018e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
