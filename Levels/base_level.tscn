@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://2niognfvbeh4"]
+[gd_scene load_steps=20 format=3 uid="uid://2niognfvbeh4"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_3tfc0"]
 [ext_resource type="MeshLibrary" uid="uid://veaqdnoeraf0" path="res://UsedAssets/KayKit/dungeon_tiles.tres" id="1_8xky5"]
 [ext_resource type="Script" path="res://Levels/base_level.gd" id="1_i5ryq"]
 [ext_resource type="PackedScene" uid="uid://dg2gohdntx5rv" path="res://players/vr_player.tscn" id="4_s8b6x"]
-[ext_resource type="Material" uid="uid://bjmgde3ai8u6e" path="res://UsedAssets/MaterialMakerTextures/WoodTexture.tres" id="5_b02jy"]
+[ext_resource type="Material" uid="uid://bjmgde3ai8u6e" path="res://UsedAssets/MaterialMakerTextures/WoodShader/WoodTexture.tres" id="5_b02jy"]
 [ext_resource type="PackedScene" uid="uid://bxkmlwke2s1ic" path="res://CreatedAssets/InteractableObjects/skeleton_spawner.tscn" id="6_pyr7o"]
 [ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://CreatedAssets/InteractableObjects/goal.tscn" id="7_gy2g8"]
 [ext_resource type="FontFile" uid="uid://b6crwdtxra2b7" path="res://Fonts/dpcomic.ttf" id="8_x2hla"]
@@ -36,17 +36,54 @@ size = Vector3(14, 6.75, 6)
 radius = 0.75
 height = 1.5
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x8f0r"]
+load_path = "res://.godot/imported/Sky3.jpg-8fdc8c09d12c6b20f4ee12ed893cc87f.s3tc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4yra1"]
+panorama = SubResource("CompressedTexture2D_x8f0r")
+
+[sub_resource type="Sky" id="Sky_vuchp"]
+sky_material = SubResource("PanoramaSkyMaterial_4yra1")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_oaqni"]
+background_mode = 2
+background_color = Color(0.866667, 0.513726, 0.219608, 1)
+sky = SubResource("Sky_vuchp")
+sky_custom_fov = 90.0
+ambient_light_source = 2
+ambient_light_color = Color(0.368627, 0.368627, 0.368627, 1)
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 1
+ssao_intensity = 17.8
+ssil_intensity = 0.0
+glow_normalized = true
+glow_intensity = 0.0
+glow_strength = 2.0
+glow_bloom = 0.01
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 5.0
+fog_density = 0.0
+fog_height = -6.0
+fog_height_density = -0.5
+volumetric_fog_emission = Color(0.937255, 0, 0.854902, 1)
+adjustment_brightness = 1.1
+adjustment_contrast = 1.4
+adjustment_saturation = 1.5
+
 [node name="BaseLevel" type="Node3D"]
 script = ExtResource("1_3tfc0")
 
-[node name="LevelController" type="Node3D" parent="."]
+[node name="LevelController" type="Node3D" parent="." groups=["Objective"]]
 script = ExtResource("1_i5ryq")
 
 [node name="StartXR" parent="." instance=ExtResource("10_41pqy")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5, 0.612372, 0.612372, 3.17475e-16, -0.707107, 0.707107, 0.866025, -0.353553, -0.353553, 0, 0, 0)
-light_color = Color(0, 0, 0.32549, 1)
+light_color = Color(0.811765, 0.85098, 0.913725, 1)
 
 [node name="Skeleton_Spawner" parent="." instance=ExtResource("6_pyr7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -19.2)
@@ -203,7 +240,7 @@ metadata/_editor_floor_ = Vector3(0, 3, 0)
 [node name="Goal" parent="." groups=["Goal"] instance=ExtResource("7_gy2g8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.5, -19)
 activationGoal = 30
-target_scene = "res://Levels/base_level.tscn"
+target_scene = "res://Levels/SecondLevel.tscn"
 
 [node name="MeshInstance3D" parent="Goal" index="0"]
 mesh = SubResource("SphereMesh_44y5e")
@@ -225,7 +262,8 @@ wait_time = 5.0
 [node name="WaveText" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 billboard = 1
-text = "Wave"
+text = "
+"
 font = ExtResource("8_x2hla")
 font_size = 500
 outline_size = 80
@@ -244,4 +282,8 @@ autoplay = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("4_s8b6x")]
 
+[node name="XRCamera3D" parent="XROrigin3D" index="0"]
+environment = SubResource("Environment_oaqni")
+
 [editable path="Goal"]
+[editable path="XROrigin3D"]

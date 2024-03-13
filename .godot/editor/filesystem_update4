@@ -4,12 +4,12 @@ res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres
 res://UsedAssets/KayKit/complete_tiles.tres
 res://CreatedAssets/InteractableObjects/goalMaterial.tres
 res://UsedAssets/KayKit/dungeon_tiles.tres
-res://UsedAssets/MaterialMakerTextures/WoodTexture.tres
 res://Particles/blood_particle_process.tres
 res://Particles/blood_particle_material.tres
 res://addons/godot-xr-tools/staging/loading_screen/loading_screen_shader.tres
 res://addons/godot-xr-tools/misc/hold_button_visualshader.tres
 res://Miscellaneous/vr_player_environment.tres
+res://UsedAssets/MaterialMakerTextures/LavaShader/Lava.tres
 res://players/vr_player.tscn
 res://Levels/base_level.tscn
 res://addons/godot-xr-tools/staging/staging.tscn
@@ -25,4 +25,12 @@ res://CreatedAssets/InteractableObjects/activated_bridge.tscn
 res://Levels/level_1.tscn
 res://Levels/level_2.tscn
 res://Levels/SecondLevel.tscn
+res://CreatedAssets/InteractableObjects/target.tscn
+res://addons/godot-xr-tools/functions/movement_grapple.tscn
+res://Scenes/Enemies/skeleton2.tscn
 res://Scenes/Enemies/skeleton.tscn
+res://CreatedAssets/InteractableObjects/skeleton_spawner.tscn
+res://addons/godot-xr-tools/staging/staging_env.tres
+res://CreatedAssets/Wand/lightningbolt.gd
+res://players/Wand.gd
+res://BlenderStuff/Skeleton.gd

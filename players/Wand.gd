@@ -8,8 +8,12 @@ extends Node3D
 
 var spell_boolean = true
 
+# how long until the user can fire another fireball
 @onready
 var firerate_timer: Timer = $spell_time
+
+@onready
+var lightning_timer: Timer = $lightning_time
 
 @onready var eeg_node = preload("res://Miscellaneous/EegNode.tscn")
 
@@ -86,6 +90,10 @@ func _process(delta):
 		print(firerate_timer.time_left)
 		if _controller.get_float("trigger") > 0.8 && firerate_timer.is_stopped():
 			shoot_fireball()
+		print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
+		if _controller.get_input("by_button") && lightning_timer.is_stopped():
+			print("LIGHTNINGBLAST!")
+			shoot_lightningblast()
 	
 	# if Blink, shoot something
 	#if eeg_eye_artifact == "Blink" && spell_boolean:
@@ -134,3 +142,14 @@ func shoot_fireball():
 	#spell_ui.mesh.surface_get_material()
 	
 	#print("firebolt shot")
+
+func shoot_lightningblast():
+	var lightningblast_load = preload("res://CreatedAssets/Wand/lightningbolt.tscn")
+	var spell = null
+	var spell_ui: MeshInstance3D = null
+	spell = lightningblast_load.instantiate()
+	spell_ui = lightningSpell.get_node("MeshInstance3D")
+	get_tree().root.add_child(spell)
+	spell.global_transform = wand_muzzle.global_transform
+	spell.Lightning_shot()
+	lightning_timer.start(3)

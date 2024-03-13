@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bdcm34p4uy0bo"]
+[gd_scene load_steps=29 format=3 uid="uid://qs4gilwwbjor"]
 
 [ext_resource type="Script" path="res://BlenderStuff/Skeleton.gd" id="1_6yfdu"]
 [ext_resource type="AudioStream" uid="uid://ccj3wy2tg033o" path="res://Audio/Footsteps.mp3" id="2_xnf7b"]

@@ -47,5 +47,8 @@ func BridgeRaised():
 	EdgeR_Collision.disabled = false
 	anim_player.play("raised_bridge", -1, 1)
 
+# Replace this function with multiple signals / targets to trigger the bridge
+# also change the activation goal and count to get the bridge to rise per challenge
+# completed
 func _on_target_2_increment_goal_progress():
 	AddProgress()

@@ -54,6 +54,7 @@ func _physics_process(delta):
 		set_velocity(Vector3(0, gravity, 0))
 		if !run_sound.playing:
 			run_sound.playing = true
+		
 	elif !_target_in_attack_range() && _target_in_seek_range():
 		state_machine.travel("Run")
 		state_machine.start("Run")
@@ -87,10 +88,14 @@ func _target_in_seek_range():
 
 func _on_skeleton_area_body_entered(body):
 	#print(body.name)
-	if (body.is_in_group("Fireball")):
+	if (body.is_in_group("Fireball") || body.is_in_group("LightningBlast")):
 		var new_blood : GPUParticles3D = blood.instantiate()
 		get_tree().root.add_child(new_blood)
 		new_blood.transform = transform
 		# new_blood.position.y = new_blood.position.y + -0.2
 		get_tree().call_group("Goal", "_on_target_2_increment_goal_progress")
+		get_tree().call_group("Objective", "skeletonKilled")
 		queue_free()
+
+func attackPlayer():
+	get_tree().call_group("Player", "playerDie")

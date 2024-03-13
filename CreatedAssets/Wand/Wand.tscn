@@ -55,3 +55,11 @@ transform = Transform3D(-1.74846e-10, 1.39515e-18, 0.004, 1.39515e-18, 0.004, -1
 [node name="spell_time" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
+
+[node name="lightning_time" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="water_time" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true

@@ -7,7 +7,7 @@
 
 [node name="BloodParticle" type="GPUParticles3D"]
 material_override = ExtResource("1_72255")
-amount = 50
+amount = 10
 lifetime = 2.5
 explosiveness = 1.0
 fixed_fps = 60

@@ -30,9 +30,15 @@ var wait_before_next_sentence_time = 2
 
 signal wave1_complete
 
+var wave1_completed = false
+
 signal wave2_complete
 
+var wave2_completed = false
+
 signal wave3_complete
+
+var wave3_completed = false
 
 # Declare your spawners here:
 
@@ -45,13 +51,14 @@ func _ready():
 	level_progression()
 
 func _process(delta):
-	if (skeletons_killed == 5):
+	if (skeletons_killed == 5) && !wave1_completed:
+		wave1_completed = true
 		_on_wave1_complete()
 
-	if (skeletons_killed == 20):
+	if (skeletons_killed == 15) && !wave2_completed:
 		_on_wave2_complete()
 
-	if (skeletons_killed == 30):
+	if (skeletons_killed == 30) && !wave3_completed:
 		_on_wave3_complete()
 	pass
 
@@ -103,6 +110,7 @@ func level_progression():
 
 	await wave1_complete
 
+	wave_number.text = ""
 	wave_text.text = ""
 	for i in "Wave":
 		wave_text.text = wave_text.text + i
@@ -116,6 +124,7 @@ func level_progression():
 
 	await wave2_complete
 
+	wave_number.text = ""
 	wave_text.text = ""
 	for i in "Wave":
 		wave_text.text = wave_text.text + i
@@ -129,6 +138,7 @@ func level_progression():
 
 	await wave3_complete
 
+	wave_number.text = ""
 	wave_text.text = ""
 	for i in "The portal beckons...":
 		wave_text.text = wave_text.text + i
@@ -145,3 +155,6 @@ func _on_wave2_complete():
 
 func _on_wave3_complete():
 	wave3_complete.emit()
+	
+func skeletonKilled():
+	skeletons_killed += 1

@@ -46,11 +46,10 @@ var anim_player : AnimationPlayer = $AnimationPlayer
 var BridgeSectionRiseTime : float = ($\".\".name.replace(\"BridgeSection\", \"\").to_float()) / 5.0
 
 func AddProgress():
+	activationCount += 1
 	if activationCount == activationGoal:
 		await get_tree().create_timer(BridgeSectionRiseTime).timeout
 		BridgeRaised()
-	else:
-		activationCount += 1
 
 func BridgeRaised():
 	BlockL_Collision.disabled = false
@@ -62,6 +61,10 @@ func BridgeRaised():
 
 func _on_target_2_increment_goal_progress():
 	AddProgress()
+
+
+func _on_target_3_increment_goal_progress():
+	pass # Replace with function body.
 "
 
 [sub_resource type="GDScript" id="GDScript_2ghxb"]
@@ -101,11 +104,10 @@ var anim_player : AnimationPlayer = $AnimationPlayer
 var BridgeSectionRiseTime : float = ($\".\".name.replace(\"BridgeSection\", \"\").to_float()) / 5.0
 
 func AddProgress():
-	if activationCount == activationGoal:
+	activationCount += 1
+	if activationCount >= activationGoal:
 		await get_tree().create_timer(BridgeSectionRiseTime).timeout
 		BridgeRaised()
-	else:
-		activationCount += 1
 
 func BridgeRaised():
 	BlockL_Collision.disabled = false
@@ -166,7 +168,7 @@ script = SubResource("GDScript_p5nee")
 script = SubResource("GDScript_p5nee")
 
 [node name="ActivatedBridge2" parent="." instance=ExtResource("16_wmpw3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -76)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -78)
 
 [node name="BridgeSection1" parent="ActivatedBridge2/Bridge" index="0"]
 script = SubResource("GDScript_2ghxb")
@@ -238,9 +240,30 @@ shadow_enabled = true
 [connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection9" method="_on_target_2_increment_goal_progress"]
 [connection signal="incrementGoalProgress" from="target2" to="ActivatedBridge/Bridge/BridgeSection10" method="_on_target_2_increment_goal_progress"]
 [connection signal="incrementGoalProgress" from="target2" to="Goal" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection1" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection2" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection3" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection4" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection5" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection6" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection7" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection8" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection9" method="_on_target_3_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target3" to="ActivatedBridge2/Bridge/BridgeSection10" method="_on_target_3_increment_goal_progress"]
 [connection signal="incrementGoalProgress" from="target3" to="Goal" method="_on_target_2_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection1" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection2" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection3" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection4" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection5" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection6" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection7" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection8" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection9" method="_on_target_4_increment_goal_progress"]
+[connection signal="incrementGoalProgress" from="target4" to="ActivatedBridge2/Bridge/BridgeSection10" method="_on_target_4_increment_goal_progress"]
 [connection signal="incrementGoalProgress" from="target4" to="Goal" method="_on_target_2_increment_goal_progress"]
 
 [editable path="ActivatedBridge"]
 [editable path="ActivatedBridge2"]
 [editable path="Goal"]
+[editable path="XROrigin3D"]

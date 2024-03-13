@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://veaqdnoeraf0" path="res://UsedAssets/KayKit/dungeon_tiles.tres" id="1_xlf7t"]
 [ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://CreatedAssets/InteractableObjects/goal.tscn" id="2_p0v3k"]
-[ext_resource type="PackedScene" uid="uid://bdcm34p4uy0bo" path="res://Scenes/Enemies/skeleton.tscn" id="3_7k4gl"]
+[ext_resource type="PackedScene" uid="uid://qs4gilwwbjor" path="res://Scenes/Enemies/skeleton.tscn" id="3_7k4gl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_og4ha"]
 

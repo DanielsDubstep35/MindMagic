@@ -12,8 +12,8 @@ var explosiveness : bool = false
 @export
 var homing_bullets : bool = false
 
-@onready
-var BloodParticle : GPUParticles3D = $BloodParticle
+#@onready
+#var BloodParticle : GPUParticles3D = $BloodParticle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cnnk4ootm8uaj"]
+
+[ext_resource type="Shader" path="res://UsedAssets/MaterialMakerTextures/LavaShader/Lava.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://gbq3imuuwx7y" path="res://UsedAssets/MaterialMakerTextures/LavaShader/Lava_texture_1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://6l1fprkx30gn" path="res://UsedAssets/MaterialMakerTextures/LavaShader/Lava_texture_2.png" id="3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/depth_min_layers = 8
+shader_parameter/depth_max_layers = 16
+shader_parameter/depth_flip = Vector2(1, 1)
+shader_parameter/variation = 0.0
+shader_parameter/texture_1 = ExtResource("2")
+shader_parameter/texture_2 = ExtResource("3")
