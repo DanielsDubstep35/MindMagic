@@ -1,0 +1,31 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://44vktfdenepn"]
+
+[sub_resource type="Gradient" id="Gradient_xrm8k"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3, 0.7)
+colors = PackedColorArray(0.0492098, 0.387489, 1, 1, 0, 0.27451, 0.764706, 1, 1.89486e-06, 0.109715, 0.354747, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qayca"]
+noise_type = 2
+offset = Vector3(2.08167e-14, 2.08167e-14, 2.08167e-14)
+fractal_type = 3
+fractal_weighted_strength = 0.5
+fractal_ping_pong_strength = 1.0
+cellular_distance_function = 1
+cellular_return_type = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dop4b"]
+seamless = true
+color_ramp = SubResource("Gradient_xrm8k")
+noise = SubResource("FastNoiseLite_qayca")
+
+[resource]
+transparency = 1
+blend_mode = 1
+diffuse_mode = 1
+specular_mode = 1
+albedo_color = Color(0, 0.792157, 0.819608, 0.470588)
+rim_tint = 1.0
+backlight_enabled = true
+backlight_texture = SubResource("NoiseTexture2D_dop4b")

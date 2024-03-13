@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://f7fe8knjj4x3"]
+
+[ext_resource type="Script" path="res://CreatedAssets/Wand/waterblast.gd" id="1_7yslf"]
+[ext_resource type="Material" uid="uid://44vktfdenepn" path="res://CreatedAssets/Wand/new_standard_material_3d.tres" id="2_it3qb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0gcom"]
+radius = 0.08
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f5qsl"]
+radius = 0.16
+
+[sub_resource type="Curve" id="Curve_fsugv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j5ey7"]
+curve = SubResource("Curve_fsugv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etmd4"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 2.08165e-12, 2.08165e-12)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+scale_curve = SubResource("CurveTexture_j5ey7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_0org0"]
+material = ExtResource("2_it3qb")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Animation" id="Animation_4118r"]
+resource_name = "water_dissappear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:process_material:scale_max")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_02jva"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:process_material:scale_max")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:process_material:scale_min")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jbkeq"]
+resource_name = "water_appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:process_material:scale_max")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:process_material:scale_min")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kijko"]
+_data = {
+"RESET": SubResource("Animation_02jva"),
+"water_appear": SubResource("Animation_jbkeq"),
+"water_dissappear": SubResource("Animation_4118r")
+}
+
+[node name="Waterblast" type="RigidBody3D" groups=["Waterblast"]]
+collision_layer = 8
+collision_mask = 2
+gravity_scale = 1.66533e-16
+script = ExtResource("1_7yslf")
+
+[node name="FireballCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0gcom")
+
+[node name="SpellArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 35
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpellArea"]
+shape = SubResource("SphereShape3D_f5qsl")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_etmd4")
+draw_pass_1 = SubResource("SphereMesh_0org0")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.501961, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kijko")
+}
+
+[connection signal="body_entered" from="SpellArea" to="." method="_on_spell_area_body_entered"]

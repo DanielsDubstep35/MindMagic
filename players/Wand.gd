@@ -21,6 +21,9 @@ var lightning_timer: Timer = $lightning_time
 var eeg_eye_artifact = "Nothing"
 
 @export
+var eeg_relaxed = false
+
+@export
 var fireSpell: Node3D
 
 @export
@@ -28,6 +31,8 @@ var waterSpell: Node3D
 
 @export
 var lightningSpell: Node3D
+
+var water_spell_effect = null
 
 # Spell Variables
 var spell_selected = 0
@@ -93,7 +98,7 @@ func _process(delta):
 		print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
 		if _controller.get_input("by_button") && lightning_timer.is_stopped():
 			print("LIGHTNINGBLAST!")
-			shoot_lightningblast()
+			shoot_lightningbolt()
 	
 	# if Blink, shoot something
 	#if eeg_eye_artifact == "Blink" && spell_boolean:
@@ -132,9 +137,9 @@ func _on_timer_timeout():
 func shoot_fireball():
 	var fireball_load = preload("res://CreatedAssets/Wand/fireball.tscn")
 	var spell = null
-	var spell_ui: MeshInstance3D = null
+	var spell_anim: AnimationPlayer = null
 	spell = fireball_load.instantiate()
-	spell_ui = fireSpell.get_node("MeshInstance3D")
+	spell_anim = fireSpell.get_node("MeshInstance3D")
 	get_tree().root.add_child(spell)
 	spell.global_transform = wand_muzzle.global_transform
 	spell.Fire_shot()
@@ -143,13 +148,28 @@ func shoot_fireball():
 	
 	#print("firebolt shot")
 
-func shoot_lightningblast():
+func shoot_lightningbolt():
 	var lightningblast_load = preload("res://CreatedAssets/Wand/lightningbolt.tscn")
 	var spell = null
-	var spell_ui: MeshInstance3D = null
+	var spell_anim: AnimationPlayer = null
 	spell = lightningblast_load.instantiate()
-	spell_ui = lightningSpell.get_node("MeshInstance3D")
+	spell_anim = lightningSpell.get_node("MeshInstance3D")
 	get_tree().root.add_child(spell)
-	spell.global_transform = wand_muzzle.global_transform
+	spell.position = wand_muzzle.position
 	spell.Lightning_shot()
 	lightning_timer.start(3)
+
+func trigger_waterblast():
+	if !eeg_relaxed:
+		eeg_relaxed = true
+		var waterblast_load = preload("res://CreatedAssets/Wand/waterblast.tscn")
+		water_spell_effect = waterblast_load.instantiate()
+		get_tree().root.add_child(water_spell_effect)
+		water_spell_effect.global_transform = wand_muzzle.global_transform
+		water_spell_effect.Water_spawn()
+
+func untrigger_waterblast():
+	if eeg_relaxed:
+		eeg_relaxed = false
+		water_spell_effect.Dissolve_water()
+		water_spell_effect = null

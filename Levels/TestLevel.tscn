@@ -205,7 +205,7 @@ script = SubResource("GDScript_2ghxb")
 [node name="Goal" parent="." instance=ExtResource("17_nyowg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -128)
 activationGoal = 3
-target_scene = "res://Levels/base_level.tscn"
+target_scene = "res://Levels/MainMenu.tscn"
 
 [node name="FlowersGrown" parent="Goal" index="2"]
 text = "Targets Destroyed"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg2gohdntx5rv"]
+[gd_scene load_steps=33 format=3 uid="uid://dg2gohdntx5rv"]
 
 [ext_resource type="Script" path="res://players/vr_player.gd" id="1_16jhh"]
 [ext_resource type="Texture2D" uid="uid://bkvdlt2bhcb6t" path="res://UsedAssets/CC0Textures/Sky3.jpg" id="1_iw07r"]
@@ -57,6 +57,7 @@ transparency = 1
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
+albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("9_aswx7")
 albedo_texture_force_srgb = true
 heightmap_scale = -16.0
@@ -68,16 +69,89 @@ billboard_mode = 1
 billboard_keep_scale = true
 proximity_fade_distance = 0.0
 
+[sub_resource type="Animation" id="Animation_kkdci"]
+resource_name = "SpellCooldown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireMesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d8bk6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireMesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4snvh"]
+_data = {
+"RESET": SubResource("Animation_d8bk6"),
+"SpellCooldown": SubResource("Animation_kkdci")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roag2"]
 transparency = 1
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
+albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("10_4w66a")
 albedo_texture_force_srgb = true
 texture_filter = 0
 billboard_mode = 1
 billboard_keep_scale = true
+
+[sub_resource type="Animation" id="Animation_rutgn"]
+resource_name = "SpellCooldown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterMesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ljv1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterMesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyypp"]
+_data = {
+"RESET": SubResource("Animation_ljv1p"),
+"SpellCooldown": SubResource("Animation_rutgn")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51kgx"]
 transparency = 1
@@ -85,12 +159,49 @@ blend_mode = 1
 shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
+albedo_color = Color(1, 1, 1, 0)
 albedo_texture = ExtResource("11_by8eu")
 albedo_texture_force_srgb = true
 texture_filter = 0
 billboard_mode = 1
 billboard_keep_scale = true
 grow_amount = 0.01
+
+[sub_resource type="Animation" id="Animation_o10vh"]
+resource_name = "SpellCooldown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightningMesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_moyxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LightningMesh:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gythc"]
+_data = {
+"RESET": SubResource("Animation_moyxb"),
+"SpellCooldown": SubResource("Animation_o10vh")
+}
 
 [sub_resource type="Resource" id="Resource_l67hl"]
 script = ExtResource("13_fk6bx")
@@ -144,37 +255,44 @@ wait_time = 0.25
 [node name="FireSpell" type="Node3D" parent="Right/Wand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.999999, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Right/Wand/FireSpell"]
+[node name="FireMesh" type="MeshInstance3D" parent="Right/Wand/FireSpell"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("QuadMesh_xyhfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_waq7u")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Right/Wand/FireSpell"]
-light_color = Color(1, 0, 0, 1)
-omni_range = 0.1
+[node name="FireAnim" type="AnimationPlayer" parent="Right/Wand/FireSpell"]
+libraries = {
+"": SubResource("AnimationLibrary_4snvh")
+}
 
 [node name="WaterSpell" type="Node3D" parent="Right/Wand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999999, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Right/Wand/WaterSpell"]
+[node name="WaterMesh" type="MeshInstance3D" parent="Right/Wand/WaterSpell"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("QuadMesh_xyhfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_roag2")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Right/Wand/WaterSpell"]
+[node name="WaterAnim" type="AnimationPlayer" parent="Right/Wand/WaterSpell"]
+libraries = {
+"": SubResource("AnimationLibrary_jyypp")
+}
 
 [node name="LightningSpell" type="Node3D" parent="Right/Wand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.999999, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Right/Wand/LightningSpell"]
+[node name="LightningMesh" type="MeshInstance3D" parent="Right/Wand/LightningSpell"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("QuadMesh_xyhfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_51kgx")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Right/Wand/LightningSpell"]
+[node name="LightningAnim" type="AnimationPlayer" parent="Right/Wand/LightningSpell"]
+libraries = {
+"": SubResource("AnimationLibrary_gythc")
+}
 
 [node name="MovementTurn" parent="Right" instance=ExtResource("5_3up2e")]
 turn_mode = 2
