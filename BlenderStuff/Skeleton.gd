@@ -88,6 +88,8 @@ func _target_in_seek_range():
 
 func _on_skeleton_area_body_entered(body):
 	#print(body.name)
+	
+	# Add new spells to this if statement
 	if (body.is_in_group("Fireball") || body.is_in_group("LightningBlast")):
 		var new_blood : GPUParticles3D = blood.instantiate()
 		get_tree().root.add_child(new_blood)
