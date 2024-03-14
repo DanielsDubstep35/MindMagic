@@ -38,10 +38,10 @@ var water_spell_effect = null
 var spell_selected = 0
 
 var AlphaMetric = "0"
-var BetaMetric = "0"
-var Theta = "0"
-var Delta = "0"
-var Emotion = "Neutral"
+#var BetaMetric = "0"
+#var Theta = "0"
+#var Delta = "0"
+#var Emotion = "Neutral"
 
 # FROM EEG NODE SCRIPT
 # has to be the same  as the pico ip address
@@ -77,11 +77,18 @@ func _process(delta):
 			match py_type:
 				"PYTHON":
 					eeg_eye_artifact = str(packet[0])
+					
 					AlphaMetric = str(packet[1])
-					BetaMetric = str(packet[2])
-					Theta = str(packet[3])
-					Delta = str(packet[4])
-					Emotion = str(packet[5])
+					
+					if packet[1] > 0.85:
+						trigger_waterblast()
+					else:
+						untrigger_waterblast()
+					
+					#BetaMetric = str(packet[2])
+					#Theta = str(packet[3])
+					#Delta = str(packet[4])
+					#Emotion = str(packet[5])
 
 		else:
 			listening
@@ -98,11 +105,14 @@ func _process(delta):
 		print(firerate_timer.time_left)
 		if _controller.get_float("trigger") > 0.8 && firerate_timer.is_stopped():
 			shoot_fireball()
-		print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
+		#print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
 		if _controller.get_input("by_button") && lightning_timer.is_stopped():
 			print("LIGHTNINGBLAST!")
 			shoot_lightningbolt()
-
+			
+		#if eeg_eye_artifact == "Blink" && lightning_timer.is_stopped():
+			#shoot_lightningbolt()
+			
 	# if Blink, shoot something
 	#if eeg_eye_artifact == "Blink" && spell_boolean:
 		#shoot()
@@ -158,7 +168,7 @@ func shoot_lightningbolt():
 	spell = lightningblast_load.instantiate()
 	spell_anim = lightningSpell.get_node("MeshInstance3D")
 	get_tree().root.add_child(spell)
-	spell.position = wand_muzzle.position
+	spell.global_position = wand_muzzle.global_position
 	spell.Lightning_shot()
 	lightning_timer.start(3)
 

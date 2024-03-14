@@ -19,7 +19,7 @@ shader_parameter/alpha = 0.0
 
 [node name="Staging" type="Node3D"]
 script = ExtResource("1")
-main_scene = "res://Levels/TestLevel.tscn"
+main_scene = "res://Levels/MainMenu.tscn"
 prompt_for_continue = false
 
 [node name="Fade" type="MeshInstance3D" parent="."]

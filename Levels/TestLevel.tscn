@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bew5g80l2cl6i"]
+[gd_scene load_steps=15 format=3 uid="uid://bew5g80l2cl6i"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ia31o"]
 [ext_resource type="PackedScene" uid="uid://dg2gohdntx5rv" path="res://players/vr_player.tscn" id="6_1v00c"]
@@ -123,6 +123,26 @@ func _on_target_4_increment_goal_progress():
 	AddProgress()
 "
 
+[sub_resource type="Gradient" id="Gradient_b222s"]
+colors = PackedColorArray(0.856067, 0.856067, 0.856067, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b8pbt"]
+frequency = 0.0426
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1r85n"]
+seamless = true
+color_ramp = SubResource("Gradient_b222s")
+noise = SubResource("FastNoiseLite_b8pbt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yskg"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.113725, 0.619608, 0.537255, 1)
+albedo_texture = SubResource("NoiseTexture2D_1r85n")
+
 [node name="WorldRoot" type="Node3D"]
 script = ExtResource("1_ia31o")
 
@@ -207,7 +227,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -128)
 activationGoal = 3
 target_scene = "res://Levels/MainMenu.tscn"
 
+[node name="MeshInstance3D" parent="Goal" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7yskg")
+
 [node name="FlowersGrown" parent="Goal" index="2"]
+modulate = Color(0.113725, 0.619608, 0.537255, 1)
 text = "Targets Destroyed"
 
 [node name="target2" parent="." instance=ExtResource("17_hli4s")]

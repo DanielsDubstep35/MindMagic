@@ -27,7 +27,6 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addon
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-occlusion_culling/use_occlusion_culling=true
 
 [xr]
 

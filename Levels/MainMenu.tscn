@@ -1,126 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxca1vhbypp33"]
+[gd_scene load_steps=21 format=3 uid="uid://cxca1vhbypp33"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ib4ig"]
-[ext_resource type="PackedScene" uid="uid://b8bcj0x60pc3s" path="res://CreatedAssets/InteractableObjects/activated_bridge.tscn" id="3_qwpuv"]
 [ext_resource type="PackedScene" uid="uid://cpk8due4k67mm" path="res://CreatedAssets/LevelBuilderAssets/level_3d_text.tscn" id="4_jhvrd"]
 [ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://CreatedAssets/InteractableObjects/goal.tscn" id="5_xff0i"]
 [ext_resource type="MeshLibrary" uid="uid://veaqdnoeraf0" path="res://UsedAssets/KayKit/dungeon_tiles.tres" id="7_1gw8j"]
 [ext_resource type="PackedScene" uid="uid://dg2gohdntx5rv" path="res://players/vr_player.tscn" id="7_jiftr"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="8_5o14n"]
-
-[sub_resource type="GDScript" id="GDScript_p5nee"]
-script/source = "extends Node3D
-
-var activationGoal = 1
-var activationCount = 0
-
-@onready
-var BlockL_Collision : CollisionShape3D = $BlockL/StaticBody3D/CollisionShape3D
-
-@onready
-var BlockR_Collision : CollisionShape3D = $BlockR/StaticBody3D/CollisionShape3D
-
-@onready
-var EdgeL_Collision : CollisionShape3D = $EdgeL/StaticBody3D/CollisionShape3D
-
-@onready
-var EdgeR_Collision : CollisionShape3D = $EdgeR/StaticBody3D/CollisionShape3D
-
-@onready
-var BlockL : MeshInstance3D = $BlockL
-
-@onready
-var BlockR : MeshInstance3D = $BlockR
-
-@onready
-var EdgeL : MeshInstance3D = $EdgeL
-
-@onready
-var EdgeR : MeshInstance3D = $EdgeR
-
-@onready
-var anim_player : AnimationPlayer = $AnimationPlayer
-
-@onready
-var BridgeSectionRiseTime : float = ($\".\".name.replace(\"BridgeSection\", \"\").to_float()) / 5.0
-
-func AddProgress():
-	activationCount += 1
-	if activationCount == activationGoal:
-		await get_tree().create_timer(BridgeSectionRiseTime).timeout
-		BridgeRaised()
-
-func BridgeRaised():
-	BlockL_Collision.disabled = false
-	BlockR_Collision.disabled = false
-	EdgeL_Collision.disabled = false
-	EdgeR_Collision.disabled = false
-	anim_player.play(\"raised_bridge\", -1, 1)
-
-
-func _on_target_2_increment_goal_progress():
-	AddProgress()
-
-
-func _on_target_3_increment_goal_progress():
-	pass # Replace with function body.
-"
-
-[sub_resource type="GDScript" id="GDScript_2ghxb"]
-script/source = "extends Node3D
-
-var activationGoal = 2
-var activationCount = 0
-
-@onready
-var BlockL_Collision : CollisionShape3D = $BlockL/StaticBody3D/CollisionShape3D
-
-@onready
-var BlockR_Collision : CollisionShape3D = $BlockR/StaticBody3D/CollisionShape3D
-
-@onready
-var EdgeL_Collision : CollisionShape3D = $EdgeL/StaticBody3D/CollisionShape3D
-
-@onready
-var EdgeR_Collision : CollisionShape3D = $EdgeR/StaticBody3D/CollisionShape3D
-
-@onready
-var BlockL : MeshInstance3D = $BlockL
-
-@onready
-var BlockR : MeshInstance3D = $BlockR
-
-@onready
-var EdgeL : MeshInstance3D = $EdgeL
-
-@onready
-var EdgeR : MeshInstance3D = $EdgeR
-
-@onready
-var anim_player : AnimationPlayer = $AnimationPlayer
-
-@onready
-var BridgeSectionRiseTime : float = ($\".\".name.replace(\"BridgeSection\", \"\").to_float()) / 5.0
-
-func AddProgress():
-	activationCount += 1
-	if activationCount >= activationGoal:
-		await get_tree().create_timer(BridgeSectionRiseTime).timeout
-		BridgeRaised()
-
-func BridgeRaised():
-	BlockL_Collision.disabled = false
-	BlockR_Collision.disabled = false
-	EdgeL_Collision.disabled = false
-	EdgeR_Collision.disabled = false
-	anim_player.play(\"raised_bridge\", -1, 1)
-
-func _on_target_3_increment_goal_progress():
-	AddProgress()
-
-func _on_target_4_increment_goal_progress():
-	AddProgress()
-"
 
 [sub_resource type="GDScript" id="GDScript_yftak"]
 script/source = "extends Area3D
@@ -129,7 +14,7 @@ script/source = "extends Area3D
 var activationGoal = 1
 
 @export
-var activationCount = 0
+var activationCount = 1
 
 @onready
 var progressGrown = $FlowersGrown
@@ -156,12 +41,14 @@ var goal = $\".\"
 func _ready():
 	goal.monitorable = false
 	goal.monitoring = false
-	progressGrown.modulate = Color.RED
-	progressAmount.modulate = Color.RED
+	#progressGrown.modulate = Color.RED
+	#progressAmount.modulate = Color.RED
 	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if activationCount < 2:
+		Progress()
 	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
 
 func _on_body_entered(body):
@@ -188,10 +75,10 @@ func Progress():
 func goalOpen():
 	goal.monitorable = true
 	goal.monitoring = true
-	progressGrown.modulate = Color.GREEN
-	progressAmount.modulate = Color.GREEN
+	#progressGrown.modulate = Color.GREEN
+	#progressAmount.modulate = Color.GREEN
 	particles.emitting = true
-	goalAudio.playing = true
+	#goalAudio.playing = true
 
 func _on_target_2_increment_goal_progress():
 	Progress()
@@ -224,7 +111,7 @@ script/source = "extends Area3D
 var activationGoal = 1
 
 @export
-var activationCount = 0
+var activationCount = 1
 
 @onready
 var progressGrown = $FlowersGrown
@@ -251,12 +138,14 @@ var goal = $\".\"
 func _ready():
 	goal.monitorable = false
 	goal.monitoring = false
-	progressGrown.modulate = Color.RED
-	progressAmount.modulate = Color.RED
+	#progressGrown.modulate = Color.RED
+	#progressAmount.modulate = Color.RED
 	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if activationCount < 2:
+		Progress()
 	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
 
 func _on_body_entered(body):
@@ -283,10 +172,10 @@ func Progress():
 func goalOpen():
 	goal.monitorable = true
 	goal.monitoring = true
-	progressGrown.modulate = Color.GREEN
-	progressAmount.modulate = Color.GREEN
+	#progressGrown.modulate = Color.GREEN
+	#progressAmount.modulate = Color.GREEN
 	particles.emitting = true
-	goalAudio.playing = true
+	#goalAudio.playing = true
 
 func _on_target_2_increment_goal_progress():
 	Progress()
@@ -319,7 +208,7 @@ script/source = "extends Area3D
 var activationGoal = 1
 
 @export
-var activationCount = 0
+var activationCount = 1
 
 @onready
 var progressGrown = $FlowersGrown
@@ -346,12 +235,14 @@ var goal = $\".\"
 func _ready():
 	goal.monitorable = false
 	goal.monitoring = false
-	progressGrown.modulate = Color.RED
-	progressAmount.modulate = Color.RED
+	#progressGrown.modulate = Color.RED
+	#progressAmount.modulate = Color.RED
 	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if activationCount < 2:
+		Progress()
 	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
 
 func _on_body_entered(body):
@@ -380,10 +271,10 @@ func Progress():
 func goalOpen():
 	goal.monitorable = true
 	goal.monitoring = true
-	progressGrown.modulate = Color.GREEN
-	progressAmount.modulate = Color.GREEN
+	#progressGrown.modulate = Color.GREEN
+	#progressAmount.modulate = Color.GREEN
 	particles.emitting = true
-	goalAudio.playing = true
+	#goalAudio.playing = true
 
 func _on_target_2_increment_goal_progress():
 	Progress()
@@ -415,72 +306,6 @@ emission_energy_multiplier = 25.0
 [node name="WorldRoot" type="Node3D"]
 script = ExtResource("1_ib4ig")
 
-[node name="ActivatedBridge" parent="." instance=ExtResource("3_qwpuv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -14)
-
-[node name="BridgeSection1" parent="ActivatedBridge/Bridge" index="0"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection2" parent="ActivatedBridge/Bridge" index="1"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection3" parent="ActivatedBridge/Bridge" index="2"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection4" parent="ActivatedBridge/Bridge" index="3"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection5" parent="ActivatedBridge/Bridge" index="4"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection6" parent="ActivatedBridge/Bridge" index="5"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection7" parent="ActivatedBridge/Bridge" index="6"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection8" parent="ActivatedBridge/Bridge" index="7"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection9" parent="ActivatedBridge/Bridge" index="8"]
-script = SubResource("GDScript_p5nee")
-
-[node name="BridgeSection10" parent="ActivatedBridge/Bridge" index="9"]
-script = SubResource("GDScript_p5nee")
-
-[node name="ActivatedBridge2" parent="." instance=ExtResource("3_qwpuv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, -78)
-
-[node name="BridgeSection1" parent="ActivatedBridge2/Bridge" index="0"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection2" parent="ActivatedBridge2/Bridge" index="1"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection3" parent="ActivatedBridge2/Bridge" index="2"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection4" parent="ActivatedBridge2/Bridge" index="3"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection5" parent="ActivatedBridge2/Bridge" index="4"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection6" parent="ActivatedBridge2/Bridge" index="5"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection7" parent="ActivatedBridge2/Bridge" index="6"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection8" parent="ActivatedBridge2/Bridge" index="7"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection9" parent="ActivatedBridge2/Bridge" index="8"]
-script = SubResource("GDScript_2ghxb")
-
-[node name="BridgeSection10" parent="ActivatedBridge2/Bridge" index="9"]
-script = SubResource("GDScript_2ghxb")
-
 [node name="LevelText" parent="." instance=ExtResource("4_jhvrd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
 
@@ -496,6 +321,7 @@ text = "Enter a portal to Select an option!"
 [node name="StartGame" parent="." instance=ExtResource("5_xff0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 script = SubResource("GDScript_yftak")
+activationCount = 1
 target_scene = "res://Levels/base_level.tscn"
 
 [node name="MeshInstance3D" parent="StartGame" index="0"]
@@ -513,6 +339,7 @@ visible = false
 [node name="Tutorial" parent="." instance=ExtResource("5_xff0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
 script = SubResource("GDScript_us3i6")
+activationCount = 1
 target_scene = "res://Levels/TestLevel.tscn"
 
 [node name="MeshInstance3D" parent="Tutorial" index="0"]
@@ -523,9 +350,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 modulate = Color(1, 1, 0, 1)
 text = "Tutorial"
 
+[node name="FlowerAmount" parent="Tutorial" index="3"]
+visible = false
+
 [node name="QuitGame" parent="." instance=ExtResource("5_xff0i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
 script = SubResource("GDScript_xw51p")
+activationCount = 1
 
 [node name="FlowersGrown" parent="QuitGame" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
@@ -591,8 +422,6 @@ transform = Transform3D(1, 0, 0, 0, 1, -5.94334e-09, 0, 9.48348e-09, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_wgvyv")
 surface_material_override/0 = SubResource("StandardMaterial3D_7g77a")
 
-[editable path="ActivatedBridge"]
-[editable path="ActivatedBridge2"]
 [editable path="LevelText"]
 [editable path="StartGame"]
 [editable path="Tutorial"]

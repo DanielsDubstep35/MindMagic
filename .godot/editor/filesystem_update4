@@ -1,4 +1,5 @@
 res://Levels/TestLevel.tscn
+res://CreatedAssets/Wand/new_standard_material_3d.tres
 res://addons/godot-xr-tools/materials/highlight.tres
 res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres
 res://UsedAssets/KayKit/complete_tiles.tres
@@ -7,14 +8,5 @@ res://UsedAssets/KayKit/dungeon_tiles.tres
 res://UsedAssets/MaterialMakerTextures/LavaShader/Lava.tres
 res://Particles/blood_particle_process.tres
 res://Particles/blood_particle_material.tres
-res://players/vr_player.tscn
 res://Levels/SecondLevel.tscn
-res://CreatedAssets/Wand/lightningbolt.tscn
-res://CreatedAssets/Wand/fireball.tscn
-res://Levels/MainMenu.tscn
-res://CreatedAssets/Wand/Wand.tscn
 res://Levels/base_level.tscn
-res://CreatedAssets/Wand/waterblast.tscn
-res://CreatedAssets/Wand/new_standard_material_3d.tres
-res://players/Wand.gd
-res://CreatedAssets/Wand/waterblast.gd
