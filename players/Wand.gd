@@ -59,7 +59,10 @@ func _ready():
 	start_listening()
 
 func _process(delta):
-	
+
+	if water_spell_effect != null:
+		water_spell_effect.global_transform = wand_muzzle.global_transform
+
 	server.poll()
 	if server.is_connection_available():
 		var peer : PacketPeerUDP = server.take_connection()
@@ -67,31 +70,31 @@ func _process(delta):
 		peer.put_packet(packet.to_utf8_buffer())
 		var jsonStuff = JSON.new()
 		packet = jsonStuff.parse_string(packet)
-		
+
 		if packet is Array:
 			var py_type = packet.pop_front()
-			
+
 			match py_type:
 				"PYTHON":
 					eeg_eye_artifact = str(packet[0])
 					AlphaMetric = str(packet[1])
 					BetaMetric = str(packet[2])
 					Theta = str(packet[3])
-					Delta = str(packet[4])	
-					Emotion = str(packet[5])	
-				
+					Delta = str(packet[4])
+					Emotion = str(packet[5])
+
 		else:
 			listening
-	
+
 	print(eeg_eye_artifact)
-	
+
 	#if there is no controller
 	if !_controller.get_is_active():
 		print("Error from Wand.gd: There is no controller present")
 		return
-	
+
 	# Controllers not needed to check for eye blinks
-	if _controller.get_is_active(): 
+	if _controller.get_is_active():
 		print(firerate_timer.time_left)
 		if _controller.get_float("trigger") > 0.8 && firerate_timer.is_stopped():
 			shoot_fireball()
@@ -99,7 +102,7 @@ func _process(delta):
 		if _controller.get_input("by_button") && lightning_timer.is_stopped():
 			print("LIGHTNINGBLAST!")
 			shoot_lightningbolt()
-	
+
 	# if Blink, shoot something
 	#if eeg_eye_artifact == "Blink" && spell_boolean:
 		#shoot()
@@ -108,12 +111,12 @@ func _process(delta):
 	#else:
 		#pass
 		##print(eeg_eye_artifact)
-			
+
 func start_listening():
 # warning-ignore:return_value_discarded
 	server.listen(UDP_PORT)
 	set_process(true)
-	
+
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		listening = false
@@ -125,7 +128,7 @@ func _notification(what):
 		#print("Process Done")
 		#print("Running KILLCODE")
 		stop_listening()
-		
+
 func stop_listening():
 	server.stop()
 	set_process(false)
@@ -133,7 +136,7 @@ func stop_listening():
 func _on_timer_timeout():
 	spell_boolean = true
 	pass # Replace with function body.
-	
+
 func shoot_fireball():
 	var fireball_load = preload("res://CreatedAssets/Wand/fireball.tscn")
 	var spell = null
@@ -145,7 +148,7 @@ func shoot_fireball():
 	spell.Fire_shot()
 	firerate_timer.start(0.1)
 	#spell_ui.mesh.surface_get_material()
-	
+
 	#print("firebolt shot")
 
 func shoot_lightningbolt():

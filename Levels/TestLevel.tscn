@@ -115,10 +115,10 @@ func BridgeRaised():
 	EdgeL_Collision.disabled = false
 	EdgeR_Collision.disabled = false
 	anim_player.play(\"raised_bridge\", -1, 1)
-	
+
 func _on_target_3_increment_goal_progress():
 	AddProgress()
-	
+
 func _on_target_4_increment_goal_progress():
 	AddProgress()
 "
