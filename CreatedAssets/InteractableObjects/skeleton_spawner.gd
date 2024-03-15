@@ -21,13 +21,13 @@ var difficulty_value = null
 
 # Depending on the difficulty level, spawn more skeletons
 enum difficulty {
-	EASY = 1,
-	MEDIUM = 2,
-	HARD = 3
+	EASY = 5,
+	MEDIUM = 10,
+	HARD = 15
 }
 
 func _ready():
-	difficulty_value = difficulty.EASY
+	set_difficulty(difficulty_selector)
 	player = get_node(player_path)
 
 	#if difficulty_selector == 0:
@@ -57,7 +57,8 @@ func set_difficulty(difficulty_level):
 		difficulty_value = difficulty.HARD
 
 func _on_player_checker_body_entered(body):
-	if (body.is_in_group("Player")):
+	print("the player checker detected:" + str(body.name))
+	if (body.is_in_group("Player") || body.is_in_group("player_body")):
 		print("Player entered")
 		spawn_wave()
 		# disable the player checker

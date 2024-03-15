@@ -1,0 +1,224 @@
+[gd_scene load_steps=12 format=3 uid="uid://b58n4vvs3r5m"]
+
+[ext_resource type="Script" path="res://CreatedAssets/LevelBuilderAssets/Moving_Platform_updown.gd" id="1_2opi2"]
+[ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="2_hngr1"]
+[ext_resource type="Texture2D" uid="uid://du8cdkouiit3s" path="res://UsedAssets/OpenClipArt/BrickTexture.jpg" id="3_wvh57"]
+[ext_resource type="PackedScene" uid="uid://duceln8c60sye" path="res://CreatedAssets/InteractableObjects/Switch.tscn" id="4_sruli"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqtt2"]
+albedo_texture = ExtResource("2_hngr1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rr5nb"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("3_wvh57")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(2.08165e-12, 2.08165e-12, 1.28)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm4j7"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("3_wvh57")
+albedo_texture_force_srgb = true
+refraction_scale = 1.0
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(2.08165e-12, 0.58, 2.08165e-12)
+uv1_triplanar = true
+grow_amount = -1.647
+
+[sub_resource type="Animation" id="Animation_aifmx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("switch:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("switch:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_680dm"]
+resource_name = "platform_activate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.08165e-12, 10, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("switch:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(2.08165e-12, 11.5, 2.08165e-12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("switch:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16), Vector3(3.48787e-16, 6.28319, 3.48787e-16)]
+}
+
+[sub_resource type="Animation" id="Animation_6a8yb"]
+resource_name = "platform_deactivate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 10, 2.08165e-12), Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 6.28319, 3.48787e-16), Vector3(3.48787e-16, 12.5664, 3.48787e-16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("switch:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 11.5, 2.08165e-12), Vector3(2.08165e-12, 1.5, 2.08165e-12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("switch:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 6.28319, 3.48787e-16), Vector3(3.48787e-16, 12.5664, 3.48787e-16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcokt"]
+_data = {
+"RESET": SubResource("Animation_aifmx"),
+"platform_activate": SubResource("Animation_680dm"),
+"platform_deactivate": SubResource("Animation_6a8yb")
+}
+
+[node name="Moving_Platform_switch" type="Node3D"]
+script = ExtResource("1_2opi2")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 3
+collision_mask = 4
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+material_override = SubResource("StandardMaterial3D_vqtt2")
+polygon = PackedVector2Array(0, 0, 0, 1, 2, 1, 2, 0)
+mode = 1
+spin_degrees = 360.0
+spin_sides = 6
+material = SubResource("StandardMaterial3D_rr5nb")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+inner_radius = 1.8
+outer_radius = 2.2
+sides = 6
+material = SubResource("StandardMaterial3D_vm4j7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kcokt")
+}
+
+[node name="switch" parent="." instance=ExtResource("4_sruli")]
+transform = Transform3D(1, -3.48787e-16, 1.74846e-07, 3.48787e-16, 1, -3.48787e-16, -1.74846e-07, 3.48787e-16, 1, 0, 1.5, 0)

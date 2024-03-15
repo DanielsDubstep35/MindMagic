@@ -250,6 +250,7 @@ light_indirect_energy = 0.0
 shadow_enabled = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("6_1v00c")]
+current_scene = "res://Levels/TestLevel.tscn"
 
 [node name="StartXR" parent="." instance=ExtResource("7_tx3qm")]
 

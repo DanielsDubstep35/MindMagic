@@ -54,6 +54,7 @@ func _physics_process(delta):
 		set_velocity(Vector3(0, gravity, 0))
 		if !run_sound.playing:
 			run_sound.playing = true
+		attackPlayer()
 		
 	elif !_target_in_attack_range() && _target_in_seek_range():
 		state_machine.travel("Run")
@@ -67,7 +68,10 @@ func _physics_process(delta):
 		state_machine.travel("Idle")
 		state_machine.start("Idle")
 		animation_Player.play("Idle", -1, 1.0)
-		audio_Player.stop()
+		if audio_Player != null:
+			audio_Player.stop()
+		else:
+			pass
 
 func update_target_location(target_location, delta):
 	nav_agent.set_path_max_distance(10)
@@ -81,10 +85,16 @@ func update_target_location(target_location, delta):
 	move_and_slide()
 
 func _target_in_attack_range():
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	if player != null:
+		return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	else:
+		return false
 
 func _target_in_seek_range():
-	return global_position.distance_to(player.global_position) < SEEK_RANGE
+	if player != null:
+		return global_position.distance_to(player.global_position) < SEEK_RANGE
+	else:
+		return false
 
 func _on_skeleton_area_body_entered(body):
 	#print(body.name)
@@ -101,3 +111,6 @@ func _on_skeleton_area_body_entered(body):
 
 func attackPlayer():
 	get_tree().call_group("Player", "playerDie")
+	
+func level_cleanup():
+	queue_free()

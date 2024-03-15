@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://duceln8c60sye"]
+
+[ext_resource type="Script" path="res://CreatedAssets/InteractableObjects/Switch.gd" id="1_u3anq"]
+[ext_resource type="Texture2D" uid="uid://du8cdkouiit3s" path="res://UsedAssets/OpenClipArt/BrickTexture.jpg" id="2_2kqio"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t13t5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pv8hi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gcm06"]
+seamless = true
+noise = SubResource("FastNoiseLite_pv8hi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpntd"]
+albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
+albedo_texture = SubResource("NoiseTexture2D_gcm06")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ottid"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylgs5"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.564706, 0.564706, 0.564706, 1)
+albedo_texture = ExtResource("2_2kqio")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[node name="switch" type="Node3D" groups=["switch"]]
+script = ExtResource("1_u3anq")
+
+[node name="target" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_t13t5")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_kpntd")
+
+[node name="Area3D" type="Area3D" parent="target"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target/Area3D"]
+transform = Transform3D(1, 0, -6.09732e-31, 0, 1, 0, -6.09732e-31, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_ottid")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 2
+collision_mask = 4
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+height = 1.0
+material = SubResource("StandardMaterial3D_ylgs5")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+radius = 0.6
+height = 0.1
+material = SubResource("StandardMaterial3D_ylgs5")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+radius = 0.6
+height = 0.1
+material = SubResource("StandardMaterial3D_ylgs5")
+
+[connection signal="body_entered" from="target/Area3D" to="." method="_on_area_3d_body_entered"]

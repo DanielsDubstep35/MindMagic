@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxca1vhbypp33"]
+[gd_scene load_steps=25 format=3 uid="uid://cxca1vhbypp33"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ib4ig"]
 [ext_resource type="PackedScene" uid="uid://cpk8due4k67mm" path="res://CreatedAssets/LevelBuilderAssets/level_3d_text.tscn" id="4_jhvrd"]
@@ -280,6 +280,26 @@ func _on_target_2_increment_goal_progress():
 	Progress()
 "
 
+[sub_resource type="Gradient" id="Gradient_quldq"]
+colors = PackedColorArray(0.856067, 0.856067, 0.856067, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cgeek"]
+frequency = 0.0426
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_btjbb"]
+seamless = true
+color_ramp = SubResource("Gradient_quldq")
+noise = SubResource("FastNoiseLite_cgeek")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pt76h"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_btjbb")
+
 [sub_resource type="SphereMesh" id="SphereMesh_wgvyv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly1pn"]
@@ -358,6 +378,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
 script = SubResource("GDScript_xw51p")
 activationCount = 1
 
+[node name="MeshInstance3D" parent="QuitGame" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pt76h")
+
 [node name="FlowersGrown" parent="QuitGame" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 text = "Quit Game"
@@ -371,6 +394,7 @@ light_indirect_energy = 0.0
 shadow_enabled = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("7_jiftr")]
+current_scene = "res://Levels/MainMenu.tscn"
 
 [node name="StartXR" parent="." instance=ExtResource("8_5o14n")]
 

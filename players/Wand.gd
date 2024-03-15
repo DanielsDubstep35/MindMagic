@@ -80,10 +80,10 @@ func _process(delta):
 					
 					AlphaMetric = str(packet[1])
 					
-					if packet[1] > 0.85:
-						trigger_waterblast()
-					else:
-						untrigger_waterblast()
+					#if packet[1] > 0.85:
+						#trigger_waterblast()
+					#else:
+						#untrigger_waterblast()
 					
 					#BetaMetric = str(packet[2])
 					#Theta = str(packet[3])
@@ -102,12 +102,12 @@ func _process(delta):
 
 	# Controllers not needed to check for eye blinks
 	if _controller.get_is_active():
-		print(firerate_timer.time_left)
+		#print(firerate_timer.time_left)
 		if _controller.get_float("trigger") > 0.8 && firerate_timer.is_stopped():
 			shoot_fireball()
 		#print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
 		if _controller.get_input("by_button") && lightning_timer.is_stopped():
-			print("LIGHTNINGBLAST!")
+			#print("LIGHTNINGBLAST!")
 			shoot_lightningbolt()
 			
 		#if eeg_eye_artifact == "Blink" && lightning_timer.is_stopped():
@@ -168,7 +168,7 @@ func shoot_lightningbolt():
 	spell = lightningblast_load.instantiate()
 	spell_anim = lightningSpell.get_node("MeshInstance3D")
 	get_tree().root.add_child(spell)
-	spell.global_position = wand_muzzle.global_position
+	spell.global_transform = wand_muzzle.global_transform
 	spell.Lightning_shot()
 	lightning_timer.start(3)
 
