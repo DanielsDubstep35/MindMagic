@@ -91,16 +91,16 @@ func _process(delta):
 					
 					AlphaMetric = str(packet[1])
 					
-					#if packet[1] > 0.85:
-						#eeg_relaxed = true
-						#trigger_waterblast()
-						#eeg_relaxed_sig.emit()
-						#get_tree().call_group("switchWater", "playerRelaxed")
-					#else:
-						#eeg_relaxed = false
-						#untrigger_waterblast()
-						#eeg_not_relaxed_sig.emit()
-						#get_tree().call_group("switchWater", "playerNotRelaxed")
+					if packet[1] > 0.30:
+						eeg_relaxed = true
+						trigger_waterblast()
+						eeg_relaxed_sig.emit()
+						get_tree().call_group("switchWater", "playerRelaxed")
+					else:
+						eeg_relaxed = false
+						untrigger_waterblast()
+						eeg_not_relaxed_sig.emit()
+						get_tree().call_group("switchWater", "playerNotRelaxed")
 					
 					#BetaMetric = str(packet[2])
 					#Theta = str(packet[3])
@@ -123,12 +123,24 @@ func _process(delta):
 		if _controller.get_float("trigger") > 0.8 && firerate_timer.is_stopped():
 			shoot_fireball()
 		#print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
-		if _controller.get_input("by_button") && lightning_timer.is_stopped():
-			#print("LIGHTNINGBLAST!")
-			shoot_lightningbolt()
-			
-		#if eeg_eye_artifact == "Blink" && lightning_timer.is_stopped():
+		
+		#if _controller.get_input("by_button") && lightning_timer.is_stopped():
+			##print("LIGHTNINGBLAST!")
 			#shoot_lightningbolt()
+			#
+		#if _controller.get_input("secondary_touch") && !eeg_relaxed:
+			#eeg_relaxed = true
+			#trigger_waterblast()
+			#eeg_relaxed_sig.emit()
+			#get_tree().call_group("switchWater", "playerRelaxed")
+		#else:
+			#eeg_relaxed = false
+			#untrigger_waterblast()
+			#eeg_not_relaxed_sig.emit()
+			#get_tree().call_group("switchWater", "playerNotRelaxed")
+			
+		if eeg_eye_artifact == "Blink" && lightning_timer.is_stopped():
+			shoot_lightningbolt()
 			
 	# if Blink, shoot something
 	#if eeg_eye_artifact == "Blink" && spell_boolean:

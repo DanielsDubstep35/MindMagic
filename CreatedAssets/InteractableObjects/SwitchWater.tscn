@@ -21,6 +21,7 @@ radius = 10.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lracn"]
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.329412, 0.439216, 1, 0.0784314)
@@ -53,7 +54,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_kpntd")
 
 [node name="Area3D" type="Area3D" parent="target"]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
-collision_mask = 9
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="target/Area3D"]
 transform = Transform3D(1, 0, -6.09732e-31, 0, 1, 0, -6.09732e-31, 0, 1, 0, 0, 0)

@@ -1,0 +1,30 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://doifrvng7eh3"]
+
+[ext_resource type="Sky" uid="uid://cq23w4o0lf6i4" path="res://CreatedAssets/skies/EvilSky.tres" id="1_68t8n"]
+
+[resource]
+background_mode = 2
+background_color = Color(0.866667, 0.513726, 0.219608, 1)
+sky = ExtResource("1_68t8n")
+sky_custom_fov = 90.0
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.2
+reflected_light_source = 1
+ssao_intensity = 17.8
+ssil_intensity = 0.0
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.15
+glow_strength = 2.0
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 5.0
+fog_density = 0.1
+fog_height = 2.13163e-14
+fog_height_density = 2.0
+volumetric_fog_emission = Color(0.937255, 0, 0.854902, 1)
+adjustment_brightness = 1.1
+adjustment_contrast = 1.4
+adjustment_saturation = 1.5

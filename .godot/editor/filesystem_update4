@@ -1,4 +1,4 @@
-res://Levels/TestLevel.tscn
+res://Levels/base_level copy.tscn
 res://CreatedAssets/Wand/new_standard_material_3d.tres
 res://addons/godot-xr-tools/materials/highlight.tres
 res://addons/godot-xr-tools/hands/animations/left/hand_blend_tree.tres
@@ -11,9 +11,23 @@ res://CreatedAssets/Materials/BrickMaterial.tres
 res://CreatedAssets/Meshes/CastleBlock.tres
 res://Particles/blood_particle_process.tres
 res://Particles/blood_particle_material.tres
+res://CreatedAssets/InteractableObjects/NavigationRegionBase.tres
 res://CreatedAssets/skies/EvilSky.tres
-res://Levels/MainMenu.tscn
 res://Levels/BeginGame.tscn
+res://Levels/TestLevel.tscn
+res://Levels/MainMenu.tscn
 res://Levels/base_level.tscn
 res://Levels/SecondLevel.tscn
 res://Levels/ThirdLevel.tscn
+res://players/vr_player.tscn
+res://players/Wand.gd
+res://CreatedAssets/InteractableObjects/SwitchWater.tscn
+res://CreatedAssets/InteractableObjects/SwitchWater.gd
+res://CreatedAssets/InteractableObjects/skeleton_spawner.tscn
+res://Scenes/Enemies/NoPointSkeleton.tscn
+res://BlenderStuff/Skeleton.gd
+res://Scenes/Enemies/skeleton.tscn
+res://CreatedAssets/InteractableObjects/ThirdLevelEnvironment.tres
+res://CreatedAssets/InteractableObjects/Switch.tscn
+res://CreatedAssets/InteractableObjects/SwitchFire.tscn
+res://CreatedAssets/LevelBuilderAssets/tower.tscn

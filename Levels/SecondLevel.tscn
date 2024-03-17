@@ -57,9 +57,9 @@ signal wave3_complete
 var spawners = []
 
 func _ready():
-	for spawner in get_tree().get_nodes_in_group(\"Skeleton_Spawner\"):
-		spawners.append(spawner)
-	#level_progression()
+	#for spawner in get_tree().get_nodes_in_group(\"Skeleton_Spawner\"):
+		#spawners.append(spawner)
+	level_progression()
 
 func _process(delta):
 	if (skeletons_killed == 5):
@@ -81,75 +81,18 @@ func level_progression():
 	await get_tree().create_timer(3).timeout
 
 	wave_text.text = \"\"
-	for i in \"Welcome to Mind Magic\":
+	for i in \"Level 2: Lava Leaps\":
 		wave_text.text = wave_text.text + i
 		await get_tree().create_timer(level_character_type_speed).timeout
 	await get_tree().create_timer(wait_before_next_sentence_time).timeout
 
 	wave_text.text = \"\"
-	for i in \"Complete Objectives to climb the tower\":
-		wave_text.text = wave_text.text + i
-		#wave_audio.pitch_scale = randf_range(wave_audio_pitch_min, wave_audio_pitch_max)
-		#wave_audio.play()
-		await get_tree().create_timer(level_character_type_speed).timeout
-		#wave_audio.stop()
-	await get_tree().create_timer(wait_before_next_sentence_time).timeout
-
-	wave_text.text = \"\"
-	for i in \"Level 1: Skeletal Slaughter\":
+	for i in \"Trigger Switches and jump over lava!\":
 		wave_text.text = wave_text.text + i
 		await get_tree().create_timer(level_character_type_speed).timeout
 	await get_tree().create_timer(wait_before_next_sentence_time).timeout
 
 	wave_text.text = \"\"
-	for i in \"Survive 5 Waves\":
-		wave_text.text = wave_text.text + i
-		await get_tree().create_timer(level_character_type_speed).timeout
-	await get_tree().create_timer(wait_before_next_sentence_time).timeout
-
-	wave_text.text = \"\"
-	for i in \"Wave\":
-		wave_text.text = wave_text.text + i
-		await get_tree().create_timer(level_character_type_speed).timeout
-	wave_number.text = \"1\"
-	await get_tree().create_timer(1).timeout
-
-	for spawner in spawners:
-		spawner.set_difficulty(0)
-		spawner.spawn_wave()
-
-	await wave1_complete
-
-	wave_text.text = \"\"
-	for i in \"Wave\":
-		wave_text.text = wave_text.text + i
-		await get_tree().create_timer(level_character_type_speed).timeout
-	wave_number.text = \"2\"
-	await get_tree().create_timer(1).timeout
-
-	for spawner in spawners:
-		spawner.set_difficulty(1)
-		spawner.spawn_wave()
-
-	await wave2_complete
-
-	wave_text.text = \"\"
-	for i in \"Wave\":
-		wave_text.text = wave_text.text + i
-		await get_tree().create_timer(level_character_type_speed).timeout
-	wave_number.text = \"3\"
-	await get_tree().create_timer(1).timeout
-
-	for spawner in spawners:
-		spawner.set_difficulty(2)
-		spawner.spawn_wave()
-
-	await wave3_complete
-
-	wave_text.text = \"\"
-	for i in \"The portal beckons...\":
-		wave_text.text = wave_text.text + i
-		await get_tree().create_timer(level_character_type_speed).timeout
 
 func track_player():
 	get_tree().call_group(\"enemies\", \"update_target_location\", player.basis)
@@ -667,16 +610,14 @@ pitch_scale = 2.0
 wait_time = 5.0
 
 [node name="WaveText" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 1.12238e-23, 0, 1.12238e-23, 1, 21, 4, 9.17942e-07)
 billboard = 1
-text = "Wave"
 font = ExtResource("8_oq3mm")
 font_size = 500
 outline_size = 80
 
 [node name="WaveNumber" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -2, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 4, 9.17942e-07)
 visible = false
 billboard = 1
 font = ExtResource("8_oq3mm")
