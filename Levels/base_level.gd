@@ -67,23 +67,8 @@ func skeleton_spawner():
 		spawner.spawn_wave()
 
 func level_progression():
-
+	
 	await get_tree().create_timer(3).timeout
-
-	wave_text.text = ""
-	for i in "Welcome to Mind Magic":
-		wave_text.text = wave_text.text + i
-		await get_tree().create_timer(level_character_type_speed).timeout
-	await get_tree().create_timer(wait_before_next_sentence_time).timeout
-
-	wave_text.text = ""
-	for i in "Complete Objectives to climb the tower":
-		wave_text.text = wave_text.text + i
-		#wave_audio.pitch_scale = randf_range(wave_audio_pitch_min, wave_audio_pitch_max)
-		#wave_audio.play()
-		await get_tree().create_timer(level_character_type_speed).timeout
-		#wave_audio.stop()
-	await get_tree().create_timer(wait_before_next_sentence_time).timeout
 
 	wave_text.text = ""
 	for i in "Level 1: Skeletal Slaughter":
@@ -92,7 +77,7 @@ func level_progression():
 	await get_tree().create_timer(wait_before_next_sentence_time).timeout
 
 	wave_text.text = ""
-	for i in "Survive 5 Waves":
+	for i in "Survive 3 Waves":
 		wave_text.text = wave_text.text + i
 		await get_tree().create_timer(level_character_type_speed).timeout
 	await get_tree().create_timer(wait_before_next_sentence_time).timeout

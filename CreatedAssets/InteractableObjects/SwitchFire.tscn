@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://den4v8uu1veef"]
+
+[ext_resource type="Script" path="res://CreatedAssets/InteractableObjects/SwitchFire.gd" id="1_58uai"]
+[ext_resource type="PackedScene" uid="uid://g5ixdw6dmhoo" path="res://CreatedAssets/InteractableObjects/switchParticleEffects.tscn" id="2_yeu6s"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t13t5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pv8hi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gcm06"]
+seamless = true
+noise = SubResource("FastNoiseLite_pv8hi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpntd"]
+disable_ambient_light = true
+albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
+albedo_texture = SubResource("NoiseTexture2D_gcm06")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ottid"]
+
+[sub_resource type="Animation" id="Animation_m5evl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+}
+
+[sub_resource type="Animation" id="Animation_xx4pw"]
+resource_name = "moving_switch"
+length = 3.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8),
+"transitions": PackedFloat32Array(0.75, 1, 1, 1, 0.75, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), Vector3(0.2, -0.2, 2.08165e-12), Vector3(0.4, 2.08165e-12, 2.08165e-12), Vector3(0.2, 0.2, 2.08165e-12), Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12), Vector3(-0.2, -0.2, 2.08165e-12), Vector3(-0.4, 2.08165e-12, 2.08165e-12), Vector3(-0.2, 0.2, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0kq8o"]
+_data = {
+"RESET": SubResource("Animation_m5evl"),
+"moving_switch": SubResource("Animation_xx4pw")
+}
+
+[node name="switchFire" type="Node3D" groups=["switch"]]
+script = ExtResource("1_58uai")
+
+[node name="target" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+mesh = SubResource("SphereMesh_t13t5")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_kpntd")
+
+[node name="Area3D" type="Area3D" parent="target"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="target/Area3D"]
+transform = Transform3D(1, 0, -6.09732e-31, 0, 1, 0, -6.09732e-31, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_ottid")
+
+[node name="Points" parent="target" instance=ExtResource("2_yeu6s")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0kq8o")
+}
+autoplay = "moving_switch"
+
+[connection signal="body_entered" from="target/Area3D" to="." method="_on_area_3d_body_entered"]

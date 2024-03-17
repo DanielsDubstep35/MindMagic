@@ -1,7 +1,11 @@
 res://Levels
 /Users/danielmendes/Desktop/MindMagic/apks
-/Users/danielmendes/Desktop/MindMagic/keystore
+res://CreatedAssets/InteractableObjects
+res://CreatedAssets/Meshes
 res://CreatedAssets/LevelBuilderAssets
+res://CreatedAssets/Materials
+res://CreatedAssets/skies
+/Users/danielmendes/Desktop/MindMagic/keystore
 res://UsedAssets/Sketchfab
 res://UsedAssets/KayKit
 res://CreatedAssets/Wand/

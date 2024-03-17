@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsa6quetibfao"]
+
+[ext_resource type="Material" uid="uid://cnnk4ootm8uaj" path="res://UsedAssets/MaterialMakerTextures/LavaShader/Lava.tres" id="1_rkp2w"]
+[ext_resource type="Script" path="res://Levels/Lava.gd" id="2_fp8q1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_roi77"]
+size = Vector2(250, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q6klo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_306jg"]
+size = Vector3(250, 4.1, 50)
+
+[node name="Lava" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, -16, 0)
+mesh = SubResource("PlaneMesh_roi77")
+surface_material_override/0 = ExtResource("1_rkp2w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_q6klo")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 4
+script = ExtResource("2_fp8q1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.12238e-23, 0, 1.12238e-23, 1, 2.08165e-12, 2, 2.08165e-12)
+shape = SubResource("BoxShape3D_306jg")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

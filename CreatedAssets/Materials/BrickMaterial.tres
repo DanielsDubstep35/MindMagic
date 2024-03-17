@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbbesgje1crhx"]
+
+[ext_resource type="Texture2D" uid="uid://du8cdkouiit3s" path="res://UsedAssets/OpenClipArt/BrickTexture.jpg" id="1_toksm"]
+
+[resource]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("1_toksm")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+point_size = 19.8

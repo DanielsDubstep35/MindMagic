@@ -20,17 +20,16 @@ var lightning_timer: Timer = $lightning_time
 @export
 var eeg_eye_artifact = "Nothing"
 
-@export
 var eeg_relaxed = false
 
 @export
-var fireSpell: Node3D
+var fireSpell: MeshInstance3D
 
 @export
-var waterSpell: Node3D
+var waterSpell: MeshInstance3D
 
 @export
-var lightningSpell: Node3D
+var lightningSpell: MeshInstance3D
 
 var water_spell_effect = null
 
@@ -52,13 +51,25 @@ var server := UDPServer.new()
 
 var listening = true
 
+signal eeg_relaxed_sig
+
+signal eeg_not_relaxed_sig
+
 func _ready():
 	firerate_timer.one_shot = true
-	firerate_timer.wait_time = 0.75
+	firerate_timer.wait_time = 0.1
 	set_process(false)
 	start_listening()
 
 func _process(delta):
+	
+	fireSpell.get_surface_override_material(0).albedo_color = Color(1.0, 1.0, 1.0, 1 - normalize_data(0.1, 0.0, firerate_timer.time_left))
+	lightningSpell.get_surface_override_material(0).albedo_color = Color(1.0, 1.0, 1.0, 1 - normalize_data(3.0, 0.0, lightning_timer.time_left))
+	
+	if eeg_relaxed:
+		waterSpell.get_surface_override_material(0).emission_enabled = true
+	else:
+		waterSpell.get_surface_override_material(0).emission_enabled = false
 
 	if water_spell_effect != null:
 		water_spell_effect.global_transform = wand_muzzle.global_transform
@@ -81,9 +92,15 @@ func _process(delta):
 					AlphaMetric = str(packet[1])
 					
 					#if packet[1] > 0.85:
+						#eeg_relaxed = true
 						#trigger_waterblast()
+						#eeg_relaxed_sig.emit()
+						#get_tree().call_group("switchWater", "playerRelaxed")
 					#else:
+						#eeg_relaxed = false
 						#untrigger_waterblast()
+						#eeg_not_relaxed_sig.emit()
+						#get_tree().call_group("switchWater", "playerNotRelaxed")
 					
 					#BetaMetric = str(packet[2])
 					#Theta = str(packet[3])
@@ -186,3 +203,7 @@ func untrigger_waterblast():
 		eeg_relaxed = false
 		water_spell_effect.Dissolve_water()
 		water_spell_effect = null
+
+func normalize_data(max_data: float, min_data: float, data: float):
+	var normalized_number = (data - min_data) / (max_data - min_data)
+	return normalized_number

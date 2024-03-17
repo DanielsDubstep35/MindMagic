@@ -1,16 +1,15 @@
-[gd_scene load_steps=52 format=3 uid="uid://d3uv7cy8nv4gy"]
+[gd_scene load_steps=48 format=3 uid="uid://d3uv7cy8nv4gy"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_jjbjs"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="3_s48hq"]
+[ext_resource type="PackedScene" uid="uid://bsa6quetibfao" path="res://CreatedAssets/InteractableObjects/Lava.tscn" id="6_nwj47"]
 [ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://CreatedAssets/InteractableObjects/goal.tscn" id="7_b2d0y"]
-[ext_resource type="Script" path="res://Levels/Lava.gd" id="8_3e2yc"]
 [ext_resource type="FontFile" uid="uid://b6crwdtxra2b7" path="res://Fonts/dpcomic.ttf" id="8_oq3mm"]
 [ext_resource type="AudioStream" uid="uid://vy8r23c0u2xr" path="res://Audio/TypingSound.wav" id="9_dn8wb"]
 [ext_resource type="PackedScene" uid="uid://bvi24ef8is5ha" path="res://CreatedAssets/LevelBuilderAssets/Moving_Platform_updown.tscn" id="9_lf27t"]
 [ext_resource type="MeshLibrary" uid="uid://veaqdnoeraf0" path="res://UsedAssets/KayKit/dungeon_tiles.tres" id="10_3osbs"]
 [ext_resource type="PackedScene" uid="uid://dg2gohdntx5rv" path="res://players/vr_player.tscn" id="10_qo80e"]
 [ext_resource type="PackedScene" uid="uid://duceln8c60sye" path="res://CreatedAssets/InteractableObjects/Switch.tscn" id="10_xm08j"]
-[ext_resource type="Material" uid="uid://cnnk4ootm8uaj" path="res://UsedAssets/MaterialMakerTextures/LavaShader/Lava.tres" id="11_u0jkc"]
 [ext_resource type="PackedScene" uid="uid://b58n4vvs3r5m" path="res://CreatedAssets/LevelBuilderAssets/Moving_Platform_switch.tscn" id="12_vq7f7"]
 [ext_resource type="PackedScene" uid="uid://pojb1xe3ck8h" path="res://CreatedAssets/LevelBuilderAssets/Moving_Platform_LeftRight.tscn" id="13_1orev"]
 [ext_resource type="Script" path="res://CreatedAssets/InteractableObjects/skeleton_spawner.gd" id="14_ox8nj"]
@@ -169,14 +168,6 @@ func _on_wave3_complete():
 radius = 0.75
 height = 1.5
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_roi77"]
-size = Vector2(250, 50)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q6klo"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_306jg"]
-size = Vector3(250, 4.1, 50)
-
 [sub_resource type="GDScript" id="GDScript_r3505"]
 script/source = "extends Node3D
 
@@ -278,11 +269,11 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 3.0
 ssao_intensity = 17.8
 ssil_intensity = 0.0
+glow_enabled = true
 glow_normalized = true
-glow_intensity = 0.0
+glow_intensity = 0.15
 glow_strength = 2.0
-glow_bloom = 0.01
-glow_blend_mode = 1
+glow_blend_mode = 0
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 5.0
@@ -656,7 +647,7 @@ light_volumetric_fog_energy = 0.0
 [node name="Goal" parent="." groups=["Goal"] instance=ExtResource("7_b2d0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.12238e-23, 0, 1.12238e-23, 1, 233, 2.08165e-12, 2.08165e-12)
 activationGoal = 30
-target_scene = "res://Levels/MainMenu.tscn"
+target_scene = "res://Levels/ThirdLevel.tscn"
 
 [node name="MeshInstance3D" parent="Goal" index="0"]
 mesh = SubResource("SphereMesh_44y5e")
@@ -697,23 +688,7 @@ stream = ExtResource("9_dn8wb")
 pitch_scale = 2.0
 autoplay = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, -16, 0)
-mesh = SubResource("PlaneMesh_roi77")
-surface_material_override/0 = ExtResource("11_u0jkc")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_q6klo")
-
-[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
-collision_mask = 4
-script = ExtResource("8_3e2yc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.12238e-23, 0, 1.12238e-23, 1, 2.08165e-12, 2, 2.08165e-12)
-shape = SubResource("BoxShape3D_306jg")
+[node name="MeshInstance3D" parent="." instance=ExtResource("6_nwj47")]
 
 [node name="Moving_Platform" parent="." instance=ExtResource("9_lf27t")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33, -24, 2.08165e-12)
@@ -752,6 +727,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 2.24476e-23, 0, 2.24476e-23, 2, 106, -24,
 script = SubResource("GDScript_cmgo6")
 
 [node name="switch" parent="Moving_Platform_switch" index="2"]
+transform = Transform3D(1, -3.48785e-16, 4.46638e-06, 3.48787e-16, 1, -3.48787e-16, -4.46638e-06, 3.48789e-16, 1, 0, 1.5, 0)
 script = SubResource("GDScript_5jwg7")
 
 [node name="target" parent="Moving_Platform_switch/switch" index="0"]
@@ -769,6 +745,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 2.24476e-23, 0, 2.24476e-23, 2, 114, -24,
 script = SubResource("GDScript_f2j75")
 
 [node name="switch" parent="Moving_Platform_switch2" index="2"]
+transform = Transform3D(1, -3.48785e-16, 4.46638e-06, 3.48787e-16, 1, -3.48787e-16, -4.46638e-06, 3.48789e-16, 1, 0, 1.5, 0)
 script = SubResource("GDScript_ugvd4")
 
 [node name="target" parent="Moving_Platform_switch2/switch" index="0"]
@@ -782,6 +759,7 @@ script = SubResource("GDScript_rhxa6")
 root_node = NodePath("../../Moving_Platform_switch3")
 
 [node name="switch" parent="Moving_Platform_switch3" index="2"]
+transform = Transform3D(1, -3.48785e-16, 4.46638e-06, 3.48787e-16, 1, -3.48787e-16, -4.46638e-06, 3.48789e-16, 1, 0, 1.5, 0)
 script = SubResource("GDScript_2u1yn")
 
 [node name="target" parent="Moving_Platform_switch3/switch" index="0"]
@@ -873,7 +851,6 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(53, 0, 0)
 
-[connection signal="body_entered" from="MeshInstance3D/Area3D" to="MeshInstance3D/Area3D" method="_on_body_entered"]
 [connection signal="platform_deactivated" from="Moving_Platform" to="switch" method="_on_moving_platform_platform_deactivated"]
 [connection signal="trigger" from="switch" to="Moving_Platform" method="_on_switch_trigger"]
 [connection signal="trigger" from="switch" to="Moving_Platform2" method="_on_switch_trigger"]
@@ -897,14 +874,19 @@ metadata/_editor_floor_ = Vector3(53, 0, 0)
 [editable path="Moving_Platform3"]
 [editable path="Moving_Platform4"]
 [editable path="switch"]
+[editable path="switch/target/Points"]
 [editable path="XROrigin3D"]
 [editable path="Moving_Platform_switch"]
 [editable path="Moving_Platform_switch/switch"]
+[editable path="Moving_Platform_switch/switch/target/Points"]
 [editable path="switch2"]
+[editable path="switch2/target/Points"]
 [editable path="Moving_Platform_switch2"]
 [editable path="Moving_Platform_switch2/switch"]
+[editable path="Moving_Platform_switch2/switch/target/Points"]
 [editable path="Moving_Platform_switch3"]
 [editable path="Moving_Platform_switch3/switch"]
+[editable path="Moving_Platform_switch3/switch/target/Points"]
 [editable path="Moving_Platform5"]
 [editable path="Moving_Platform_leftright"]
 [editable path="Moving_Platform_leftright2"]

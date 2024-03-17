@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://duceln8c60sye"]
+[gd_scene load_steps=12 format=3 uid="uid://duceln8c60sye"]
 
 [ext_resource type="Script" path="res://CreatedAssets/InteractableObjects/Switch.gd" id="1_u3anq"]
 [ext_resource type="Texture2D" uid="uid://du8cdkouiit3s" path="res://UsedAssets/OpenClipArt/BrickTexture.jpg" id="2_2kqio"]
+[ext_resource type="PackedScene" uid="uid://g5ixdw6dmhoo" path="res://CreatedAssets/InteractableObjects/switchParticleEffects.tscn" id="2_ij0nk"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_t13t5"]
 
@@ -12,10 +13,22 @@ seamless = true
 noise = SubResource("FastNoiseLite_pv8hi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpntd"]
+disable_ambient_light = true
 albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
 albedo_texture = SubResource("NoiseTexture2D_gcm06")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ottid"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chwdv"]
+albedo_color = Color(0.866667, 0.87451, 0, 1)
+emission_enabled = true
+emission = Color(0.866667, 0.87451, 0, 1)
+emission_energy_multiplier = 20.0
+use_point_size = true
+point_size = 5.0
+
+[sub_resource type="PointMesh" id="PointMesh_i6rmc"]
+material = SubResource("StandardMaterial3D_chwdv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylgs5"]
 shading_mode = 0
@@ -43,6 +56,9 @@ collision_mask = 9
 transform = Transform3D(1, 0, -6.09732e-31, 0, 1, 0, -6.09732e-31, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_ottid")
 
+[node name="Points" parent="target" instance=ExtResource("2_ij0nk")]
+draw_pass_1 = SubResource("PointMesh_i6rmc")
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 collision_layer = 2
@@ -65,3 +81,5 @@ height = 0.1
 material = SubResource("StandardMaterial3D_ylgs5")
 
 [connection signal="body_entered" from="target/Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="target/Points"]

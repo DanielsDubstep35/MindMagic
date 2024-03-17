@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxca1vhbypp33"]
+[gd_scene load_steps=29 format=3 uid="uid://cxca1vhbypp33"]
 
 [ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_ib4ig"]
 [ext_resource type="PackedScene" uid="uid://cpk8due4k67mm" path="res://CreatedAssets/LevelBuilderAssets/level_3d_text.tscn" id="4_jhvrd"]
@@ -300,6 +300,42 @@ specular_mode = 1
 albedo_color = Color(1, 0, 0, 1)
 albedo_texture = SubResource("NoiseTexture2D_btjbb")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vdc82"]
+load_path = "res://.godot/imported/Sky3.jpg-8fdc8c09d12c6b20f4ee12ed893cc87f.s3tc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xyhtq"]
+panorama = SubResource("CompressedTexture2D_vdc82")
+
+[sub_resource type="Sky" id="Sky_hjs41"]
+sky_material = SubResource("PanoramaSkyMaterial_xyhtq")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_s0nbm"]
+background_mode = 2
+background_color = Color(0.866667, 0.513726, 0.219608, 1)
+sky = SubResource("Sky_hjs41")
+sky_custom_fov = 90.0
+ambient_light_source = 2
+ambient_light_color = Color(0.419608, 0.419608, 0.419608, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 2.5
+ssao_intensity = 17.8
+ssil_intensity = 0.0
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.05
+glow_strength = 2.0
+glow_bloom = 0.01
+glow_blend_mode = 0
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 5.0
+fog_density = 0.025
+fog_height = -6.0
+fog_height_density = -0.5
+volumetric_fog_emission = Color(0.937255, 0, 0.854902, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.1
+
 [sub_resource type="SphereMesh" id="SphereMesh_wgvyv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly1pn"]
@@ -342,7 +378,7 @@ text = "Enter a portal to Select an option!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 script = SubResource("GDScript_yftak")
 activationCount = 1
-target_scene = "res://Levels/base_level.tscn"
+target_scene = "res://Levels/BeginGame.tscn"
 
 [node name="MeshInstance3D" parent="StartGame" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_wxqpx")
@@ -395,6 +431,9 @@ shadow_enabled = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("7_jiftr")]
 current_scene = "res://Levels/MainMenu.tscn"
+
+[node name="XRCamera3D" parent="XROrigin3D" index="0"]
+environment = SubResource("Environment_s0nbm")
 
 [node name="StartXR" parent="." instance=ExtResource("8_5o14n")]
 
