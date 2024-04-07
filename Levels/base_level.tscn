@@ -345,8 +345,6 @@ wait_time = 5.0
 [node name="WaveText" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
 billboard = 1
-text = "
-"
 font = ExtResource("8_x2hla")
 font_size = 500
 outline_size = 80

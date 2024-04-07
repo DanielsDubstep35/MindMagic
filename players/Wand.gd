@@ -36,7 +36,7 @@ var water_spell_effect = null
 # Spell Variables
 var spell_selected = 0
 
-var AlphaMetric = "0"
+var Emotion = ""
 #var BetaMetric = "0"
 #var Theta = "0"
 #var Delta = "0"
@@ -89,18 +89,17 @@ func _process(delta):
 				"PYTHON":
 					eeg_eye_artifact = str(packet[0])
 					
-					AlphaMetric = str(packet[1])
+					Emotion = str(packet[1])
 					
-					if packet[1] > 0.30:
-						eeg_relaxed = true
+					if str(packet[1]) == "Relaxed":
 						trigger_waterblast()
 						eeg_relaxed_sig.emit()
 						get_tree().call_group("switchWater", "playerRelaxed")
 					else:
-						eeg_relaxed = false
 						untrigger_waterblast()
 						eeg_not_relaxed_sig.emit()
 						get_tree().call_group("switchWater", "playerNotRelaxed")
+						print(str(packet[1]))
 					
 					#BetaMetric = str(packet[2])
 					#Theta = str(packet[3])
@@ -124,23 +123,22 @@ func _process(delta):
 			shoot_fireball()
 		#print("BY BUTTON IS: " + str(_controller.get_input("by_button")))
 		
-		#if _controller.get_input("by_button") && lightning_timer.is_stopped():
-			##print("LIGHTNINGBLAST!")
-			#shoot_lightningbolt()
-			#
-		#if _controller.get_input("secondary_touch") && !eeg_relaxed:
-			#eeg_relaxed = true
-			#trigger_waterblast()
-			#eeg_relaxed_sig.emit()
-			#get_tree().call_group("switchWater", "playerRelaxed")
-		#else:
-			#eeg_relaxed = false
+		if _controller.get_input("by_button") && lightning_timer.is_stopped():
+			#print("LIGHTNINGBLAST!")
+			shoot_lightningbolt()
+			
+		if _controller.get_input("secondary_touch") && eeg_relaxed == false:
+			trigger_waterblast()
+			eeg_relaxed_sig.emit()
+			get_tree().call_group("switchWater", "playerRelaxed")
+		else:
 			#untrigger_waterblast()
 			#eeg_not_relaxed_sig.emit()
 			#get_tree().call_group("switchWater", "playerNotRelaxed")
+			pass
 			
-		if eeg_eye_artifact == "Blink" && lightning_timer.is_stopped():
-			shoot_lightningbolt()
+		#if eeg_eye_artifact == "Blink" && lightning_timer.is_stopped():
+			#shoot_lightningbolt()
 			
 	# if Blink, shoot something
 	#if eeg_eye_artifact == "Blink" && spell_boolean:
@@ -202,16 +200,18 @@ func shoot_lightningbolt():
 	lightning_timer.start(3)
 
 func trigger_waterblast():
-	if !eeg_relaxed:
+	if eeg_relaxed == false:
 		eeg_relaxed = true
 		var waterblast_load = preload("res://CreatedAssets/Wand/waterblast.tscn")
 		water_spell_effect = waterblast_load.instantiate()
 		get_tree().root.add_child(water_spell_effect)
 		water_spell_effect.global_transform = wand_muzzle.global_transform
 		water_spell_effect.Water_spawn()
+		await get_tree().create_timer(2).timeout
+		untrigger_waterblast()
 
 func untrigger_waterblast():
-	if eeg_relaxed:
+	if eeg_relaxed == true:
 		eeg_relaxed = false
 		water_spell_effect.Dissolve_water()
 		water_spell_effect = null

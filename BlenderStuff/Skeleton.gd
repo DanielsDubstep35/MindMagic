@@ -17,7 +17,7 @@ var root_node_path : NodePath
 
 var ATTACK_RANGE = 2.0
 var SEEK_RANGE = 500.0
-var SPEED = 10.0
+var SPEED = 5.0
 var ACCELERATION = 4.0
 var gravity = -(ProjectSettings.get_setting("physics/3d/default_gravity"))
 

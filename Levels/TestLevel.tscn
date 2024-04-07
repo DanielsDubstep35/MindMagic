@@ -278,6 +278,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7yskg")
 modulate = Color(0.113725, 0.619608, 0.537255, 1)
 text = "Targets Destroyed"
 
+[node name="FlowerAmount" parent="Goal" index="3"]
+visible = false
+modulate = Color(0.113725, 0.619608, 0.537255, 1)
+text = "
+0 / 3"
+
 [node name="target2" parent="." instance=ExtResource("17_hli4s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -7)
 

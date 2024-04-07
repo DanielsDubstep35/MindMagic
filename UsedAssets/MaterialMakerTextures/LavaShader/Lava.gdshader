@@ -522,7 +522,7 @@ vec3 process_normal_directx(vec3 v, float multiplier) {
 const vec4 p_o19115_albedo_color = vec4(1.000000000, 1.000000000, 1.000000000, 1.000000000);
 const float p_o19115_metallic = 0.000000000;
 const float p_o19115_roughness = 1.000000000;
-const float p_o19115_emission_energy = 3.000000000;
+const float p_o19115_emission_energy = 50.000000000;
 const float p_o19115_normal = 1.000000000;
 const float p_o19115_ao = 1.000000000;
 const float p_o19115_depth_scale = 1.000000000;
