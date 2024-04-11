@@ -187,7 +187,7 @@ volumetric_fog_emission = Color(0.937255, 0, 0.854902, 1)
 adjustment_enabled = true
 adjustment_contrast = 1.1
 
-[node name="WorldRoot" type="Node3D"]
+[node name="Base" type="Node3D"]
 script = ExtResource("1_ia31o")
 
 [node name="GridMap" type="GridMap" parent="."]

@@ -43,8 +43,8 @@ var particle : GPUParticles3D
 signal incrementGoalProgress()
 
 func _ready():
-	root_node = get_tree().get_root().get_node(\"Staging\").get_node(\"Scene\").get_node(\"BaseLevel\")
-	player = get_tree().get_root().get_node(\"Staging\").get_node(\"Scene\").get_node(\"BaseLevel\").get_node(\"XROrigin3D\")
+	root_node = get_tree().root.find_child(\"Base\", true, false)
+	player = root_node.get_node(\"XROrigin3D\")
 	state_machine = anim_tree[\"parameters/playback\"]
 	state_machine.start(\"Idle\", true)
 

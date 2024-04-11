@@ -132,7 +132,7 @@ adjustment_brightness = 1.1
 adjustment_contrast = 1.4
 adjustment_saturation = 1.5
 
-[node name="BaseLevel" type="Node3D"]
+[node name="Base" type="Node3D"]
 script = ExtResource("1_3tfc0")
 
 [node name="LevelController" type="Node3D" parent="." groups=["Objective"]]

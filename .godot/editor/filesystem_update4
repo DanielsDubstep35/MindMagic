@@ -15,7 +15,8 @@ res://Particles/blood_particle_material.tres
 res://CreatedAssets/InteractableObjects/base_levelNavReg3d.tres
 res://CreatedAssets/skies/EvilSky.tres
 res://CreatedAssets/InteractableObjects/ThirdLevelEnvironment.tres
-res://players/Wand.gd
+res://addons/godot-xr-tools/staging/loading_screen/loading_screen_shader.tres
+res://addons/godot-xr-tools/misc/hold_button_visualshader.tres
 res://Levels/TestLevel.tscn
 res://Levels/MainMenu.tscn
 res://Levels/BeginGame.tscn
@@ -35,3 +36,5 @@ res://CreatedAssets/Wand/Wand.tscn
 res://CreatedAssets/Wand/fireball.tscn
 res://CreatedAssets/Wand/lightningbolt.tscn
 res://CreatedAssets/Wand/waterblast.tscn
+res://addons/godot-xr-tools/staging/scene_base.tscn
+res://addons/godot-xr-tools/staging/staging.tscn
