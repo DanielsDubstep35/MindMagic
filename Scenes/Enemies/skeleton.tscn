@@ -653,7 +653,7 @@ states/Run/node = SubResource("AnimationNodeAnimation_42bs6")
 states/Run/position = Vector2(524.65, 99.9652)
 states/Start/position = Vector2(239, 100.05)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qgl0g"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_442pi"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_hyq2r"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_4mrsi"), "Attack", "Run", SubResource("AnimationNodeStateMachineTransition_sonib"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_0vjhd"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_mo7ah")]
-graph_offset = Vector2(-42.4506, 55.1625)
+graph_offset = Vector2(55.7767, 55.1625)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5pkb7"]
 radius = 1.5

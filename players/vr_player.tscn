@@ -179,7 +179,7 @@ jump_button_action = "ax_button"
 
 [node name="PlayerBody" parent="." instance=ExtResource("3_brihk")]
 collision_layer = 524292
-collision_mask = 19
+collision_mask = 83
 player_radius = 0.5
 player_height_min = 1.5
 physics = SubResource("Resource_l67hl")

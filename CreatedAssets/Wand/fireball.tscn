@@ -120,7 +120,6 @@ collision_mask = 3
 gravity_scale = 1.66533e-16
 script = ExtResource("1_e223h")
 Fire_Speed = 20
-bullet_penetration = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

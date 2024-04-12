@@ -4,7 +4,7 @@ extends RigidBody3D
 var Fire_Speed = 2
 
 @export
-var bullet_penetration : bool = false
+var bullet_penetration : bool = true
 
 @export
 var explosiveness : bool = false
@@ -24,8 +24,14 @@ func _ready():
 
 func Fire_shot():
 	linear_velocity = -(transform.basis.z * Fire_Speed * 10)
-	
+
+func FireAtPlayer(playerPosition):
+	var direction = playerPosition - global_transform.origin
+	direction = direction.normalized()
+	linear_velocity = direction * Fire_Speed * 1
+
 func _on_spell_area_body_entered(body):
+	
 	if bullet_penetration == false:
 		queue_free()
 	# if (body.is_in_group("enemies")):

@@ -1,0 +1,197 @@
+[gd_scene load_steps=24 format=3 uid="uid://ymyls7mleco"]
+
+[ext_resource type="Texture2D" uid="uid://cbfcp3l1cvm5r" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion00.png" id="2_k41hu"]
+[ext_resource type="Texture2D" uid="uid://bq3alwgjc7n8r" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion01.png" id="3_afmrt"]
+[ext_resource type="Texture2D" uid="uid://dappd7f418p0g" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion02.png" id="4_losb6"]
+[ext_resource type="Texture2D" uid="uid://bwcqgjc3ehfu7" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion03.png" id="5_5m176"]
+[ext_resource type="Texture2D" uid="uid://duyie8sxk3mlr" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion04.png" id="6_5d8n6"]
+[ext_resource type="Texture2D" uid="uid://du8ooxxy5ixth" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion05.png" id="7_4leuu"]
+[ext_resource type="Texture2D" uid="uid://c7edcby0as20q" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion06.png" id="8_omsui"]
+[ext_resource type="Texture2D" uid="uid://dg0jre5mke5cn" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion07.png" id="9_nuxvh"]
+[ext_resource type="Texture2D" uid="uid://bpbgn1na17jxh" path="res://UsedAssets/kenney_smoke-particles/PNG/Explosion/explosion08.png" id="10_p503j"]
+
+[sub_resource type="GDScript" id="GDScript_r4xel"]
+script/source = "extends RigidBody3D
+
+@export
+var Fire_Speed = 2
+
+@export
+var bullet_penetration : bool = true
+
+@export
+var explosiveness : bool = false
+
+@export
+var homing_bullets : bool = false
+
+#@onready
+#var BloodParticle : GPUParticles3D = $BloodParticle
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	#set_as_top_level(true)
+	await get_tree().create_timer(2).timeout
+	queue_free()
+	pass
+
+func Fire_shot():
+	linear_velocity = -(transform.basis.z * Fire_Speed * 10)
+
+func FireAtPlayer(playerPosition):
+	var direction = playerPosition - global_transform.origin
+	direction = direction.normalized()
+	linear_velocity = direction * Fire_Speed * 1
+
+func _on_spell_area_body_entered(body):
+	
+	print(str(body.get_groups()) + \"From hitting...\" + str(body.name))
+	
+	if body.is_in_group(\"Player\") || body.is_in_group(\"player_body\"):
+		print(\"PLAYER FOUND:\" + str(body.name))
+		get_tree().call_group(\"Player\", \"playerDie\")
+	
+	#if bullet_penetration == false:
+		#queue_free()
+	# if (body.is_in_group(\"enemies\")):
+		#BloodParticle.emitting = true
+		#print(\"This enemy just died\")
+		#body.queue_free()
+"
+
+[sub_resource type="SphereMesh" id="SphereMesh_g0i6f"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_hjyyn"]
+frames = 9
+speed_scale = 25.0
+frame_0/texture = ExtResource("2_k41hu")
+frame_1/texture = ExtResource("3_afmrt")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_losb6")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_5m176")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_5d8n6")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_4leuu")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_omsui")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("9_nuxvh")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("10_p503j")
+frame_8/duration = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2t5u"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 1
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = SubResource("AnimatedTexture_hjyyn")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0gcom"]
+radius = 0.08
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f5qsl"]
+radius = 0.16
+
+[sub_resource type="Curve" id="Curve_5w6nt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0977778, 1), 0.0, 0.0, 0, 0, Vector2(0.502222, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xu3ia"]
+curve = SubResource("Curve_5w6nt")
+
+[sub_resource type="Gradient" id="Gradient_gn2g3"]
+offsets = PackedFloat32Array(0, 0.287425, 0.670659, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0, 1, 1, 0.541176, 0.14902, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h2e7o"]
+gradient = SubResource("Gradient_gn2g3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etmd4"]
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(1, 2.08165e-12, 2.08165e-12)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+gravity = Vector3(2.08165e-12, 5, 2.08165e-12)
+color_ramp = SubResource("GradientTexture1D_h2e7o")
+alpha_curve = SubResource("CurveTexture_xu3ia")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ib7s8"]
+frames = 9
+speed_scale = 5.0
+frame_0/texture = ExtResource("2_k41hu")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("3_afmrt")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("4_losb6")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("5_5m176")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("6_5d8n6")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("7_4leuu")
+frame_5/duration = 0.2
+frame_6/texture = ExtResource("8_omsui")
+frame_6/duration = 0.2
+frame_7/texture = ExtResource("9_nuxvh")
+frame_7/duration = 0.2
+frame_8/texture = ExtResource("10_p503j")
+frame_8/duration = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrq2p"]
+blend_mode = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = SubResource("AnimatedTexture_ib7s8")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+point_size = 50.0
+proximity_fade_distance = 482.88
+
+[sub_resource type="QuadMesh" id="QuadMesh_nevie"]
+material = SubResource("StandardMaterial3D_mrq2p")
+size = Vector2(0.5, 0.5)
+
+[node name="Fireball" type="RigidBody3D" groups=["WizardFireball"]]
+collision_layer = 64
+collision_mask = 4
+gravity_scale = 1.66533e-16
+script = SubResource("GDScript_r4xel")
+Fire_Speed = 20
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_g0i6f")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2t5u")
+
+[node name="FireballCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_0gcom")
+
+[node name="SpellArea" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpellArea"]
+shape = SubResource("SphereShape3D_f5qsl")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_etmd4")
+draw_pass_1 = SubResource("QuadMesh_nevie")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.501961, 0, 1)
+
+[connection signal="body_entered" from="SpellArea" to="." method="_on_spell_area_body_entered"]

@@ -1,0 +1,402 @@
+[gd_scene load_steps=30 format=3 uid="uid://brdccirfwtfo8"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_mnpla"]
+[ext_resource type="PackedScene" uid="uid://cpk8due4k67mm" path="res://CreatedAssets/LevelBuilderAssets/level_3d_text.tscn" id="2_6jiww"]
+[ext_resource type="PackedScene" uid="uid://cfsaqg2yi7ufe" path="res://CreatedAssets/InteractableObjects/goal.tscn" id="3_q1ny0"]
+[ext_resource type="PackedScene" uid="uid://dg2gohdntx5rv" path="res://players/vr_player.tscn" id="4_7xgqs"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="5_74xkv"]
+[ext_resource type="MeshLibrary" uid="uid://veaqdnoeraf0" path="res://UsedAssets/KayKit/dungeon_tiles.tres" id="6_ye5g3"]
+[ext_resource type="Texture2D" uid="uid://cqjcdac1vh2yb" path="res://Explanation.jpg" id="7_sbf7j"]
+
+[sub_resource type="GDScript" id="GDScript_x33gm"]
+script/source = "extends Area3D
+
+@export
+var activationGoal = 1
+
+@export
+var activationCount = 1
+
+@onready
+var progressGrown = $FlowersGrown
+
+@onready
+var progressAmount = $FlowerAmount
+
+@export_file(\"*.tscn\")
+var target_scene : String
+
+@export
+var particles : GPUParticles3D
+
+@export
+var goalAudio : AudioStreamPlayer3D
+
+#@onready
+#var Activated_Bridge = $\"../ActivatedBridge\"
+
+@onready
+var goal = $\".\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	goal.monitorable = false
+	goal.monitoring = false
+	#progressGrown.modulate = Color.RED
+	#progressAmount.modulate = Color.RED
+	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if activationCount < 2:
+		Progress()
+	progressAmount.text = str(activationCount) + \" / \" + str(activationGoal)
+
+func _on_body_entered(body):
+	var scene_base : XRToolsSceneBase = XRTools.find_xr_ancestor(self, \"*\", \"XRToolsSceneBase\")
+	if not scene_base:
+		print(\"No scene_base.gd script Found\")
+		return
+		#
+	## Start loading the target scene
+	scene_base.load_scene(target_scene)
+
+	#get_tree().quit()
+
+	#get_tree().change_scene_to_file(\"res://Levels/base_level.tscn\")
+
+func AddProgress():
+	activationCount += 1
+
+func Progress():
+	AddProgress()
+	if activationCount >= activationGoal:
+		goalOpen()
+		#Activated_Bridge.hide()
+		#Activated_Bridge.show()
+
+func goalOpen():
+	goal.monitorable = true
+	goal.monitoring = true
+	#progressGrown.modulate = Color.GREEN
+	#progressAmount.modulate = Color.GREEN
+	particles.emitting = true
+	#goalAudio.playing = true
+
+func _on_target_2_increment_goal_progress():
+	Progress()
+"
+
+[sub_resource type="Gradient" id="Gradient_quldq"]
+colors = PackedColorArray(0.856067, 0.856067, 0.856067, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cgeek"]
+frequency = 0.0426
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_btjbb"]
+seamless = true
+color_ramp = SubResource("Gradient_quldq")
+noise = SubResource("FastNoiseLite_cgeek")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pt76h"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_btjbb")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vdc82"]
+load_path = "res://.godot/imported/Sky3.jpg-8fdc8c09d12c6b20f4ee12ed893cc87f.s3tc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xyhtq"]
+panorama = SubResource("CompressedTexture2D_vdc82")
+
+[sub_resource type="Sky" id="Sky_hjs41"]
+sky_material = SubResource("PanoramaSkyMaterial_xyhtq")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_s0nbm"]
+background_mode = 2
+background_color = Color(0.866667, 0.513726, 0.219608, 1)
+sky = SubResource("Sky_hjs41")
+sky_custom_fov = 90.0
+ambient_light_source = 2
+ambient_light_color = Color(0.419608, 0.419608, 0.419608, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 2.5
+ssao_intensity = 17.8
+ssil_intensity = 0.0
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.05
+glow_strength = 2.0
+glow_bloom = 0.01
+glow_blend_mode = 0
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 5.0
+fog_density = 0.025
+fog_height = -6.0
+fog_height_density = -0.5
+volumetric_fog_emission = Color(0.937255, 0, 0.854902, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_wgvyv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly1pn"]
+cull_mode = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 1, 1, 1)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 20.0
+grow = true
+grow_amount = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g77a"]
+next_pass = SubResource("StandardMaterial3D_ly1pn")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 1, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.0235294, 0, 1)
+emission_energy_multiplier = 25.0
+
+[sub_resource type="Gradient" id="Gradient_22am4"]
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.623529, 0, 1, 0.947557, 0.810322, 1.20262e-06, 1, 0.180392, 0.827451, 0.368627, 1, 0.145307, 0.438789, 0.967431, 1, 0.740524, 0.00131899, 0.863871, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qy10q"]
+frequency = 0.0108
+offset = Vector3(2.08167e-14, 2.08167e-14, 2.08167e-14)
+fractal_type = 2
+fractal_octaves = 1
+fractal_lacunarity = 1.0
+domain_warp_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0qt16"]
+width = 1
+height = 128
+seamless = true
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_22am4")
+noise = SubResource("FastNoiseLite_qy10q")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1c1t1"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_texture = SubResource("NoiseTexture2D_0qt16")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
+uv1_triplanar = true
+
+[sub_resource type="Animation" id="Animation_wieb6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D:material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D:material:uv1_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jkx3t"]
+resource_name = "idle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D:material:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 5, 7.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.1, 2.5, 0.1, 2.5, 0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D:material:uv1_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.08165e-12, 10, 2.08165e-12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ajyw7"]
+_data = {
+"RESET": SubResource("Animation_wieb6"),
+"idle": SubResource("Animation_jkx3t")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7873m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llcbm"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("7_sbf7j")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lralc"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Base" type="Node3D"]
+script = ExtResource("1_mnpla")
+
+[node name="LevelText" parent="." instance=ExtResource("2_6jiww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+
+[node name="Label3D" parent="LevelText" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0488, 2.08165e-12)
+modulate = Color(0.352941, 0.419608, 0.905882, 1)
+text = "Mind Magic"
+
+[node name="Description" parent="LevelText" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7488, 0)
+text = "Thanks For Playing!"
+
+[node name="Goal" parent="." instance=ExtResource("3_q1ny0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+script = SubResource("GDScript_x33gm")
+activationCount = 1
+target_scene = "res://Levels/MainMenu.tscn"
+
+[node name="MeshInstance3D" parent="Goal" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pt76h")
+
+[node name="FlowersGrown" parent="Goal" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+text = "Back to Main Menu"
+
+[node name="FlowerAmount" parent="Goal" index="3"]
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0.823529, 0.823529, 0.823529, 1)
+light_indirect_energy = 0.0
+shadow_enabled = true
+
+[node name="XROrigin3D" parent="." instance=ExtResource("4_7xgqs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+current_scene = "res://Levels/MainMenu.tscn"
+
+[node name="XRCamera3D" parent="XROrigin3D" index="0"]
+environment = SubResource("Environment_s0nbm")
+
+[node name="StartXR" parent="." instance=ExtResource("5_74xkv")]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
+mesh_library = ExtResource("6_ye5g3")
+cell_size = Vector3(4, 4, 4)
+data = {
+"cells": PackedInt32Array(-4, 65535, 1441905, -4, 0, 1441905, -4, 1, 1441905, -4, 2, 1441905, -4, 3, 1441905, -3, 65535, 1441905, -3, 0, 1441905, -3, 1, 1441905, -3, 2, 1441905, -3, 3, 1441905, -2, 65535, 1441905, -2, 0, 1441905, -2, 1, 1441905, -2, 2, 1441905, -2, 3, 1441905, -1, 65535, 1441905, -1, 0, 1441905, -1, 1, 1441905, -1, 2, 1441905, -1, 3, 1441905, -65536, 65535, 1441905, -65536, 0, 1441905, -65536, 1, 1441905, -65536, 2, 1441905, -65536, 3, 1441905, -4, 65534, 113, -3, 65534, 113, -2, 65534, 113, -1, 65534, 113, -65536, 65534, 113, -65533, 65534, 655444, -65533, 65535, 655444, -65533, 0, 655444, -65533, 1, 655444, -65533, 2, 655444, -65533, 3, 655444, -65532, 65534, 655444, -65532, 65535, 655444, -65532, 0, 655444, -65532, 1, 655444, -65532, 2, 655444, -65532, 3, 655444, -65531, 65534, 655444, -65531, 65535, 655444, -65531, 0, 655444, -65531, 1, 655444, -65531, 2, 655444, -65531, 3, 655444, -65530, 65534, 655444, -65530, 65535, 655444, -65530, 0, 655444, -65530, 1, 655444, -65530, 2, 655444, -65530, 3, 655444, -65529, 65534, 655444, -65529, 65535, 655444, -65529, 0, 655444, -65529, 1, 655444, -65529, 2, 655444, -65529, 3, 655444, -65528, 65534, 655444, -65528, 65535, 655444, -65528, 0, 655444, -65528, 1, 655444, -65528, 2, 655444, -65528, 3, 655444, -65527, 65534, 655444, -65527, 65535, 655444, -65527, 0, 655444, -65527, 1, 655444, -65527, 2, 655444, -65527, 3, 655444, 131081, 65534, 1179732, 131080, 65534, 1179732, 131075, 65534, 1179732, 131075, 65535, 1179732, 131075, 0, 1179732, 131075, 1, 1179732, 131075, 2, 1179732, 131075, 3, 1179732, 131076, 65534, 1179732, 131076, 65535, 1179732, 131076, 0, 1179732, 131076, 1, 1179732, 131076, 2, 1179732, 131076, 3, 1179732, 131077, 65534, 1179732, 131077, 65535, 1179732, 131077, 0, 1179732, 131077, 1, 1179732, 131077, 2, 1179732, 131077, 3, 1179732, 131078, 65534, 1179732, 131078, 65535, 1179732, 131078, 0, 1179732, 131078, 1, 1179732, 131078, 2, 1179732, 131078, 3, 1179732, 131079, 65534, 1179732, 131079, 65535, 1179732, 131079, 0, 1179732, 131079, 1, 1179732, 131079, 2, 1179732, 131079, 3, 1179732, 131080, 65535, 1179732, 131080, 0, 1179732, 131080, 1, 1179732, 131080, 2, 1179732, 131080, 3, 1179732, 131081, 65535, 1179732, 131081, 0, 1179732, 131081, 1, 1179732, 131081, 2, 1179732, 131081, 3, 1179732, -13, 65534, 655444, -13, 65535, 655444, -13, 0, 655444, -13, 1, 655444, -13, 2, 655444, -13, 3, 655444, -12, 65534, 655444, -12, 65535, 655444, -12, 0, 655444, -12, 1, 655444, -12, 2, 655444, -12, 3, 655444, -11, 65534, 655444, -11, 65535, 655444, -11, 0, 655444, -11, 1, 655444, -11, 2, 655444, -11, 3, 655444, -10, 65534, 655444, -10, 65535, 655444, -10, 0, 655444, -10, 1, 655444, -10, 2, 655444, -10, 3, 655444, -9, 65534, 655444, -9, 65535, 655444, -9, 0, 655444, -9, 1, 655444, -9, 2, 655444, -9, 3, 655444, -8, 65534, 655444, -8, 65535, 655444, -8, 0, 655444, -8, 1, 655444, -8, 2, 655444, -8, 3, 655444, -7, 65534, 655444, -7, 65535, 655444, -7, 0, 655444, -7, 1, 655444, -7, 2, 655444, -7, 3, 655444, 196595, 65534, 1179732, 196595, 65535, 1179732, 196595, 0, 1179732, 196595, 1, 1179732, 196595, 2, 1179732, 196595, 3, 1179732, 196596, 65534, 1179732, 196596, 65535, 1179732, 196596, 0, 1179732, 196596, 1, 1179732, 196596, 2, 1179732, 196596, 3, 1179732, 196597, 65534, 1179732, 196597, 65535, 1179732, 196597, 0, 1179732, 196597, 1, 1179732, 196597, 2, 1179732, 196597, 3, 1179732, 196598, 65534, 1179732, 196598, 65535, 1179732, 196598, 0, 1179732, 196598, 1, 1179732, 196598, 2, 1179732, 196598, 3, 1179732, 196599, 65534, 1179732, 196599, 65535, 1179732, 196599, 0, 1179732, 196599, 1, 1179732, 196599, 2, 1179732, 196599, 3, 1179732, 196600, 65534, 1179732, 196600, 65535, 1179732, 196600, 0, 1179732, 196600, 1, 1179732, 196600, 2, 1179732, 196600, 3, 1179732, 196601, 65534, 1179732, 196601, 65535, 1179732, 196601, 0, 1179732, 196601, 1, 1179732, 196601, 2, 1179732, 196601, 3, 1179732)
+}
+metadata/_editor_floor_ = Vector3(0, 2, 0)
+
+[node name="GridMap2" type="GridMap" parent="."]
+mesh_library = ExtResource("6_ye5g3")
+cell_size = Vector3(4, 4, 4)
+data = {
+"cells": PackedInt32Array(-2, 65535, 150, -65536, 65532, 188, -1, 65532, 184, -65535, 65532, 174, -2, 65532, 174, -3, 65533, 1048775, -3, 65534, 1441966, -3, 65535, 1441966, -3, 0, 1048775, -2, 1, 655534, -1, 1, 655534, -65536, 1, 655534, -65535, 1, 655534, -65534, 65533, 1048775, -65534, 65534, 1441992, -65534, 65535, 1441992, -65534, 0, 1441991, -65534, 1, 1441972, -3, 1, 655540, -3, 65532, 1048756, -65534, 65532, 180, 2, 65534, 1441992, 2, 65535, 1441992, 65534, 65532, 174, 65535, 65532, 174, 0, 65532, 174, 1, 65532, 174, 2, 65532, 180, 2, 65533, 1441966, 2, 0, 1441966, 65534, 1, 655534, 65535, 1, 655534, 0, 1, 655534, 1, 1, 655534, 65533, 65533, 1048750, 65533, 65534, 1048750, 65533, 65535, 1048750, 65533, 0, 1048750, 65533, 65532, 1048756, 65533, 1, 655540, 2, 1, 1441972, 131069, 65532, 1310833, 131069, 65533, 1310833, 131069, 65534, 1310833, 131069, 65535, 1310833, 131069, 0, 1310833, 131069, 1, 1310833, 131070, 65532, 1310833, 131070, 65533, 1310833, 131070, 65534, 1310833, 131070, 65535, 1310833, 131070, 0, 1310833, 131070, 1, 1310833, 131071, 65532, 1310833, 131071, 65533, 1310833, 131071, 65534, 1310833, 131071, 65535, 1310833, 131071, 0, 1310833, 131071, 1, 1310833, 65536, 65532, 1310833, 65536, 65533, 1310833, 65536, 65534, 1310833, 65536, 65535, 1310833, 65536, 0, 1310833, 65536, 1, 1310833, 65537, 65532, 1310833, 65537, 65533, 1310833, 65537, 65534, 1310833, 65537, 65535, 1310833, 65537, 0, 1310833, 65537, 1, 1310833, 65538, 65532, 1310833, 65538, 65533, 1310833, 65538, 65534, 1310833, 65538, 65535, 1310833, 65538, 0, 1310833, 65538, 1, 1310833)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMap3" type="GridMap" parent="."]
+mesh_library = ExtResource("6_ye5g3")
+cell_size = Vector3(2, 1, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(-131069, 2, 45, -65541, 2, 655442, -65541, 1, 655438, -65540, 2, 655439, -65540, 1, 655437, -65540, 65534, 655432, -65540, 65535, 655432, -65539, 65534, 72, -65539, 65535, 72, -131068, 2, 1441837, -131068, 1, 1441836, -131068, 0, 1441835, -131071, 1, 1441843, -65539, 0, 1441848, -65540, 65533, 1441847, -65539, 65533, 1441851, -65540, 65532, 1441852, -65539, 2, 1441858, -65538, 2, 1441858, -131072, 2, 1441860, -65537, 0, 1441861)
+}
+metadata/_editor_floor_ = Vector3(0, 7, 0)
+
+[node name="GridMap4" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
+mesh_library = ExtResource("6_ye5g3")
+cell_center_x = false
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(-2, 65533, 189, 6, 7, 655540, 20, 7, 1441972, 20, 65532, 180, 6, 65532, 1048756, 131078, 7, 655540, 131092, 7, 1441972, 131092, 65532, 180, 131078, 65532, 1048756, 8, 65532, 198, 10, 65532, 198, 12, 65532, 198, 14, 65532, 198, 16, 65532, 198, 18, 65532, 198, 20, 65534, 1441990, 20, 0, 1441990, 20, 5, 1441990, 20, 3, 1441990, 6, 65534, 1441990, 6, 0, 1441990, 6, 5, 1441990, 6, 3, 1441990, 18, 7, 655558, 16, 7, 655558, 8, 7, 655558, 10, 7, 655558, 12, 7, 655558, 14, 7, 655558, 131084, 65532, 655558, 131086, 65532, 655558, 131088, 65532, 655558, 131090, 65532, 655558, 131080, 7, 655558, 131082, 7, 655558, 131084, 7, 655558, 131086, 7, 655558, 131088, 7, 655558, 131090, 7, 655558, 131078, 65534, 1048774, 131078, 0, 1048774, 131078, 3, 1048774, 131078, 5, 1048774, 131092, 65534, 1048774, 131092, 0, 1048774, 131092, 3, 1048774, 131092, 5, 1048774, 131082, 65532, 655558, 131080, 65532, 655558, 196582, 65532, 1048756, 196582, 65534, 1048774, 196582, 0, 1048774, 196582, 3, 1048774, 196582, 5, 1048774, 196582, 7, 655540, 196584, 65532, 655558, 196584, 7, 655558, 196586, 65532, 655558, 196586, 7, 655558, 196588, 65532, 655558, 196588, 7, 655558, 196590, 65532, 655558, 196590, 7, 655558, 196592, 65532, 655558, 196594, 65532, 655558, 196596, 65532, 180, 196596, 65534, 1048774, 196596, 0, 1048774, 196596, 3, 1048774, 196596, 5, 1048774, 196596, 7, 1441972, 196592, 7, 655558, 196594, 7, 655558, 65510, 65532, 1048756, 65510, 65534, 1048774, 65510, 0, 1048774, 65510, 3, 1048774, 65510, 5, 1048774, 65510, 7, 655540, 65512, 65532, 655558, 65512, 7, 655558, 65514, 65532, 655558, 65514, 7, 655558, 65516, 65532, 655558, 65516, 7, 655558, 65518, 65532, 655558, 65518, 7, 655558, 65520, 65532, 655558, 65520, 7, 655558, 65522, 65532, 655558, 65522, 7, 655558, 65524, 65532, 180, 65524, 65534, 1048774, 65524, 0, 1048774, 65524, 3, 1048774, 65524, 5, 1048774, 65524, 7, 1441972)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 5, -6)
+light_color = Color(1, 0.768627, 0.458824, 1)
+light_energy = 25.0
+spot_range = 20.0
+spot_angle = 67.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.94334e-09, 0, 9.48348e-09, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_wgvyv")
+surface_material_override/0 = SubResource("StandardMaterial3D_7g77a")
+
+[node name="LevelBuilding" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 4, -5)
+size = Vector3(1, 9, 2)
+material = SubResource("StandardMaterial3D_1c1t1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 4, -5)
+size = Vector3(1, 9, 2)
+material = SubResource("StandardMaterial3D_1c1t1")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 4, -5)
+size = Vector3(1, 9, 2)
+material = SubResource("StandardMaterial3D_1c1t1")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -5)
+size = Vector3(1, 9, 2)
+material = SubResource("StandardMaterial3D_1c1t1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelBuilding"]
+libraries = {
+"": SubResource("AnimationLibrary_ajyw7")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelBuilding"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-08, -3.6, 0, 1, -1.57361e-07, -32, 3.5, -14.5)
+mesh = SubResource("PlaneMesh_7873m")
+surface_material_override/0 = SubResource("StandardMaterial3D_llcbm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LevelBuilding/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelBuilding/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lralc")
+
+[editable path="LevelText"]
+[editable path="Goal"]
+[editable path="XROrigin3D"]

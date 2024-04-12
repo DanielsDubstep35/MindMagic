@@ -18,7 +18,6 @@ glow_normalized = true
 glow_intensity = 0.15
 glow_strength = 2.0
 glow_blend_mode = 0
-fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 5.0
 fog_density = 0.1

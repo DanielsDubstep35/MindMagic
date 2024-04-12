@@ -13,5 +13,7 @@ func playerDie():
 		#
 	## Start loading the current scene
 	scene_base.load_scene(current_scene)
-	
-	
+
+func _on_spell_damage_area_body_entered(body):
+	if (body.is_in_group("WizardFireball")):
+		playerDie()

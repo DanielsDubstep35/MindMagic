@@ -448,7 +448,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 196, 63)
 collision_mask = 4
 script = SubResource("GDScript_8pefe")
 activationGoal = 4
-target_scene = "res://Levels/MainMenu.tscn"
+target_scene = "res://Levels/FinalLevel.tscn"
 particles = NodePath("GPUParticles3D")
 goalAudio = NodePath("AudioStreamPlayer3D")
 
