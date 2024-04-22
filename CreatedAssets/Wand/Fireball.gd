@@ -12,13 +12,18 @@ var explosiveness : bool = false
 @export
 var homing_bullets : bool = false
 
+@export
+var fire_sound : AudioStreamPlayer3D
+
 #@onready
 #var BloodParticle : GPUParticles3D = $BloodParticle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	fire_sound.playing = true
 	#set_as_top_level(true)
 	await get_tree().create_timer(2).timeout
+	fire_sound.playing = false
 	queue_free()
 	pass
 

@@ -1,6 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://dk6ryd7vwi2gn"]
+[gd_scene load_steps=55 format=3 uid="uid://dk6ryd7vwi2gn"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/wizard.gd" id="1_u7pal"]
+[ext_resource type="AudioStream" uid="uid://dvhairs2cyris" path="res://Audio/MoreAudio/soundimage.org/Sound/Heavy_footstep.mp3" id="2_r6ipp"]
+[ext_resource type="AudioStream" uid="uid://b2wrv6q3cnx7" path="res://Audio/MoreAudio/soundimage.org/Sound/2ndFireCast.mp3" id="2_uq1g2"]
 [ext_resource type="FontFile" uid="uid://b6crwdtxra2b7" path="res://Fonts/dpcomic.ttf" id="2_wqe53"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ty8o3"]
@@ -251,128 +253,152 @@ tracks/19/keys = {
 "values": [Vector3(0, 2.9, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_01xw3"]
-resource_name = "Walk"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_kls5n"]
+resource_name = "CastFSpell"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimSkele/RightFoot:rotation")
+tracks/0/path = NodePath("AnimSkele/Wand:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0)]
+"values": [Vector3(0, 3.48787e-16, 0.785398), Vector3(3.36902e-16, 9.02726e-17, -0.523599), Vector3(3.99277e-09, 1.0472, -0.523599)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimSkele/RightLeg:rotation")
-tracks/1/interp = 2
+tracks/1/path = NodePath("AnimSkele/RightFoot:rotation")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0)]
+"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("AnimSkele/LeftFoot:rotation")
-tracks/2/interp = 2
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0)]
+"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimSkele/LeftLeg:rotation")
-tracks/3/interp = 2
+tracks/3/path = NodePath("AnimSkele/Hat:rotation")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimSkele/LeftArm:rotation")
-tracks/4/interp = 2
+tracks/4/path = NodePath("AnimSkele/RightLeg:rotation")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.0472, 3.48787e-16, -0.785398), Vector3(1.0472, 3.48787e-16, -0.785398), Vector3(-1.0472, 3.48787e-16, -0.785398)]
+"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimSkele/Wand:rotation")
+tracks/5/path = NodePath("AnimSkele/LeftLeg:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.0472, 3.48787e-16, 0.785398), Vector3(-1.0472, 3.48787e-16, 0.785398), Vector3(1.0472, 3.48787e-16, 0.785398)]
+"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/path = NodePath("AnimSkele/RightArm:rotation")
-tracks/6/interp = 1
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1.0472, 0, 0.785398), Vector3(-1.0472, 3.48787e-16, 0.785398), Vector3(1.0472, 3.48787e-16, 0.785398)]
+"values": [Vector3(0, 3.48787e-16, 0.785398), Vector3(3.36902e-16, 9.02726e-17, -0.523599), Vector3(3.99277e-09, 1.0472, -0.523599)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("AnimSkele/RightArm:position")
+tracks/7/path = NodePath("AnimSkele/LeftArm:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(2.08165e-12, 3.9, 0)]
+"values": [Vector3(3.48787e-16, 3.48787e-16, -0.785398)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("AnimSkele/Wand:position")
+tracks/8/path = NodePath("AnimSkele/Face:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(2.08165e-12, 3.9, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("AnimSkele/LeftArm:position")
+tracks/9/path = NodePath("AnimSkele/Torso:rotation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 3.9, 0)]
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimSkele/Wand:position")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.9, 0), Vector3(0, 2.9, 0), Vector3(-0.7, 2.9, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimSkele/RightArm:position")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.9, 0), Vector3(0, 2.9, 0), Vector3(-0.7, 2.9, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sbc0b"]
@@ -731,152 +757,128 @@ tracks/8/keys = {
 "values": [Vector3(2.08165e-12, 3.9, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_kls5n"]
-resource_name = "CastFSpell"
-length = 0.6
+[sub_resource type="Animation" id="Animation_01xw3"]
+resource_name = "Walk"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimSkele/Wand:rotation")
+tracks/0/path = NodePath("AnimSkele/RightFoot:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 3.48787e-16, 0.785398), Vector3(3.36902e-16, 9.02726e-17, -0.523599), Vector3(3.99277e-09, 1.0472, -0.523599)]
+"values": [Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimSkele/RightFoot:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("AnimSkele/RightLeg:rotation")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
+"values": [Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("AnimSkele/LeftFoot:rotation")
-tracks/2/interp = 1
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
+"values": [Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimSkele/Hat:rotation")
-tracks/3/interp = 1
+tracks/3/path = NodePath("AnimSkele/LeftLeg:rotation")
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0.523599, 0, 0), Vector3(-0.523599, 0, 0), Vector3(0.523599, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimSkele/RightLeg:rotation")
-tracks/4/interp = 1
+tracks/4/path = NodePath("AnimSkele/LeftArm:rotation")
+tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
+"values": [Vector3(-1.0472, 3.48787e-16, -0.785398), Vector3(1.0472, 3.48787e-16, -0.785398), Vector3(-1.0472, 3.48787e-16, -0.785398)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimSkele/LeftLeg:rotation")
+tracks/5/path = NodePath("AnimSkele/Wand:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)]
+"values": [Vector3(1.0472, 3.48787e-16, 0.785398), Vector3(-1.0472, 3.48787e-16, 0.785398), Vector3(1.0472, 3.48787e-16, 0.785398)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/path = NodePath("AnimSkele/RightArm:rotation")
-tracks/6/interp = 2
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 3.48787e-16, 0.785398), Vector3(3.36902e-16, 9.02726e-17, -0.523599), Vector3(3.99277e-09, 1.0472, -0.523599)]
+"values": [Vector3(1.0472, 0, 0.785398), Vector3(-1.0472, 3.48787e-16, 0.785398), Vector3(1.0472, 3.48787e-16, 0.785398)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("AnimSkele/LeftArm:rotation")
+tracks/7/path = NodePath("AnimSkele/RightArm:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(3.48787e-16, 3.48787e-16, -0.785398)]
+"values": [Vector3(2.08165e-12, 3.9, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("AnimSkele/Face:rotation")
+tracks/8/path = NodePath("AnimSkele/Wand:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(2.08165e-12, 3.9, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("AnimSkele/Torso:rotation")
+tracks/9/path = NodePath("AnimSkele/LeftArm:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("AnimSkele/Wand:position")
-tracks/10/interp = 2
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 3.9, 0), Vector3(0, 2.9, 0), Vector3(-0.7, 2.9, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("AnimSkele/RightArm:position")
-tracks/11/interp = 2
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 3.9, 0), Vector3(0, 2.9, 0), Vector3(-0.7, 2.9, 0)]
+"values": [Vector3(0, 3.9, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n11t2"]
@@ -1449,10 +1451,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sa7vc")
 
-[node name="Wizard" type="CharacterBody3D"]
+[node name="Wizard" type="CharacterBody3D" node_paths=PackedStringArray("run_sound", "attack_sound")]
 collision_layer = 32
 collision_mask = 39
 script = ExtResource("1_u7pal")
+run_sound = NodePath("RunSound")
+attack_sound = NodePath("AttackSound")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -1474,12 +1478,18 @@ collision_mask = 13
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("CapsuleShape3D_grhst")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="RunSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_r6ipp")
+autoplay = true
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_uq1g2")
+autoplay = true
 
 [node name="Name" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 10, 0)
 modulate = Color(1, 0, 0, 1)
-text = "The Wizard"
+text = "Wayne The Wizard"
 font = ExtResource("2_wqe53")
 font_size = 300
 outline_size = 100
@@ -1506,12 +1516,12 @@ mesh = SubResource("ArrayMesh_v577b")
 skeleton = NodePath("")
 
 [node name="LeftArm" type="MeshInstance3D" parent="AnimSkele"]
-transform = Transform3D(0.707107, 0.707107, 3.02058e-16, -0.612372, 0.612372, 0.5, 0.353553, -0.353553, 0.866025, 0, 3.9, 0)
+transform = Transform3D(0.707107, 0.707106, 3.02058e-16, -0.612372, 0.612372, 0.5, 0.353553, -0.353553, 0.866025, 0, 3.9, 0)
 mesh = SubResource("ArrayMesh_4pq5j")
 skeleton = NodePath("")
 
 [node name="RightArm" type="MeshInstance3D" parent="AnimSkele"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.353553, 0.353553, -0.866025, 0.612372, 0.612372, 0.5, 0, 2.9, 0)
+transform = Transform3D(0.707107, -0.707106, 0, 0.353552, 0.353552, -0.866026, 0.612373, 0.612373, 0.499998, 0, 2.9, 0)
 mesh = SubResource("ArrayMesh_32fj8")
 skeleton = NodePath("")
 
@@ -1541,7 +1551,7 @@ mesh = SubResource("ArrayMesh_3bxwe")
 skeleton = NodePath("")
 
 [node name="Wand" type="MeshInstance3D" parent="AnimSkele"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.353553, 0.353553, -0.866026, 0.612372, 0.612372, 0.5, 0, 2.9, 0)
+transform = Transform3D(0.707107, -0.707106, 0, 0.353552, 0.353552, -0.866027, 0.612373, 0.612373, 0.499998, 0, 2.9, 0)
 mesh = SubResource("ArrayMesh_wlk6p")
 skeleton = NodePath("")
 

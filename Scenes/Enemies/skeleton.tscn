@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://qs4gilwwbjor"]
+[gd_scene load_steps=30 format=3 uid="uid://qs4gilwwbjor"]
 
 [ext_resource type="Script" path="res://BlenderStuff/Skeleton.gd" id="1_6yfdu"]
-[ext_resource type="AudioStream" uid="uid://ccj3wy2tg033o" path="res://Audio/Footsteps.mp3" id="2_xnf7b"]
+[ext_resource type="AudioStream" uid="uid://ba5xqmbca6ndq" path="res://Audio/MoreAudio/soundimage.org/Sound/Footstep.mp3" id="2_3j0ly"]
+[ext_resource type="AudioStream" uid="uid://c3wc0k03374hn" path="res://Audio/MoreAudio/soundimage.org/Sound/BoneClank.mp3" id="2_befm8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtsil"]
 resource_name = "Body"
@@ -659,12 +660,13 @@ graph_offset = Vector2(55.7767, 55.1625)
 radius = 1.5
 height = 8.0
 
-[node name="Skeleton" type="CharacterBody3D" node_paths=PackedStringArray("run_sound") groups=["enemies"]]
+[node name="Skeleton" type="CharacterBody3D" node_paths=PackedStringArray("run_sound", "attack_sound") groups=["enemies"]]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 collision_layer = 32
 collision_mask = 47
 script = ExtResource("1_6yfdu")
 run_sound = NodePath("RunSound")
+attack_sound = NodePath("AttackSound")
 
 [node name="animationSkeleton" type="Node3D" parent="."]
 transform = Transform3D(-0.7, 2.4415e-16, -1.05697e-07, 2.4415e-16, 0.7, -2.4415e-16, 1.05697e-07, -2.4415e-16, -0.7, 0, 0, 0)
@@ -832,12 +834,23 @@ libraries = {
 }
 
 [node name="RunSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_xnf7b")
+stream = ExtResource("2_3j0ly")
 volume_db = 15.0
 unit_size = 100.0
 max_db = 6.0
 autoplay = true
 max_distance = 30.0
+bus = &"SkeleSteps"
+emission_angle_enabled = true
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_befm8")
+volume_db = 15.0
+unit_size = 100.0
+max_db = 6.0
+autoplay = true
+max_distance = 30.0
+bus = &"SkeleSteps"
 emission_angle_enabled = true
 
 [connection signal="body_entered" from="skeletonArea" to="." method="_on_skeleton_area_body_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://dih60k40pxed6"]
+[gd_scene load_steps=30 format=3 uid="uid://dih60k40pxed6"]
 
+[ext_resource type="AudioStream" uid="uid://c3wc0k03374hn" path="res://Audio/MoreAudio/soundimage.org/Sound/BoneClank.mp3" id="2_2clnf"]
 [ext_resource type="AudioStream" uid="uid://ccj3wy2tg033o" path="res://Audio/Footsteps.mp3" id="2_kf5l8"]
 
 [sub_resource type="GDScript" id="GDScript_gkxvj"]
@@ -38,6 +39,9 @@ var blood = preload(\"res://Particles/blood_particle.tscn\")
 var run_sound : AudioStreamPlayer3D
 
 @export
+var attack_sound : AudioStreamPlayer3D
+
+@export
 var particle : GPUParticles3D
 
 signal incrementGoalProgress()
@@ -57,16 +61,16 @@ func _physics_process(delta):
 		state_machine.start(\"Attack\")
 		animation_Player.play(\"Attack\", -1, 1.0)
 		set_velocity(Vector3(0, gravity, 0))
-		#if !run_sound.playing:
-			#run_sound.playing = true
+		if !attack_sound.playing:
+			attack_sound.playing = true
 		attackPlayer()
 		
 	elif !_target_in_attack_range() && _target_in_seek_range():
 		state_machine.travel(\"Run\")
 		state_machine.start(\"Run\")
 		animation_Player.play(\"Run\", -1, 2.5)
-		#if !run_sound.playing:
-			#run_sound.playing = true
+		if !run_sound.playing:
+			run_sound.playing = true
 		# follow the player
 		update_target_location(player.global_position, delta)
 	elif !_target_in_seek_range():
@@ -240,13 +244,11 @@ color_ramp = SubResource("Gradient_i7d73")
 noise = SubResource("FastNoiseLite_ub6m8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjl6r"]
+shading_mode = 0
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.968627, 0.823529, 0, 1)
 albedo_texture = SubResource("NoiseTexture2D_6ft85")
-metallic = 1.0
-metallic_specular = 1.0
-uv1_triplanar = true
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7ie0"]
 radius = 0.6
@@ -780,11 +782,13 @@ graph_offset = Vector2(-42.4506, 55.1625)
 radius = 1.5
 height = 8.0
 
-[node name="Skeleton" type="CharacterBody3D" groups=["enemies"]]
+[node name="Skeleton" type="CharacterBody3D" node_paths=PackedStringArray("run_sound", "attack_sound") groups=["enemies"]]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 collision_layer = 32
 collision_mask = 47
 script = SubResource("GDScript_gkxvj")
+run_sound = NodePath("RunSound")
+attack_sound = NodePath("AttackSound")
 
 [node name="animationSkeleton" type="Node3D" parent="."]
 transform = Transform3D(-0.7, 2.4415e-16, -1.05697e-07, 2.4415e-16, 0.7, -2.4415e-16, 1.05697e-07, -2.4415e-16, -0.7, 0, 0, 0)
@@ -958,6 +962,16 @@ unit_size = 100.0
 max_db = 6.0
 autoplay = true
 max_distance = 30.0
+emission_angle_enabled = true
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_2clnf")
+volume_db = 15.0
+unit_size = 100.0
+max_db = 6.0
+autoplay = true
+max_distance = 30.0
+bus = &"SkeleSteps"
 emission_angle_enabled = true
 
 [connection signal="body_entered" from="skeletonArea" to="." method="_on_skeleton_area_body_entered"]

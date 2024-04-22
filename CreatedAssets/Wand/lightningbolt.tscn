@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c01sunn5q3h3y"]
+[gd_scene load_steps=12 format=3 uid="uid://c01sunn5q3h3y"]
 
 [ext_resource type="Script" path="res://CreatedAssets/Wand/lightningbolt.gd" id="1_yb1qm"]
+[ext_resource type="AudioStream" uid="uid://ctos44r063mr5" path="res://Audio/MoreAudio/soundimage.org/Sound/LightningCast.mp3" id="2_vqoss"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_fjmj0"]
 
@@ -164,10 +165,11 @@ _data = {
 "RESET": SubResource("Animation_2h4ij")
 }
 
-[node name="lightningbolt" type="RigidBody3D" groups=["LightningBlast"]]
+[node name="lightningbolt" type="RigidBody3D" node_paths=PackedStringArray("lightning_sound") groups=["LightningBlast"]]
 collision_layer = 8
 gravity_scale = 1.66533e-16
 script = ExtResource("1_yb1qm")
+lightning_sound = NodePath("AudioStreamPlayer3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.08165e-12, 0, 0, 0, 2.08165e-12, 2.31597e-18, 0, -2.31597e-18, 2.08165e-12, 0, 0, 0)
@@ -194,3 +196,9 @@ shape = SubResource("ConvexPolygonShape3D_d30tx")
 libraries = {
 "": SubResource("AnimationLibrary_8apne")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_vqoss")
+unit_size = 5.0
+autoplay = true
+bus = &"Lighting"

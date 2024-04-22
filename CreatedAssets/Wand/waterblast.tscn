@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://f7fe8knjj4x3"]
+[gd_scene load_steps=14 format=3 uid="uid://f7fe8knjj4x3"]
 
 [ext_resource type="Script" path="res://CreatedAssets/Wand/waterblast.gd" id="1_7yslf"]
 [ext_resource type="Material" uid="uid://44vktfdenepn" path="res://CreatedAssets/Wand/new_standard_material_3d.tres" id="2_it3qb"]
+[ext_resource type="AudioStream" uid="uid://dhjpfmokqk52n" path="res://Audio/MoreAudio/soundimage.org/Sound/WaterCast.mp3" id="3_1gccy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0gcom"]
 radius = 0.08
@@ -112,11 +113,12 @@ _data = {
 "water_dissappear": SubResource("Animation_4118r")
 }
 
-[node name="Waterblast" type="RigidBody3D" groups=["Waterblast"]]
+[node name="Waterblast" type="RigidBody3D" node_paths=PackedStringArray("water_sound") groups=["Waterblast"]]
 collision_layer = 8
 collision_mask = 2
 gravity_scale = 1.66533e-16
 script = ExtResource("1_7yslf")
+water_sound = NodePath("AudioStreamPlayer3D")
 
 [node name="FireballCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_0gcom")
@@ -129,7 +131,7 @@ collision_mask = 35
 shape = SubResource("SphereShape3D_f5qsl")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 25
+amount = 3
 process_material = SubResource("ParticleProcessMaterial_etmd4")
 draw_pass_1 = SubResource("SphereMesh_0org0")
 
@@ -140,5 +142,10 @@ light_color = Color(1, 0.501961, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_kijko")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_1gccy")
+autoplay = true
+bus = &"Water"
 
 [connection signal="body_entered" from="SpellArea" to="." method="_on_spell_area_body_entered"]

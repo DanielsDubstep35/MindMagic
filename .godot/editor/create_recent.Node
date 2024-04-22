@@ -1,9 +1,10 @@
+Label3D
+AudioStreamPlayer
+AudioStreamPlayer3D
+WorldEnvironment
 CollisionShape3D
 Area3D
 Node3D
-Label3D
-AudioStreamPlayer3D
-AudioStreamPlayer
 NavigationAgent3D
 CharacterBody3D
 AnimationTree
@@ -11,4 +12,3 @@ MeshInstance3D
 AnimationPlayer
 PhysicalBone3D
 Skeleton3D
-Decal

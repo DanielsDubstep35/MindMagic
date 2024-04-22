@@ -84,6 +84,7 @@ draw_pass_1 = SubResource("TorusMesh_tao36")
 stream = SubResource("AudioStreamMP3_66fxr")
 volume_db = 3.0
 max_distance = 10.0
+bus = &"Portal"
 area_mask = 31
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,5 +1,6 @@
-res://Levels
 /Users/danielmendes/Desktop/MindMagic/apks
+/Users/danielmendes/Library/Android/sdk
+res://Levels
 res://Scenes/Enemies
 res://
 res://CreatedAssets/InteractableObjects
@@ -11,6 +12,5 @@ res://CreatedAssets/skies
 res://UsedAssets/Sketchfab
 res://UsedAssets/KayKit
 res://CreatedAssets/Wand/
-/Applications/TrenchBroom.app/Contents/Resources
 /Users/danielmendes/Downloads/
 res://CreatedAssets/Wand

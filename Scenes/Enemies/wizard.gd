@@ -39,6 +39,9 @@ var blood = preload("res://Particles/blood_particle.tscn")
 var run_sound : AudioStreamPlayer3D
 
 @export
+var attack_sound : AudioStreamPlayer3D
+
+@export
 var particle : GPUParticles3D
 
 signal incrementGoalProgress()
@@ -59,16 +62,21 @@ func _physics_process(delta):
 		animation_Player.play("CastFSpell", -1, 1.0)
 		set_velocity(Vector3(0, gravity, 0))
 		await animation_Player.animation_finished
-		#if !run_sound.playing:
-			#run_sound.playing = true
+		if !attack_sound.playing:
+			run_sound.playing = false
+			attack_sound.playing = true
+		elif attack_sound.playing:
+			attack_sound.playing = false
+			attack_sound.playing = true
 		attackPlayer()
 		
 	elif !_target_in_attack_range() && _target_in_seek_range():
 		state_machine.travel("Walk")
 		state_machine.start("Walk")
 		animation_Player.play("Walk", -1, 2.5)
-		#if !run_sound.playing:
-			#run_sound.playing = true
+		if !run_sound.playing:
+			attack_sound.playing = false
+			run_sound.playing = true
 		# follow the player
 		update_target_location(player.global_position, delta)
 	elif !_target_in_seek_range():

@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://addons/godot-xr-tools/staging/fade.gdshader" id="4"]
 [ext_resource type="PackedScene" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="6_balvx"]
-[ext_resource type="Texture2D" uid="uid://b8taxx8wt0mus" path="res://UsedAssets/KayKit/KayKit_DungeonRemastered_1.0_FREE/Samples/dungeon_remastered_sample1.png" id="6_h323d"]
+[ext_resource type="Texture2D" uid="uid://db7fxoghrad55" path="res://Wizard.png" id="6_kfpv8"]
 
 [sub_resource type="QuadMesh" id="4"]
 custom_aabb = AABB(-5000, -5000, -5000, 10000, 10000, 10000)
@@ -42,7 +42,7 @@ tracker = &"right_hand"
 pose = &"aim"
 
 [node name="LoadingScreen" parent="." instance=ExtResource("2")]
-splash_screen = ExtResource("6_h323d")
+splash_screen = ExtResource("6_kfpv8")
 progress = 0.0
 
 [node name="Scene" type="Node3D" parent="."]

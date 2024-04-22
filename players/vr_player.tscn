@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg2gohdntx5rv"]
+[gd_scene load_steps=25 format=3 uid="uid://dg2gohdntx5rv"]
 
 [ext_resource type="Script" path="res://players/vr_player.gd" id="1_16jhh"]
 [ext_resource type="Texture2D" uid="uid://bkvdlt2bhcb6t" path="res://UsedAssets/CC0Textures/Sky3.jpg" id="1_iw07r"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bx1xdisoqo1f6" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_tac_glove_low.tscn" id="4_clap0"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_3up2e"]
 [ext_resource type="PackedScene" uid="uid://dcj22h65jg6o8" path="res://CreatedAssets/Wand/Wand.tscn" id="8_0caku"]
+[ext_resource type="FontFile" uid="uid://b6crwdtxra2b7" path="res://Fonts/dpcomic.ttf" id="8_5d3lj"]
 [ext_resource type="Texture2D" uid="uid://bcu32wnmswl7i" path="res://UsedAssets/Icons/Fire.png" id="9_aswx7"]
 [ext_resource type="Texture2D" uid="uid://d0y3s5i3lycne" path="res://UsedAssets/Icons/Water.png" id="10_4w66a"]
 [ext_resource type="Texture2D" uid="uid://dfihpjlmgy7yo" path="res://UsedAssets/Icons/Lightning Bolt.png" id="11_by8eu"]
@@ -134,11 +135,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.85, 2.08165e-12)
 tracker = &"right_hand"
 
-[node name="Wand" parent="Right" node_paths=PackedStringArray("fireSpell", "waterSpell", "lightningSpell") instance=ExtResource("8_0caku")]
+[node name="Wand" parent="Right" node_paths=PackedStringArray("fireSpell", "waterSpell", "RelaxPercent", "lightningSpell", "BlinkChecker") instance=ExtResource("8_0caku")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.015679, 0.0474298, -0.477442)
 fireSpell = NodePath("FireSpell/FireMesh")
 waterSpell = NodePath("WaterSpell/WaterMesh")
+RelaxPercent = NodePath("WaterSpell/RelaxPercent")
 lightningSpell = NodePath("LightningSpell/LightningMesh")
+BlinkChecker = NodePath("LightningSpell/BlinkChecker")
 
 [node name="spell_time2" type="Timer" parent="Right/Wand"]
 wait_time = 0.25
@@ -155,6 +158,22 @@ surface_material_override/0 = SubResource("StandardMaterial3D_waq7u")
 [node name="WaterSpell" type="Node3D" parent="Right/Wand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999999, 0)
 
+[node name="RelaxPercent" type="Label3D" parent="Right/Wand/WaterSpell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 2
+modulate = Color(0.533333, 1, 1, 1)
+text = "0.00"
+font = ExtResource("8_5d3lj")
+
+[node name="RelaxLabel" type="Label3D" parent="Right/Wand/WaterSpell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999999, 0)
+billboard = 2
+modulate = Color(0.533333, 0.364706, 1, 1)
+text = "Relaxed
+Percentage"
+font = ExtResource("8_5d3lj")
+font_size = 24
+
 [node name="WaterMesh" type="MeshInstance3D" parent="Right/Wand/WaterSpell"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("QuadMesh_xyhfj")
@@ -169,6 +188,22 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 mesh = SubResource("QuadMesh_xyhfj")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_51kgx")
+
+[node name="BlinkChecker" type="Label3D" parent="Right/Wand/LightningSpell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 1
+modulate = Color(1, 1, 0.560784, 1)
+text = "Neutral"
+font = ExtResource("8_5d3lj")
+
+[node name="BlinkLabel" type="Label3D" parent="Right/Wand/LightningSpell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999999, 0)
+billboard = 1
+modulate = Color(0.329412, 1, 0.560784, 1)
+text = "Blink 
+Detector"
+font = ExtResource("8_5d3lj")
+font_size = 24
 
 [node name="MovementTurn" parent="Right" instance=ExtResource("5_3up2e")]
 turn_mode = 2
